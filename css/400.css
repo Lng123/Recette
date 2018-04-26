@@ -4,7 +4,7 @@
     top: 7rem;
 }
 
-*.img1 > img {
+img {
     border-radius: 50%;
     display: table-cell;
     vertical-align: middle;
