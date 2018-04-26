@@ -1,27 +1,29 @@
 
 .img1 {
   position: relative;
-  top: 80px;
+  top: 6rem;
 }
 
 img {
-    border-radius: 50%;
     display: table-cell;
     vertical-align: middle;
     text-align: center;
     margin: 0 auto;
-    width: 18rem;
+    width: 19rem;
 }
 
 .input-group {
     margin-left: 11%;
     margin-top: 3rem;
     width: 80%;
+    max-width: 400px;
 }
+
 
 .btn-danger {
     background-color: #B76055;
 }
+
 
 hr.star-light {
     max-width: 17rem;
