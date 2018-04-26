@@ -10,7 +10,7 @@
     vertical-align: middle;
     text-align: center;
     margin: 0 auto;
-    width: 16rem;
+    width: 18rem;
 }
 
 .input-group {
@@ -26,14 +26,22 @@
 hr.star-light {
     max-width: 17rem;
     padding: 0;
-    top: -.8em;
     text-align: center;
     border: none;
     border-top: solid 0.25rem;
-    margin-top: 12rem;
+    margin-top: 0.6rem;
     margin-bottom: 2.5rem;
     border-color: #fff;
 }
 
+#welcome{
+    position:block;
+    text-align: center;
+    font-family: 'Alex Brush', cursive;
+    margin-top:10rem;
+    margin-bottom: 0;
+    font-size: 2.775em;
+    color:white;
+}
 
 
