@@ -1,0 +1,39 @@
+
+.img1 {
+    position: relative;
+    top: 7rem;
+}
+
+*.img1 > img {
+    border-radius: 50%;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    margin: 0 auto;
+    width: 16rem;
+}
+
+.input-group {
+    margin-left: 11%;
+    margin-top: 3rem;
+    width: 80%;
+}
+
+.btn-danger {
+    background-color: #B76055;
+}
+
+hr.star-light {
+    max-width: 17rem;
+    padding: 0;
+    top: -.8em;
+    text-align: center;
+    border: none;
+    border-top: solid 0.25rem;
+    margin-top: 12rem;
+    margin-bottom: 2.5rem;
+    border-color: #fff;
+}
+
+
+
