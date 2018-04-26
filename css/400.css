@@ -1,4 +1,9 @@
 
+.img1 {
+  position: relative;
+  top: 80px;
+}
+
 img {
     border-radius: 50%;
     display: table-cell;
