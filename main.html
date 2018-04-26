@@ -17,31 +17,32 @@
     <link href="https://fonts.googleapis.com/css?family=Alex+Brush" rel="stylesheet">
 </head>
 
-
-
-
-
 <body id="gradient">
 
     <div id="container">
         <div class="img1">
             <img src="img/Logo.png" alt="1">
         </div>
-        
+
         <h2 id="welcome">Welcome</h2>
         <hr class="star-light">
 
         <form class="form-inline">
+
             <div class="input-group">
-                <input type="email" class="form-control" size="50" placeholder="Email Address" required>
+                <input type="email" id="email2" value="" class="form-control" size="50" placeholder="Email Address" required>
                 <div class="input-group-btn">
-                    <button type="button" id="email" class="btn btn-danger" onclick="location.href = 'page2.html';">Submit</button>
+                    <button type="button" id="email" onclick="clicked()" class="btn btn-danger">Submit</button>
                 </div>
             </div>
         </form>
     </div>
 
     <script src="js/background.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase-firestore.js"></script>
+    <script src="data.js"></script>
 </body>
 
 </html>

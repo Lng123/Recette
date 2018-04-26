@@ -1,39 +1,47 @@
 
-body{
-  background-color: #55B991;
-}
 .img1 {
-  position: relative;
-  top: 80px;
+    position: relative;
+    top: 7rem;
 }
+
 *.img1 > img {
-  border-radius: 50%;
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
-  margin: 0 auto;
-  width: 170px;
+    border-radius: 50%;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    margin: 0 auto;
+    width: 18rem;
 }
 
-.boxholder1{
-  position:relative;
-  margin: 0 auto;
-  margin-top: 50px;
-  width: 220px;
-  top: 150px;
-}
-/* 
-.patatoe{
-  width: 
-} */
-
-
-.input-group{
+.input-group {
     margin-left: 11%;
-    margin-top: 170px;
+    margin-top: 3rem;
     width: 80%;
 }
 
-.btn-danger{
+.btn-danger {
     background-color: #B76055;
 }
+
+hr.star-light {
+    max-width: 17rem;
+    padding: 0;
+    text-align: center;
+    border: none;
+    border-top: solid 0.25rem;
+    margin-top: 0.6rem;
+    margin-bottom: 2.5rem;
+    border-color: #fff;
+}
+
+#welcome{
+    position:block;
+    text-align: center;
+    font-family: 'Alex Brush', cursive;
+    margin-top:10rem;
+    margin-bottom: 0;
+    font-size: 2.775em;
+    color:white;
+}
+
+
