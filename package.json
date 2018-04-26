@@ -1,0 +1,19 @@
+{
+  "name": "recette",
+  "version": "1.0.0",
+  "description": "Recette BCIT GROUP 22 Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lewisfang59/recette.git"
+  },
+  "author": "Group22",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lewisfang59/recette/issues"
+  },
+  "homepage": "https://github.com/lewisfang59/recette#readme"
+}
