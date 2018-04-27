@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/lewisfang59/recette/issues"
   },
-  "homepage": "https://github.com/lewisfang59/recette#readme"
+  "homepage": "https://github.com/lewisfang59/recette#readme",
+  "dependencies": {
+    "@sendgrid/mail": "^6.2.1",
+    "nodemailer": "^4.6.4"
+  },
+  "devDependencies": {
+    "webpack": "^4.6.0",
+    "webpack-cli": "^2.0.15"
+  }
 }
