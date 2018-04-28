@@ -6,36 +6,93 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="./400page2.css">
     <link rel="stylesheet" media="(min-width: 401px) and (max-width:600px)" href="600.css">
     <link rel="stylesheet" media="(min-width: 601px) and (max-width:800px)" href="800.css">
     <link rel="stylesheet" media="(min-width: 801px)" href="1280.css">
     <link href="https://fonts.googleapis.com/css?family=Dhurjati%7cOpen+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Allura" rel="stylesheet">
+
     <title>Recette</title>
 </head>
 
 
 <body>
+    <div style="height:0px;overflow:hidden">
+        <input type="file" id="fileInput" accept="image/*;capture=camera">
+    </div>
+    <nav class="navbar navbar-expand-smbg-dar navbar-dark">
+        <a class="navbar-brand" href="#" id="brand">Recette</a>
+        <ul class="nav">
+            <li class="nav-item" style="margin: 3px;">
+                <button type="button" id="camera" onclick="openCamera()" class="btn btn-outline-light">Camera</button>
 
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle">More</button>
-                <button type="button" class="navbar-toggle">Camera</button>
-                <a class="navbar-brand" href="#" id="brand">Recette</a>
-            </div>
-        </div>
+            </li>
+            <li class="nav-item" style="margin: 3px;">
+                
+                <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#myModal"> Add  </button>
+
+                <!-- The Modal -->
+                <div class="modal fade" id="myModal">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Modal Heading</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                Modal body..
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" onclick="addList()" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+        </ul>
     </nav>
+    <div class="container">
+
+        <div id="accordion">
+
+        </div>
+        <!-- <div id="accordion" class="panel-group">
+            <div class="card">
+                <div class="card-header">
+                    <a class="card-link" data-toggle="collapse" href="#collapseOne">
+                        Collapsible Group Item #1
+                        </a>
+                </div>
+                <div id="collapseOne" class="collapse" data-parent="#accordion">
+                    <div class="card-body">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat.
+                    </div>
+                </div>
+            </div> -->
+
+    </div>
+    <!-- <img id="frame" width="300px" height="300px" /> -->
     <!-- <script src="email.js"></script> -->
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase-firestore.js"></script>
-    <script src="data.js"></script>
-    
+    <script src="dataMain.js"></script>
+
 </body>
 <script src="camera.js"></script>
 
