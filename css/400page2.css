@@ -8,3 +8,12 @@
     font-size: 24pt;
 
 }
+
+#camera{
+    float: right;\
+    height: 100px;
+}
+
+.img{
+    height: 100px;
+}
