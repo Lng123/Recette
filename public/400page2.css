@@ -8,3 +8,20 @@
     font-size: 24pt;
 
 }
+
+body > .container {
+  padding: 60px 15px 0;
+}
+
+footer{
+  width:100%
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+code {
+  font-size: 80%;
+}
