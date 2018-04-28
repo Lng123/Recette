@@ -9,11 +9,12 @@
 
 }
 
-#camera{
-    float: right;\
-    height: 100px;
+#cam{
+    width: 20px;
+    height: auto;
 }
 
-.img{
-    height: 100px;
+#plus {
+    width: 20px;
+    height: auto;
 }
