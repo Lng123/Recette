@@ -16,7 +16,6 @@ var d = new Date();
 let result = (new Date(d.getTime() * 1000)).toLocaleDateString();
 console.log(result);
 
-
 var email = document.getElementById("email");
 var userId;
 
@@ -36,11 +35,11 @@ function clicked() {
     let result = "no";
 
     for (let i = 0; i < userFile.length; i++) {
-        if (userFile[i].data().email === email2.value) {
+        if (userFile[i].data().email === email.value) {
             alert("Welcome back!");            
             location.href="main.html";
             console.log(userFile[i].id);
-            window.userId= userFile[i].id;
+            userId= userFile[i].id;
             break;
         }
         
@@ -57,7 +56,7 @@ function clicked() {
             email.value = "";
             alert("Welcome to Recette!!");
             
-            window.userId = docRef.id;
+            userId = docRef.id;
             console.log(userId);
             location.href = "main.html"
             
@@ -65,13 +64,13 @@ function clicked() {
     }
     
 }
-var userId2 = window.userId;
-console.log(window.email2.value);
+var userId2 = userId;
+console.log(email.value);
 function add() {
     let adding = [];
     adding[0] = { name: "potato", time: "6"};
-    console.log(window.userId2);
-    window.db.collection("email").doc("113AqkbYgbBVfexnhA7b").add(
+    console.log(userId2);
+    db.collection("email").doc("113AqkbYgbBVfexnhA7b").add(
         adding[0]
     );
     
