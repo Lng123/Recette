@@ -10,10 +10,10 @@ var config = {
 firebase.initializeApp(config);
 
 var db = firebase.firestore();
-// Create a root reference
-var storageRef = firebase.storage().ref();
-// Create a reference to 'images/mountains.jpg'
-var imagesRef = storageRef.child('images/');
+// // Create a root reference
+// var storageRef = firebase.storage().ref();
+// // Create a reference to 'images/mountains.jpg'
+// var imagesRef = storageRef.child('images/');
 
 var camBut = document.getElementById("camera");
 var eleCounter = 0;
@@ -39,19 +39,24 @@ function addList() {
     var cardB = document.createElement("div");
     var cardAn = document.createElement("a");
     var cardBody = document.createElement("div");
+    var searchBut = document.createElement("button");
 
     card.setAttribute("class", "card");
     cardH.setAttribute("class", "card-header");
     cardAn.setAttribute("class", "card-link");
     cardAn.setAttribute("data-toggle", "collapse");
-    cardAn.setAttribute("href", "#collapse" + eleCounter);
-    cardAn.innerHTML = "item"+eleCounter;
-    cardB.setAttribute("id", "collapse" + eleCounter);
+    cardAn.setAttribute("href", "#collapse" + window.eleCounter);
+    cardAn.innerHTML = "item"+window.eleCounter;
+    cardB.setAttribute("id", "collapse" + window.eleCounter);
     cardB.setAttribute("class", "collapse");
     cardB.setAttribute("data-parent", "#accordion");
     cardBody.setAttribute("class", "card-body");
     cardBody.innerHTML = "YAYAYAYA";
-    console.log(eleCounter);
+    searchBut.setAttribute("onclick", "search('potato')");
+    searchBut.setAttribute("class", "btn btn-outline-light");
+    searchBut.setAttribute("type", "button");
+    searchBut.innerHTML = "search";
+    console.log(window.eleCounter);
     // butClicked.addEventListener('click', function () {
 
 
@@ -59,9 +64,13 @@ function addList() {
     // });
     cardH.appendChild(cardAn);
     cardB.appendChild(cardBody);
+    cardB.appendChild(searchBut);
     card.appendChild(cardH);
     card.appendChild(cardB);
     list.appendChild(card);
-    eleCounter++;
+    window.eleCounter++;
 }
 
+function search(item) {
+    window.location.href="https://www.google.ca/search?q="+ item +" receipe";
+}
