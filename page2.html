@@ -56,8 +56,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="date">Enter Expiry Date:</label>
-                                    <input type= "date" class="form-control" id="date">
-                                    
+                                    <input type="date" class="form-control" id="date">
+
                                 </div>
                             </div>
 
@@ -95,48 +95,55 @@
             </div> -->
 
     </div>
-    
-  <!-- // // Aaron footer!-->
-     <footer>
-      <div id="gradient" style="height:0px;overflow:hidden">
-        <input type="file" id="fileInput" accept="image/*;capture=camera">
-    </div>
-    <nav class="navbar navbar-expand-smbg-dar navbar-dark">
-        <a class="navbar-brand" href="#" id="brand">Recette</a>
-        <ul class="nav">
-            <li class="nav-item" style="margin: 3px;">
-                <!-- open the modal-->
-                <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#myModal"> Comment  </button>
 
-                <!-- The Modal -->
-                <div class="modal fade" id="myModal">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
+    <!-- // // Aaron footer!-->
+    <footer class="fixed-bottom">
+        <div id="gradient" style="height:0px;overflow:hidden">
+            <input type="file" id="fileInput" accept="image/*;capture=camera">
+        </div>
+        <nav class="navbar navbar-expand-smbg-dar navbar-dark">
+            <ul class="nav">
+                <li class="nav-item" style="margin: 3px;">
+                    <!-- open the modal-->
+                    <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#thisModal"> Comment</button>
+                </li>
 
-                            <!-- Modal Header -->
-                            <div class="modal-header">
-                                <h4 class="modal-title">Modal Heading</h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
+            </ul>
+        </nav>
+    </footer>
 
-                            <!-- Modal body -->
-                            <div class="modal-body">
-                                Modal body..
-                            </div>
+    <!--
+    The Comment Modal
+    Modal not interactable when inside footer div
+    -->
+    <div class="modal fade" id="thisModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
 
-                            <!-- Modal footer -->
-                            <div class="modal-footer">
-                                <button type="button" onclick="addList()" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            </div>
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Comments</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
 
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label for="comment">Please provide us feedback:</label>
+                            <textarea class="form-control" rows="5" id="comment"></textarea>
                         </div>
                     </div>
                 </div>
-            </li>
 
-        </ul>
-    </nav>
-    </footer>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" onclick="addList()" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
     <!-- <img id="frame" width="300px" height="300px" /> -->
     <!-- <script src="email.js"></script> -->
