@@ -26,6 +26,16 @@
 #plus {
     width: 20px;
     height: auto;
+<<<<<<< HEAD
+}
+
+footer{
+    
+    bottom: 0%;
+    position: fixed;
+
+=======
     filter: invert(100%);
     
+>>>>>>> 6393627499ca886bf8e01e03148eed9ac756145d
 }
