@@ -18,7 +18,9 @@
   "homepage": "https://github.com/lewisfang59/recette#readme",
   "dependencies": {
     "@sendgrid/mail": "^6.2.1",
-    "nodemailer": "^4.6.4"
+    "nodemailer": "^4.6.4",
+    "setimmediate": "^1.0.5",
+    "tesseract.js": "^1.0.10"
   },
   "devDependencies": {
     "webpack": "^4.6.0",

@@ -21,13 +21,14 @@ var userId;
 
 const userFile = [];
 
-db.collection("email").get().then(function (querySnapshot) {
+let getEmail = db.collection("email").get().then(function (querySnapshot) {
     querySnapshot.forEach(function (doc) {
         // doc.data() is never undefined for query doc snapshots
         console.log(doc.id, " => ", doc.data());
         userFile.push(doc);
     });
 });
+console.log(getEmail);
 console.log(userFile);
 function clicked() {
     console.log(email.value);
@@ -37,8 +38,10 @@ function clicked() {
     for (let i = 0; i < userFile.length; i++) {
         if (userFile[i].data().email === email.value) {
             alert("Welcome back!");            
+            sessionStorage.setItem("userEmail", userFile[i].id);
             location.href="main.html";
             console.log(userFile[i].id);
+            email.value="";
             userId= userFile[i].id;
             break;
         }
@@ -53,12 +56,12 @@ function clicked() {
         )
         .then(function (docRef) {
             console.log("added!!" + docRef.id);
+            sessionStorage.setItem("userEmail",docRef.id);
             email.value = "";
             alert("Welcome to Recette!!");
-            
             userId = docRef.id;
             console.log(userId);
-            location.href = "main.html"
+            window.location.href = "main.html"
             
         });
     }

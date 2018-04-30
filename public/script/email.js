@@ -2,11 +2,14 @@
 // using SendGrid's v3 Node.js Library
 // https://github.com/sendgrid/sendgrid-nodejs
 var nodemailer = require('nodemailer');
+var timers = require('timers');
+console.log("entered");
+
 var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'xx@gmail.com',
-    pass: 'xxx'
+    user: 'recette.group22@gmail.com',
+    pass: 'setagroup22'
   }
 });
 

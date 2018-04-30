@@ -16,7 +16,7 @@
     <link rel="stylesheet" media="(min-width: 801px)" href="1280.css">
     <link href="https://fonts.googleapis.com/css?family=Dhurjati%7cOpen+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Allura" rel="stylesheet">
-
+    <script src='https://cdn.rawgit.com/naptha/tesseract.js/1.0.10/dist/tesseract.js'></script>
     <title>Recette</title>
 </head>
 
@@ -29,13 +29,14 @@
         <a class="navbar-brand" href="#" id="brand">Recette</a>
         <ul class="nav">
             <li class="nav-item" style="margin: 3px;">
-                <button type="button" id="camera" onclick="openCamera()" class="btn btn-outline-light">Camera</button>
+                <button type="button" id="camera" onclick="openCamera()" class="btn btn-link">
+                <img src="https://firebasestorage.googleapis.com/v0/b/foodver-b888d.appspot.com/o/camera-slr.svg?alt=media&token=686f2c56-cf7a-476b-a4d8-6717090c79cc" alt="camera" id= "cam" ></button>
 
             </li>
             <li class="nav-item" style="margin: 3px;">
-                <!-- open the modal-->
-                <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#myModal"> Add  </button>
 
+                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal"><img src="https://firebasestorage.googleapis.com/v0/b/foodver-b888d.appspot.com/o/plus.svg?alt=media&token=86756619-9f72-4d9a-9680-631674726ed9" alt="add" id ="plus"></button>
+            
                 <!-- The Modal -->
                 <div class="modal fade" id="myModal">
                     <div class="modal-dialog modal-dialog-centered">
@@ -43,18 +44,26 @@
 
                             <!-- Modal Header -->
                             <div class="modal-header">
-                                <h4 class="modal-title">Modal Heading</h4>
+                                <h4 class="modal-title">Add a Food Item</h4>
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
 
                             <!-- Modal body -->
                             <div class="modal-body">
-                                Modal body..
+                                <div class="form-group">
+                                    <label for="foodname">Enter Food:</label>
+                                    <input type="text" class="form-control" id="foodName">
+                                </div>
+                                <div class="form-group">
+                                    <label for="date">Enter Expiry Date:</label>
+                                    <input type="date" class="form-control" id="date">
+
+                                </div>
                             </div>
 
                             <!-- Modal footer -->
                             <div class="modal-footer">
-                                <button type="button" onclick="addList()" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" onclick="addList();" class="btn btn-secondary" data-dismiss="modal">Submit</button>
                             </div>
 
                         </div>
@@ -67,7 +76,8 @@
     <div class="container">
 
         <div id="accordion">
-
+            <div id="document-content">
+            </div>
         </div>
         <!-- <div id="accordion" class="panel-group">
             <div class="card">
@@ -86,18 +96,65 @@
             </div> -->
 
     </div>
+
+    <!-- // // Aaron footer!-->
+    <footer class="fixed-bottom">
+        <div id="gradient" style="height:0px;overflow:hidden">
+            <input type="file" id="fileInput" accept="image/*;capture=camera">
+        </div>
+        <nav class="navbar navbar-expand-smbg-dar navbar-dark">
+            <ul class="nav">
+                <li class="nav-item" style="margin: 3px;">
+                    <!-- open the modal-->
+                    <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#thisModal"> Comment</button>
+                </li>
+
+            </ul>
+        </nav>
+    </footer>
+
+    <!--
+    The Comment Modal
+    Modal not interactable when inside footer div
+    -->
+    <div class="modal fade" id="thisModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Comments</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label for="comment">Please provide us feedback:</label>
+                            <textarea class="form-control" rows="5" id="comment"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" onclick="addList()" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
     <!-- <img id="frame" width="300px" height="300px" /> -->
     <!-- <script src="email.js"></script> -->
-    
-    
- 
-    
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase-firestore.js"></script>
-    <script src="dataMain.js"></script>
-    <script src="camera.js"></script>
-    <script src="backgroundmain.js"></script>
-    <script src="camera.js"></script>
+    <script src="./script/dataMain.js"></script>
+    <script src="./script/ocr.js"></script>
+    <script src="./script/backgroundmain.js"></script>
 </body>
+
+
 </html>
