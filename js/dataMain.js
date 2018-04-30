@@ -40,19 +40,22 @@ function addList() {
     var cardAn = document.createElement("a");
     var cardBody = document.createElement("div");
     var searchBut = document.createElement("button");
-
+    var inputFoodName = document.getElementById("foodname").value;
+    var inputExpirationDate = document.getElementById("date").value;
+    
+    
     card.setAttribute("class", "card");
     cardH.setAttribute("class", "card-header");
     cardAn.setAttribute("class", "card-link");
     cardAn.setAttribute("data-toggle", "collapse");
     cardAn.setAttribute("href", "#collapse" + window.eleCounter);
-    cardAn.innerHTML = "item"+window.eleCounter;
+    cardAn.innerHTML = (window.eleCounter + 1) + " - " + inputFoodName;
     cardB.setAttribute("id", "collapse" + window.eleCounter);
     cardB.setAttribute("class", "collapse");
     cardB.setAttribute("data-parent", "#accordion");
     cardBody.setAttribute("class", "card-body");
-    cardBody.innerHTML = "YAYAYAYA";
-    searchBut.setAttribute("onclick", "search('potato')");
+    cardBody.innerHTML = "Expiration Date: " + inputExpirationDate;
+    searchBut.setAttribute("onclick", "search(potato)");
     searchBut.setAttribute("class", "btn btn-outline-light");
     searchBut.setAttribute("type", "button");
     searchBut.innerHTML = "search";
@@ -72,5 +75,5 @@ function addList() {
 }
 
 function search(item) {
-    window.location.href="https://www.google.ca/search?q="+ item +" receipe";
+    window.location.href="https://www.google.ca/search?q="+ item +" recipe";
 }
