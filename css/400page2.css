@@ -18,3 +18,10 @@
     width: 20px;
     height: auto;
 }
+
+footer{
+    
+    bottom: 0%;
+    position: fixed;
+
+}
