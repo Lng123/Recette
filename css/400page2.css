@@ -9,23 +9,13 @@
 
 }
 
-#cam{
+#cam, #plus{
     width: 20px;
     height: auto;
     filter: invert(100%);
 }
 
-#camera {
-
-}
 
 .btn:hover #cam,.btn:hover #plus {
         filter: brightness(0%);
-}
-
-#plus {
-    width: 20px;
-    height: auto;
-    filter: invert(100%);
-    
 }
