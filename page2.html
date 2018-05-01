@@ -6,7 +6,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script> 
+<!--        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script> -->
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -14,14 +14,17 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
         <link rel="stylesheet" href="css/400page2.css">
+<!--
         <link rel="stylesheet" media="(min-width: 401px) and (max-width:600px)" href="600.css">
         <link rel="stylesheet" media="(min-width: 601px) and (max-width:800px)" href="800.css">
         <link rel="stylesheet" media="(min-width: 801px)" href="1280.css">
+-->
         <link href="https://fonts.googleapis.com/css?family=Dhurjati%7cOpen+Sans" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Allura" rel="stylesheet">
         <link rel="stylesheet" href="css/font-awesome.min.css">
         <link rel="stylesheet" href="css/bootstrap.css">
         <title>Recette</title>
+        
     </head>
 
 
@@ -40,7 +43,7 @@
 
                 <li class="nav-item" style="margin: 3px;">
 
-                    <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#myModal"> <img src="img/plus.svg" alt="add" id ="plus">  </button>
+                    <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#myModal"> <img src="img/plus.svg" alt="add" id ="addBut">  </button>
 
 
                     <!-- The Modal -->
@@ -57,8 +60,8 @@
                                 <!-- Modal body -->
                                 <div class="modal-body">
                                     <div class="form-group">
-                                        <label for="foodname">Enter Food:</label>
-                                        <input type="text" class="form-control" id="foodname">
+                                        <label for="foodName">Enter Food:</label>
+                                        <input type="text" class="form-control" id="foodName">
                                     </div>
                                     <div class="form-group">
                                         <label for="date">Enter Expiry Date:</label>
@@ -552,7 +555,6 @@ Modal not interactable when inside footer div
         <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase-firestore.js"></script>
         <script src="js/dataMain.js"></script>
-        <script src="camera.js"></script>
         <script src="js/backgroundmain.js"></script>
         <script scr="js/aboutus.js"></script>
     </body>
