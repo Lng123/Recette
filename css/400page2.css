@@ -9,21 +9,16 @@
 
 }
 
-#cam, #plus{
+#cam, #addBut{
     width: 20px;
     height: auto;
     filter: invert(100%);
 }
 
 
-.btn:hover #cam,.btn:hover #plus {
+.btn:hover #cam,.btn:hover #addBut {
         filter: brightness(0%);
 }
-#plus {
-    width: 20px;
-    height: auto;
-}
-
 footer{
     
     bottom: 0%;
