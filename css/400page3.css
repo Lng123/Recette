@@ -9,18 +9,21 @@
 
 }
 
-#cam, #addBut, #search{
+#back{
     width: 20px;
     height: auto;
     filter: invert(100%);
 }
 
 
-.btn:hover #cam,.btn:hover #addBut,.btn:hover #search {
+.btn:hover #back {
         filter: brightness(0%);
 }
 footer{
-    
     bottom: 0%;
     position: fixed;
+}
+
+#footspace{
+    height: 38.667px;
 }
