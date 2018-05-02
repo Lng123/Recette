@@ -76,8 +76,10 @@ function showList() {
             searchBut.setAttribute("class", "btn btn-outline-dark");
             searchBut.setAttribute("type", "button");
             searchBut.innerHTML = "search";
+            
             chkBox.setAttribute("type", "checkbox");
             chkBox.setAttribute("id", "chkb");
+            
             remBut.setAttribute("class", "btn btn-outline-dark");
             remBut.setAttribute("type", "button");
             remBut.innerHTML = "Remove";
@@ -166,6 +168,7 @@ function addList() {
         searchBut.setAttribute("style", "margin: 2px;");
         chkBox.setAttribute("type", "checkbox");
         chkBox.setAttribute("id", "chkb");
+        chkBox.setAttribute("onclick", "searchhide()");
         remBut.setAttribute("class", "btn btn-outline-dark");
         remBut.setAttribute("type", "button");
         remBut.setAttribute("class", "btn btn-outline-dark");
@@ -255,3 +258,13 @@ function rmEle(id, num) {
 }
 
 console.log(document.getElementById("number1"));
+
+//Checkbox and search function
+
+    var search = document.getElementById("searchbut");
+    search.style.display='none';
+function searchhide() {
+    search.style.display='block';
+    
+}
+
