@@ -260,11 +260,11 @@ function rmEle(id, num) {
 console.log(document.getElementById("number1"));
 
 //Checkbox and search function
+var search = document.getElementById("searchbut");
 
-    var search = document.getElementById("searchbut");
-    search.style.display='none';
 function searchhide() {
     search.style.display='block';
     
 }
+
 
