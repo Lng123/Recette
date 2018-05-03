@@ -180,6 +180,7 @@ function addList() {
         chkBox.setAttribute("type", "checkbox");
         chkBox.setAttribute("id", "chkb" + window.eleCounter);
         chkBox.setAttribute("onclick", "searchhide()");
+        chkBox.setAttribute("name", "chkbox");
     
         chkBoxDiv.setAttribute("style", "margin: 15px; float: left;");
     
@@ -276,11 +277,22 @@ function rmEle(id, num) {
 console.log(document.getElementById("number1"));
 
 //Checkbox and search function
-var search = document.getElementById("searchbut");
+
 
 function searchhide() {
-    search.style.display='block';
-    
+var search = document.getElementById("searchbut");
+var checkb = document.getElementsByName("chkbox");
+search.style.display = 'none';
+
+    for(var i = 0; i < window.eleCounter; i++){
+if (checkb[i].checked){
+    console.log( "number" + i);
+    console.log(checkb[i].checked);
+    search.style.display = 'block';
+  } 
+
 }
+}
+
 
 
