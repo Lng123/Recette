@@ -1,0 +1,26 @@
+.navbar{
+  background-color: #499c79;
+}
+
+#brand{
+    color:#FFF;
+    font-family: 'Allura', cursive;
+    font-size: 24pt;
+
+}
+
+#cam, #addBut, #search{
+    width: 20px;
+    height: auto;
+    filter: invert(100%);
+}
+
+
+.btn:hover #cam,.btn:hover #addBut,.btn:hover #search {
+        filter: brightness(0%);
+}
+footer{
+    
+    bottom: 0%;
+    position: fixed;
+}

@@ -18,6 +18,55 @@
 //   canvas.height = img.height;
 //   ctx.drawImage(img, 0, 0);
 
-  
+
 // }
 // img.src = src;
+
+// Imports the Google Cloud client library
+const vision = require('@google-cloud/vision');
+
+// Creates a client
+const client = new vision.ImageAnnotatorClient();
+
+// Performs label detection on the image file
+client
+  .labelDetection('./resources/wakeupcat.jpg')
+  .then(results => {
+    const labels = results[0].labelAnnotations;
+
+    console.log('Labels:');
+    labels.forEach(label => console.log(label.description));
+  })
+  .catch(err => {
+    console.error('ERROR:', err);
+  });
+
+
+ // get
+ //querysnapshot = array of the ingredient
+ //doc = one element of querysnapshot
+ 
+db.collection("ingredient").get()
+  .then(function (querySnapshot) {
+    querySnapshot.forEach(function (doc) {
+      // doc.data() is never undefined for query doc snapshots
+      console.log(doc.id, " => ", doc.data());
+      ingList.push(doc.data());
+    });
+  });
+
+
+//Add
+db.collection("email").add(
+  { email: email.value }
+)
+  .then(function (docRef) {
+    console.log("added!!" + docRef.id);
+    sessionStorage.setItem("userEmail", docRef.id);
+    email.value = "";
+    alert("Welcome to Recette!!");
+    userId = docRef.id;
+    console.log(userId);
+    window.location.href = "main.html"
+
+  });
