@@ -19,8 +19,7 @@
 .btn:hover #cam,.btn:hover #addBut,.btn:hover #search {
         filter: brightness(0%);
 }
-footer{
-    
+footer{  
     bottom: 0%;
     position: fixed;
 }
@@ -31,4 +30,10 @@ footer{
 
 #footspace{
     height: 55.667px;
+}
+
+#accordion {
+    min-height: 400px;
+    margin-bottom: 100px;
+    clear: both;
 }

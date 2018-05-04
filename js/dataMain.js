@@ -153,6 +153,7 @@ function addList() {
 //    if (recogEx(ingList, item)) {
         card.setAttribute("class", "card");
         card.setAttribute("id", "#number" + window.eleCounter);
+        card.setAttribute("style", "margin: 5px;");
     
         cardH.setAttribute("class", "card-header");
     
