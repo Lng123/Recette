@@ -1,12 +1,12 @@
 
 // Initialize Firebase
 var config = {
-    apiKey: "AIzaSyB1gf62sde2Zq_1FEnW9yutjmGJ8_jQt60",
-    authDomain: "foodver-b888d.firebaseapp.com",
-    databaseURL: "https://foodver-b888d.firebaseio.com",
-    projectId: "foodver-b888d",
-    storageBucket: "foodver-b888d.appspot.com",
-    messagingSenderId: "223725439200"
+    apiKey: "AIzaSyDsDdSSCShjFlNOt1hTdcMbxisH1BSPgDE",
+    authDomain: "recette-f3ef5.firebaseapp.com",
+    databaseURL: "https://recette-f3ef5.firebaseio.com",
+    projectId: "recette-f3ef5",
+    storageBucket: "recette-f3ef5.appspot.com",
+    messagingSenderId: "242135902717"
 };
 firebase.initializeApp(config);
 

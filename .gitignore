@@ -1,4 +1,7 @@
 node_modules/
 .idea/
 recette.iml
+package-lock.json
+package.json
+functions/
 .DS_Store

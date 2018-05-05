@@ -1,20 +1,21 @@
-// Initialize Firebase
+
 // Initialize Firebase
 var config = {
-    apiKey: "AIzaSyB1gf62sde2Zq_1FEnW9yutjmGJ8_jQt60",
-    authDomain: "foodver-b888d.firebaseapp.com",
-    databaseURL: "https://foodver-b888d.firebaseio.com",
-    projectId: "foodver-b888d",
-    storageBucket: "foodver-b888d.appspot.com",
-    messagingSenderId: "223725439200"
+    apiKey: "AIzaSyDsDdSSCShjFlNOt1hTdcMbxisH1BSPgDE",
+    authDomain: "recette-f3ef5.firebaseapp.com",
+    databaseURL: "https://recette-f3ef5.firebaseio.com",
+    projectId: "recette-f3ef5",
+    storageBucket: "recette-f3ef5.appspot.com",
+    messagingSenderId: "242135902717"
 };
+
 firebase.initializeApp(config);
+console.log(sessionStorage.getItem("ingredient"));
 
 var db = firebase.firestore();
-// // Create a root reference
-// var storageRef = firebase.storage().ref();
-// // Create a reference to 'images/mountains.jpg'
-// var imagesRef = storageRef.child('images/');
+var functions = firebase.functions();
+var OCR = firebase.functions().httpsCallable('OCR');
+
 
 var camBut = document.getElementById("camera");
 var eleCounter = 0;
@@ -22,14 +23,17 @@ var a = sessionStorage.getItem("userEmail");
 var ingList = [];
 var userList = [];
 var user = db.collection("email").doc(sessionStorage.getItem("userEmail"));
-db.collection("Ingredients").get()
+
+db.collection("ingredient").get()
     .then(function (querySnapshot) {
         querySnapshot.forEach(function (doc) {
             // doc.data() is never undefined for query doc snapshots
             console.log(doc.id, " => ", doc.data());
+            console.log(doc);
             ingList.push(doc.data());
         });
     });
+
 user.collection("list").get()
     .then(function (querySnapshot) {
         if (querySnapshot !== null) {
@@ -62,6 +66,7 @@ function showList() {
             var remBut = document.createElement("button");
             card.setAttribute("class", "card");
             card.setAttribute("id", "#number" + window.eleCounter);
+            card.setAttribute("data-parent", "#accordion");
             cardH.setAttribute("class", "card-header");
             cardAn.setAttribute("class", "card-link");
             cardAn.setAttribute("data-toggle", "collapse");
@@ -72,7 +77,7 @@ function showList() {
             cardB.setAttribute("data-parent", "#accordion");
             cardBody.setAttribute("class", "card-body");
             cardBody.innerHTML = "The ingredients will expire on " + "<b>" + userList[i].expiaryDate + "</b>";
-            searchBut.setAttribute("onclick", "window.location.href = 'https://www.google.ca/search?q=" + userList[i].value + " receipe'");
+            searchBut.setAttribute("onclick", "window.location.href = 'https://www.google.ca/search?q=" + userList[i].name + " receipe'");
             searchBut.setAttribute("class", "btn btn-outline-dark");
             searchBut.setAttribute("type", "button");
             searchBut.innerHTML = "search";
@@ -82,8 +87,7 @@ function showList() {
             remBut.setAttribute("type", "button");
             remBut.innerHTML = "Remove";
             console.log(userList[i]);
-            
-            
+
             console.log(document.getElementById("number0"));
             cardH.appendChild(cardAn);
             cardH.appendChild(chkBox);
@@ -93,8 +97,9 @@ function showList() {
             card.appendChild(cardH);
             card.appendChild(cardB);
             list.appendChild(card);
-            remBut.addEventListener('click', function() {
-                rmEle(userList[i].id, window.eleCounter);
+
+            remBut.addEventListener('click', function () {
+                rmEle(userList[i].id, card);
             });
             window.eleCounter++;
         }
@@ -102,30 +107,25 @@ function showList() {
 
 }
 
-
-console.log(a);
 function openCamera() {
+    console.log("Entered the function");
     document.getElementById("fileInput").click();
-    // var file = document.getElementById("fileInput");
-    // document.addEventListener('DOMContentLoaded', function () {
-    //     var fileInput = document.getElementById('fileInput');
-    //     fileInput.addEventListener('change', function (e) {
-    //         var file = e.target.files[0];
-    //         // Do something with the image file.
-    //         console.log(file);
-    //         Tesseract.recognize(file)
-    //             .progress(function (message) {
-    //                 console.log(message);
-    //             })
-    //             .then(function (result) {
-    //                 var contentArea = document.getElementById('document-content');
-    //                 contentArea.innerHTML = result.text;
-    //             })
-    //             .catch(function (err) {
-    //                 console.error(err);
-    //             });
-    //     });
-    // });
+    var file = document.getElementById("fileInput");
+    var fileInput = document.getElementById('fileInput');
+    fileInput.addEventListener('change', function (e) {
+        var file = e.target.files[0];
+        // Do something with the image file.
+        var tmppath = URL.createObjectURL(file);
+        console.log(file);
+        console.log(tmppath);
+        var url = "https://firebasestorage.googleapis.com/v0/b/recette-f3ef5.appspot.com/o/FB1.gif?alt=media&token=28727220-181c-440e-87ae-4808b5c9ba28";
+        OCR(url)
+        .then(function(result) {
+            console.log(result);
+        }).catch(function(err) {
+            console.log(err);
+        });
+    });
 
 }
 
@@ -157,16 +157,16 @@ function addList() {
         cardB.setAttribute("class", "collapse");
         cardB.setAttribute("data-parent", "#accordion");
         cardBody.setAttribute("class", "card-body");
-        cardBody.innerHTML = "The ingredients will expire on " + "<b>"+date.value+"</b>";
+        cardBody.innerHTML = "The ingredients will expire on " + "<b>" + date.value + "</b>";
         searchBut.setAttribute("onclick", "window.location.href = 'https://www.google.ca/search?q=" + item.value + " receipe'");
-        searchBut.setAttribute("class", "btn btn-outline-light");
+        searchBut.setAttribute("class", "btn btn-outline-dark");
         searchBut.setAttribute("type", "button");
         searchBut.innerHTML = "search";
         chkBox.setAttribute("type", "checkbox");
         chkBox.setAttribute("id", "chkb");
         remBut.setAttribute("class", "btn btn-outline-dark");
         remBut.setAttribute("type", "button");
-        
+        remBut.innerHTML = "Remove";
         console.log(ingList.id);
         console.log(window.eleCounter);
         // butClicked.addEventListener('click', function () {
@@ -184,9 +184,10 @@ function addList() {
                 id = docRef.id;
             });
         id = '' + id;
-        remBut.addEventListener('click', function() {
-                rmEle(id, window.eleCounter);
-            });
+
+        remBut.addEventListener('click', function () {
+            rmEle(id, card);
+        });
 
         cardH.appendChild(cardAn);
         cardH.appendChild(chkBox);
@@ -207,7 +208,6 @@ function search(item) {
     window.location.href = "https://www.google.ca/search?q=" + item + " receipe";
 }
 
-
 function recogEx(list, item) {
     let result = false;
     let item2 = "" + item.value;
@@ -222,32 +222,19 @@ function recogEx(list, item) {
     return result;
 }
 
-Element.prototype.remove = function() {
-    this.parentElement.removeChild(this);
-}
-NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
-    for(var i = this.length - 1; i >= 0; i--) {
-        if(this[i] && this[i].parentElement) {
-            this[i].parentElement.removeChild(this[i]);
-        }
-    }
-}
 function rmEle(id, num) {
     var user2 = db.collection("email").doc(sessionStorage.getItem("userEmail"));
     console.log(id);
     console.log(user);
     console.log(num);
     user2.collection("list").doc(id).delete()
-    .then (function(e) {
- 
-        var del = "number"+num;
-        console.log(del);
-        console.log(document.getElementById("number0"));
-        document.getElementById("number0").remove();
-    
-    }).catch(function (e) {
-        console.log(e);
-    })
+        .then(function (e) {
+
+            document.getElementById("accordion").removeChild(num);
+
+        }).catch(function (e) {
+            console.log(e);
+        })
 }
 
-console.log(document.getElementById("number1"));
+
