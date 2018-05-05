@@ -5,39 +5,75 @@
     <title>Recette</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
-    
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
+
     <link rel="stylesheet" href="css/400.css">
     <link href="https://fonts.googleapis.com/css?family=Dhurjati%7cOpen+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Alex+Brush" rel="stylesheet">
 </head>
 
 <body class="gradient">
+    <div id="wrapper">
+        <div class="overlay"></div>
 
-    <div>
-        <div class="img1">
-            <img src="img/Logo.png" alt="1">
-        </div>
+        <!-- Sidebar -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+            <ul class="nav sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                    Recette
+                </a>
+                </li>
+                <li>
+                    <a href="#">Home</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#">Tutorial</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+        </nav>
+        <!-- /#sidebar-wrapper -->
 
-        <h2 id="welcome">Welcome</h2>
-        <hr class="star-light">
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+            <span class="hamb-top"></span>
+            <span class="hamb-middle"></span>
+            <span class="hamb-bottom"></span>
+        </button>
 
-        <form class="form-inline" action="page2.html">
+            <div>
+                <div class="img1">
+                    <img src="img/Logo.png" alt="1">
+                </div>
 
-            <div class="row">
-                <div id="input">
-                    <div class="input-group">
-                        <input type="email" class="form-control" size="50" placeholder="Email Address" required="required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
-                        <div class="input-group-btn">
-                            <input type="submit" class="btn btn-danger">Submit</input>
+                <h2 id="welcome">Welcome</h2>
+                <hr class="star-light">
+
+                <form class="form-inline">
+
+                    <div class="row">
+                        <div id="input">
+                            <div class="input-group">
+                                <input type="email" id="email" value="" class="form-control" size="50" placeholder="Email Address" required>
+                                <div class="input-group-btn">
+                                    <button type="button" onclick="clicked()" class="btn btn-danger">Submit</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
-        </form>
+        </div>
     </div>
 
     <script src="js/background.js"></script>
@@ -45,6 +81,7 @@
     <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase-firestore.js"></script>
     <script src="data.js"></script>
+    <script src="js/NavBar.js"></script>
 </body>
-    
+
 </html>
