@@ -1,0 +1,19 @@
+#topDiv {
+    height: 150px;
+    background-image: url("../img/fruits.jpg");
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    background-size: 100%;
+    border-bottom: 2px solid white;
+}
+
+#topDiv h1 {
+    text-align: center;
+    margin-top: 0px;
+    padding-top: 50px;
+    font-size: 5rem;
+}
+
+h1, h3, p{
+    color: #FFFFFF;
+}
