@@ -1,7 +1,23 @@
-/*var settings = {
+var data = JSON.parse(sessionStorage.getItem('farray'));
+console.log(data);
+console.log(data[0]);
+
+
+var param = "";
+    
+for (var key in data){
+    param += data[key].name + "%2C";
+    }
+console.log("?" + param);
+
+var settings = {
   "async": true,
   "crossDomain": true,
-  "url": "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=false&ingredients=apples%2Cflour%2Csugar&limitLicense=false&number=5&ranking=1", 
+  "url": "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=false&ingredients=" 
+  + 
+   param
+   // apples%2Cflour%2Csugar 
+  + "&limitLicense=false&number=5&ranking=1", 
   "method": "GET",
   "headers": {
     "X-Mashape-Key": "BRCCNUxTIWmshvCO6klV6Hi0HVFsp1AqP3wjsnHTd2TJd7xljC",
@@ -13,13 +29,14 @@
 
 $.ajax(settings).done(function (response) {
   console.log(response);
+    console.log(JSON.stringify(response));
     var listData = "testing";
     listData += response[0].id;
 $("#recipe").append(listData);
     
 });
 
-
+/*
 var settings2 = {
   "async": true,
   "crossDomain": true,

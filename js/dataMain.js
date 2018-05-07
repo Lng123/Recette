@@ -161,6 +161,7 @@ function addList() {
         cardAn.setAttribute("data-toggle", "collapse");
         cardAn.setAttribute("href", "#collapse" + window.eleCounter);
         cardAn.innerHTML = item.value;
+        cardAn.setAttribute("name", "foodvalue");
     
         dayCounter.innerHTML = "10 days left";
         dayCounter.setAttribute("class", "float-right"); 
@@ -294,6 +295,37 @@ if (checkb[i].checked){
 
 }
 }
+var sbut = document.getElementById("searchbut");
+function searchapi() {
+var foodArray = [];
+var checkb = document.getElementsByName("chkbox");
+var fname = document.getElementsByName("foodvalue");
+    for(var i = 0; i < window.eleCounter; i++){
+if (checkb[i].checked){
+    console.log( "number" + i);
+    console.log(fname[i].innerText);
+    foodArray.push({name: fname[i].innerText});
+  } 
+console.log(foodArray);
+sessionStorage.setItem('farray', JSON.stringify(foodArray));
+location.href = "page3.html";
+    }
+}
+
+/*        
+var data = JSON.parse(sessionStorage.getItem('farray'));
+console.log(data);
+console.log(data[0]);
+
+
+var param = "";
+    
+for (var key in data){
+    param += data[key].name + "%2C";
+        }
+    console.log("?" + param);
+*/
+        
 
 
 
