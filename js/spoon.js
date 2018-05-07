@@ -1,4 +1,4 @@
-var data = JSON.parse(sessionStorage.getItem('farray'));
+/*var data = JSON.parse(sessionStorage.getItem('farray'));
 console.log(data);
 console.log(data[0]);
 
@@ -36,7 +36,7 @@ $("#recipe").append(listData);
     
 });
 
-/*
+
 var settings2 = {
   "async": true,
   "crossDomain": true,
