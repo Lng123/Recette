@@ -1,6 +1,6 @@
 #topDiv {
-    height: 150px;
-    background-image: url("../img/fruits.jpg");
+    height: 16rem;
+    background-image: url("../img/b&w_fruits.jpg");
     background-repeat: no-repeat;
     background-position: left bottom;
     background-size: 100%;
@@ -16,9 +16,38 @@
     font-size: 5rem;
 }
 
-h1, h3, p{
-    color: #FFFFFF;
+/*h3, h4, p {*/
+    /*color: #FFFFFF;*/
+/*}*/
+
+img.avatar {
+    width:100%;
+    height:auto;
 }
+
+@media (min-width: 500px){
+
+    div.Brandon,
+    div.Aaron,
+    div.Lewis,
+    div.Louis {
+        display: inline-block;
+        width: 47%;
+    }
+
+    div.Brandon,
+    div.Louis {
+        margin-right: 5%;
+    }
+
+    div.Aidan {
+        display: block;
+        margin: 0 auto;
+        width:46%;
+    }
+}
+
+
 
 
 /*-------------------------------*/
@@ -174,8 +203,8 @@ h1, h3, p{
 /*-------------------------------*/
 
 .hamburger {
-    position: fixed;
-    top: 20px;
+    position: absolute;
+    top: 15px;
     z-index: 999;
     display: block;
     width: 32px;
@@ -218,7 +247,7 @@ h1, h3, p{
 .hamburger.is-closed .hamb-top,
 .hamburger.is-closed .hamb-middle,
 .hamburger.is-closed .hamb-bottom {
-    background-color: #FFFFFF;
+    background-color: #1a1a1a;
 }
 .hamburger.is-closed .hamb-top {
     top: 5px;
