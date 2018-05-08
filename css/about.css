@@ -16,6 +16,28 @@
     font-size: 5rem;
 }
 
+hr.line1 {
+    max-width: 99%;
+    padding: 0;
+    text-align: center;
+    border: none;
+    border-top: solid 0.15rem;
+    margin-top: 0.6rem;
+    margin-bottom: 1rem;
+    border-color: #000000;
+}
+
+hr.line2 {
+    max-width: 99%;
+    padding: 0;
+    text-align: center;
+    border: none;
+    border-top: solid 0.25rem;
+    margin-top: 0.6rem;
+    margin-bottom: 1rem;
+    border-color: #000000;
+}
+
 /*h3, h4, p {*/
     /*color: #FFFFFF;*/
 /*}*/
