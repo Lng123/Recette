@@ -29,6 +29,15 @@ db.collection("email").get().then(function (querySnapshot) {
     });
 });
 console.log(userFile);
+
+function submitListener() {
+    document.getElementById("submit").addEventListener("click", function(e) {
+        console.log("Entered submit");
+        clicked();
+    });
+    
+
+}
 function clicked() {
     console.log(email.value);
 
@@ -36,6 +45,7 @@ function clicked() {
 
     for (let i = 0; i < userFile.length; i++) {
         if (userFile[i].data().email === email.value) {
+            console.log(userFile[i].data());
             alert("Welcome back!");            
             location.href="main.html";
             console.log(userFile[i].id);
@@ -64,17 +74,8 @@ function clicked() {
     }
     
 }
-var userId2 = userId;
-console.log(email.value);
-function add() {
-    let adding = [];
-    adding[0] = { name: "potato", time: "6"};
-    console.log(userId2);
-    db.collection("email").doc("113AqkbYgbBVfexnhA7b").add(
-        adding[0]
-    );
-    
-}
+
+
 
 
 
