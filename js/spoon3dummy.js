@@ -7,11 +7,14 @@ window.onload = function() {
     var recipeDiv = document.getElementById("recipe");
     for(var key in data){
     var a = document.createElement("a");
+    var img = document.createElement("img");
     a.setAttribute("href","#");
     a.setAttribute("onclick", "sendId(this.id)");
     a.setAttribute("id", "" + data[key].id);
-    a.innerHTML = data[key].title + "<br/>";
+    a.innerHTML = "<br/>" + data[key].title + "<br/>";
+    img.setAttribute("src", "" +data[key].image );
     recipeDiv.appendChild(a);
+    recipeDiv.appendChild(img);
     }
     
     }
