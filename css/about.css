@@ -1,5 +1,5 @@
 #topDiv {
-    height: 16rem;
+    height: 15rem;
     background-image: url("https://firebasestorage.googleapis.com/v0/b/recette-f3ef5.appspot.com/o/b%26w_fruits.jpg?alt=media&token=47cee15e-f53e-4e22-91bb-7f7803736648");
     background-repeat: no-repeat;
     background-position: left bottom;
@@ -13,7 +13,7 @@
     text-align: center;
     margin-top: 0px;
     padding-top: 50px;
-    font-size: 5rem;
+    font-size: 6rem;
 }
 
 hr.line1 {
@@ -38,9 +38,22 @@ hr.line2 {
     border-color: #000000;
 }
 
-/*h3, h4, p {*/
-    /*color: #FFFFFF;*/
-/*}*/
+h3 {
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+ul {
+    padding-left: 18px;
+}
+
+#team ul{
+    font-size: 14pt;
+}
+
+p {
+    font-size: 14pt;
+}
 
 img.avatar {
     width:100%;
@@ -114,6 +127,7 @@ img.avatar {
 #page-content-wrapper {
     width: 100%;
     padding-top: 70px;
+    font-family: 'Teko', sans-serif;
 }
 
 #wrapper.toggled #page-content-wrapper {
