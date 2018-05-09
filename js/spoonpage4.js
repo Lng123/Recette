@@ -32,4 +32,5 @@ $.ajax(settings2).done(function (response2) {
     $("#recipe").append(listData);
     
 });
+
 */
