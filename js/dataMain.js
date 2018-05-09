@@ -76,10 +76,10 @@ function showList() {
             searchBut.setAttribute("class", "btn btn-outline-dark");
             searchBut.setAttribute("type", "button");
             searchBut.innerHTML = "search";
-            
+
             chkBox.setAttribute("type", "checkbox");
             chkBox.setAttribute("id", "chkb");
-            
+
             remBut.setAttribute("class", "btn btn-outline-dark");
             remBut.setAttribute("type", "button");
             remBut.innerHTML = "Remove";
@@ -148,83 +148,83 @@ function addList() {
     var chkBoxDiv = document.createElement("div");
     var remBut = document.createElement("button");
     var id = "";
-//    console.log(date.value);
-//    console.log(ingList);
-//    if (recogEx(ingList, item)) {
-        card.setAttribute("class", "card");
-        card.setAttribute("id", "#number" + window.eleCounter);
-        card.setAttribute("style", "margin: 5px;");
-    
-        cardH.setAttribute("class", "card-header");
-    
-        cardAn.setAttribute("class", "card-link");
-        cardAn.setAttribute("data-toggle", "collapse");
-        cardAn.setAttribute("href", "#collapse" + window.eleCounter);
-        cardAn.innerHTML = item.value;
-        cardAn.setAttribute("name", "foodvalue");
-    
-        dayCounter.innerHTML = "10 days left";
-        dayCounter.setAttribute("class", "float-right"); 
-    
-        cardB.setAttribute("id", "collapse" + window.eleCounter);
-        cardB.setAttribute("class", "collapse");
-        cardB.setAttribute("data-parent", "#accordion");
-    
-        cardBody.setAttribute("class", "card-body");
-        cardBody.innerHTML = "This ingredient will expire on " + "<b>" + date.value + "</b>";
-    
-        searchBut.setAttribute("onclick", "window.location.href = 'https://www.google.ca/search?q=" + item.value + " receipe'");
-        searchBut.setAttribute("class", "btn btn-outline-dark");
-        searchBut.setAttribute("type", "button");
-        searchBut.innerHTML = "Search";
-        searchBut.setAttribute("style", "margin: 2px;");
-    
-        chkBox.setAttribute("type", "checkbox");
-        chkBox.setAttribute("id", "chkb" + window.eleCounter);
-        chkBox.setAttribute("onclick", "searchhide()");
-        chkBox.setAttribute("name", "chkbox");
-    
-        chkBoxDiv.setAttribute("style", "margin: 15px; float: left;");
-    
-        remBut.setAttribute("class", "btn btn-outline-dark");
-        remBut.setAttribute("type", "button");
-        remBut.setAttribute("class", "btn btn-outline-dark");
-        remBut.setAttribute("style", "margin: 2px;");
-        remBut.innerHTML = "Remove";
+    //    console.log(date.value);
+    //    console.log(ingList);
+    //    if (recogEx(ingList, item)) {
+    card.setAttribute("class", "card");
+    card.setAttribute("id", "#number" + window.eleCounter);
+    card.setAttribute("style", "margin: 5px;");
 
-//        console.log(ingList.id);
-        console.log(window.eleCounter);
-        // butClicked.addEventListener('click', function () {
-        console.log(item);
-        console.log(date);
-//        let ref = db.collection("email").doc(sessionStorage.getItem("userEmail"));
-//        ref.collection("list").add({
-//                name: item.value,
-//                expiaryDate: date.value
-//            })
-//            .then(function (docRef) {
-//                console.log(docRef);
-//                id = docRef.id;
-//            });
-//        id = '' + id;
-//        remBut.addEventListener('click', function () {
-//            rmEle(id, window.eleCounter);
-//        });
-    
-        chkBoxDiv.appendChild(chkBox);
-        cardH.appendChild(cardAn);
-        cardH.appendChild(dayCounter);
-        cardB.appendChild(cardBody);
-        cardB.appendChild(searchBut);
-        cardB.appendChild(remBut);
-        card.appendChild(cardH);
-        card.appendChild(cardB);
-        list.appendChild(chkBoxDiv);
-        list.appendChild(card);
-        window.eleCounter++;
-//    } else {
-//        alert("Sorry, we are still adding more ingredients!");
-//    }
+    cardH.setAttribute("class", "card-header");
+
+    cardAn.setAttribute("class", "card-link");
+    cardAn.setAttribute("data-toggle", "collapse");
+    cardAn.setAttribute("href", "#collapse" + window.eleCounter);
+    cardAn.innerHTML = item.value;
+    cardAn.setAttribute("name", "foodvalue");
+
+    dayCounter.innerHTML = "10 days left";
+    dayCounter.setAttribute("class", "float-right");
+
+    cardB.setAttribute("id", "collapse" + window.eleCounter);
+    cardB.setAttribute("class", "collapse");
+    cardB.setAttribute("data-parent", "#accordion");
+
+    cardBody.setAttribute("class", "card-body");
+    cardBody.innerHTML = "This ingredient will expire on " + "<b>" + date.value + "</b>";
+
+    searchBut.setAttribute("onclick", "window.location.href = 'https://www.google.ca/search?q=" + item.value + " receipe'");
+    searchBut.setAttribute("class", "btn btn-outline-dark");
+    searchBut.setAttribute("type", "button");
+    searchBut.innerHTML = "Search";
+    searchBut.setAttribute("style", "margin: 2px;");
+
+    chkBox.setAttribute("type", "checkbox");
+    chkBox.setAttribute("id", "chkb" + window.eleCounter);
+    chkBox.setAttribute("onclick", "searchhide()");
+    chkBox.setAttribute("name", "chkbox");
+
+    chkBoxDiv.setAttribute("style", "margin: 15px; float: left;");
+
+    remBut.setAttribute("class", "btn btn-outline-dark");
+    remBut.setAttribute("type", "button");
+    remBut.setAttribute("class", "btn btn-outline-dark");
+    remBut.setAttribute("style", "margin: 2px;");
+    remBut.innerHTML = "Remove";
+
+    //        console.log(ingList.id);
+    console.log(window.eleCounter);
+    // butClicked.addEventListener('click', function () {
+    console.log(item);
+    console.log(date);
+    //        let ref = db.collection("email").doc(sessionStorage.getItem("userEmail"));
+    //        ref.collection("list").add({
+    //                name: item.value,
+    //                expiaryDate: date.value
+    //            })
+    //            .then(function (docRef) {
+    //                console.log(docRef);
+    //                id = docRef.id;
+    //            });
+    //        id = '' + id;
+    //        remBut.addEventListener('click', function () {
+    //            rmEle(id, window.eleCounter);
+    //        });
+
+    chkBoxDiv.appendChild(chkBox);
+    cardH.appendChild(cardAn);
+    cardH.appendChild(dayCounter);
+    cardB.appendChild(cardBody);
+    cardB.appendChild(searchBut);
+    cardB.appendChild(remBut);
+    card.appendChild(cardH);
+    card.appendChild(cardB);
+    list.appendChild(chkBoxDiv);
+    list.appendChild(card);
+    window.eleCounter++;
+    //    } else {
+    //        alert("Sorry, we are still adding more ingredients!");
+    //    }
 
 }
 
@@ -282,33 +282,33 @@ console.log(document.getElementById("number1"));
 
 
 function searchhide() {
-var search = document.getElementById("searchbut");
-var checkb = document.getElementsByName("chkbox");
-search.style.display = 'none';
+    var search = document.getElementById("searchbut");
+    var checkb = document.getElementsByName("chkbox");
+    search.style.display = 'none';
 
-    for(var i = 0; i < window.eleCounter; i++){
-if (checkb[i].checked){
-    console.log( "number" + i);
-    console.log(checkb[i].checked);
-    search.style.display = 'block';
-  } 
+    for (var i = 0; i < window.eleCounter; i++) {
+        if (checkb[i].checked) {
+            console.log("number" + i);
+            console.log(checkb[i].checked);
+            search.style.display = 'block';
+        }
 
-}
+    }
 }
 var sbut = document.getElementById("searchbut");
 function searchapi() {
-var foodArray = [];
-var checkb = document.getElementsByName("chkbox");
-var fname = document.getElementsByName("foodvalue");
-    for(var i = 0; i < window.eleCounter; i++){
-if (checkb[i].checked){
-    console.log( "number" + i);
-    console.log(fname[i].innerText);
-    foodArray.push({name: fname[i].innerText});
-  } 
-console.log(foodArray);
-sessionStorage.setItem('farray', JSON.stringify(foodArray));
-location.href = "page3.html";
+    var foodArray = [];
+    var checkb = document.getElementsByName("chkbox");
+    var fname = document.getElementsByName("foodvalue");
+    for (var i = 0; i < window.eleCounter; i++) {
+        if (checkb[i].checked) {
+            console.log("number" + i);
+            console.log(fname[i].innerText);
+            foodArray.push({ name: fname[i].innerText });
+        }
+        console.log(foodArray);
+        sessionStorage.setItem('farray', JSON.stringify(foodArray));
+        location.href = "page3.html";
     }
 }
 
@@ -325,7 +325,7 @@ for (var key in data){
         }
     console.log("?" + param);
 */
-        
+
 
 
 

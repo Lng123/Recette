@@ -1,5 +1,18 @@
 
+// Initialize Firebase
+var config = {
+    apiKey: "AIzaSyDsDdSSCShjFlNOt1hTdcMbxisH1BSPgDE",
+    authDomain: "recette-f3ef5.firebaseapp.com",
+    databaseURL: "https://recette-f3ef5.firebaseio.com",
+    projectId: "recette-f3ef5",
+    storageBucket: "recette-f3ef5.appspot.com",
+    messagingSenderId: "242135902717"
+};
 
+firebase.initializeApp(config);
+console.log(sessionStorage.getItem("ingredient"));
+
+var db = firebase.firestore();
 var ingredient = [
     { name: "apple", time: 28 },
     { name: "apricots", time: 3 },
@@ -125,7 +138,9 @@ var ingredient = [
     {name:"watercress", time:4},
     {name:"yam", time:5},
 ];
-for (let i = 0; i < ingredient.length; i++) {
+
+function addIng() {
+    for (let i = 0; i < ingredient.length; i++) {
         db.collection("ingredient").add(
             ingredient[i]
         ).then(function(item) {
@@ -134,4 +149,6 @@ for (let i = 0; i < ingredient.length; i++) {
             console.log(err);
         });
     }
+}
+
     console.log("ahah");
