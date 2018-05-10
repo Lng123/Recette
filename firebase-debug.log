@@ -1,0 +1,18 @@
+[debug] [2018-05-10T21:12:38.814Z] ----------------------------------------------------------------------
+[debug] [2018-05-10T21:12:38.818Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2018-05-10T21:12:38.818Z] CLI Version:   3.18.4
+[debug] [2018-05-10T21:12:38.819Z] Platform:      darwin
+[debug] [2018-05-10T21:12:38.819Z] Node Version:  v10.0.0
+[debug] [2018-05-10T21:12:38.820Z] Time:          Thu May 10 2018 14:12:38 GMT-0700 (PDT)
+[debug] [2018-05-10T21:12:38.820Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-05-10T21:12:38.851Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-05-10T21:12:38.851Z] > authorizing via signed-in user
+[debug] [2018-05-10T21:12:38.856Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/recette-f3ef5  
+  
+ Thu May 10 2018 14:12:38 GMT-0700 (PDT)
+[debug] [2018-05-10T21:12:39.443Z] <<< HTTP RESPONSE 200
+[debug] [2018-05-10T21:12:39.444Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/recette-f3ef5/tokens  
+  
+ Thu May 10 2018 14:12:39 GMT-0700 (PDT)
+[debug] [2018-05-10T21:12:39.820Z] <<< HTTP RESPONSE 200

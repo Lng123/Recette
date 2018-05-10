@@ -168,6 +168,29 @@ let getEmail = db.collection("email").get().then(function (querySnapshot) {
 // addIng();
 console.log(getEmail);
 console.log(userFile);
+
+
+var invalid = true;
+
+// Email log in verification
+
+$('#email').on('input', function() {
+    var input=$(this);
+    var re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    var is_email=re.test(input.val());
+
+    if(is_email){
+        input.removeClass("alert alert-danger").addClass("alert alert-success");
+        $("#error-msg").css({"display":"none"});
+        invalid = false;
+    }
+    else{
+        input.removeClass("alert alert-success").addClass("alert alert-danger");
+        $("#error-msg").html("please enter a valid email address");
+        $("#error-msg").css({"display":"block"});
+        invalid = true;
+    }
+});
 function clicked() {
     console.log(email.value);
 

@@ -1,4 +1,11 @@
+#content{
+    height: 450px;
+}
 
+#error-msg {
+    text-align: center;
+    float: bottom;
+}
 
 .img1 {
   position: relative;
