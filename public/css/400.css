@@ -1,8 +1,19 @@
+#content{
+    height: 450px;
+}
 
+#error-msg {
+    text-align: center;
+    padding-top: 20px;
+}
+
+#error-msg p{
+    color: white;
+}
 
 .img1 {
-  position: relative;
-  top: 2rem;
+    position: relative;
+    top: 2rem;
 }
 
 img {
@@ -28,11 +39,11 @@ img {
         display: block!important;
         max-width: 330px;
     }
-    
+
     .input-group-btn{
         display: block !important;
     }
-    
+
     #input{
         margin-right: 70.63px;
     }

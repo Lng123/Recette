@@ -191,8 +191,22 @@ $('#email').on('input', function() {
         invalid = true;
     }
 });
+
+$('#email').keypress(function (e) {
+    var key = e.which;
+    if(key == 13)  // the enter key code
+    {
+        $("#submit").click();
+        return false;
+    }
+});
+
 function clicked() {
     console.log(email.value);
+
+    if(invalid) {
+        return false;
+    }
 
     let result = "no";
 

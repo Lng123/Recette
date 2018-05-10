@@ -24,9 +24,7 @@
         <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
             <ul class="nav sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="#">
-                            Recette
-                        </a>
+                    <a href="#">Recette</a>
                 </li>
                 <li>
                     <a href="./main.html">Home</a>
@@ -34,12 +32,11 @@
                 <li>
                     <a href="./AboutUs.html">About</a>
                 </li>
-
                 <li>
                     <a href="#">Tutorial</a>
                 </li>
                 <li>
-                    <a href="#">Contact</a>
+                    <a href="./contact.html">Contact</a>
                 </li>
             </ul>
         </nav>
@@ -70,14 +67,14 @@
                             <div class="input-group">
                                 <input type="email" id="email" value="" class="form-control" size="50" placeholder="Email Address" required>
                                 <div class="input-group-btn">
-                                    <button type="button" onclick="clicked()" class="btn btn-danger">Submit</button>
+                                    <button type="button" onclick="clicked()" id="submit" class="btn btn-danger">Submit</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </form>
+                <div id="error-msg"></div>
             </div>
-            <div id="error-msg"></div>
         </div>
         
     </div>
