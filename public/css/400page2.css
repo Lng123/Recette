@@ -41,3 +41,14 @@ footer{
 #recipe{
     margin-bottom: 55.667px;
 }
+
+body {
+    background-image: url(https://firebasestorage.googleapis.com/v0/b/recette-f3ef5.appspot.com/o/board.jpg?alt=media&token=b1884009-f4d7-416c-a990-dd12c2af4919);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.container {
+    margin-top: 80px;
+}
