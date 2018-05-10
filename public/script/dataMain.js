@@ -9,6 +9,8 @@ var config = {
     messagingSenderId: "242135902717"
 };
 
+console.log(formatDate("2018-05-10"));
+
 firebase.initializeApp(config);
 var db = firebase.firestore();
 var functions = firebase.functions();
@@ -165,7 +167,6 @@ function addList() {
             dayCounter.style.color = "red";
         }
         dayCounter.style.fontSize = "18px";
-        dayCounter.innerHTML = "10 days left";
         dayCounter.setAttribute("class", "float-right");
 
         cardB.setAttribute("id", "collapse" + window.eleCounter);
@@ -173,7 +174,7 @@ function addList() {
         cardB.setAttribute("data-parent", "#accordion");
 
         cardBody.setAttribute("class", "card-body");
-        cardBody.innerHTML = "This ingredient will expire on " + "<b>" + date.value + "</b>";
+        cardBody.innerHTML = "This ingredient will expire on " + "<b>" + formatDate(date.value) + "</b>";
 
         chkBox.setAttribute("type", "checkbox");
         chkBox.setAttribute("id", "chkb" + window.eleCounter);
@@ -188,6 +189,9 @@ function addList() {
         remBut.setAttribute("style", "margin: 2px;");
         remBut.innerHTML = "Remove";
 
+        var expDate = new Date(date.value);
+        var expDateMilli = expDate.getTime();
+        
         console.log(window.eleCounter);
         // butClicked.addEventListener('click', function () {
         console.log(item);
@@ -196,7 +200,7 @@ function addList() {
         ref.collection("list").add(
             {
                 name: item.value,
-                expiaryDate: date.value
+                expiaryDate: expDateMilli
             }
         )
             .then(function (docRef) {
@@ -427,6 +431,25 @@ function autocomplete(inp, arr) {
     document.addEventListener("click", function (e) {
         closeAllLists(e.target);
     });
+}
+
+//
+Date.prototype.addDays = function (days) {
+  var dat = new Date(this.valueOf());
+  dat.setDate(dat.getDate() + days);
+  return dat;
+}
+
+Date.prototype.subtractDays = function (days) {
+  var dat = new Date(this.valueOf());
+  dat.setDate(dat.getDate() - days);
+  return dat;
+}
+
+function formatDate(date) {
+    var inputDate = new Date(date);
+    var inputDateArray = inputDate.toString().split(" ");
+    return inputDateArray.splice(1,3).join(" "); 
 }
 
 autocomplete(document.getElementById("foodName"), ingList);
