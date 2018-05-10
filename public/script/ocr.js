@@ -135,7 +135,7 @@ Date.prototype.subtractDays = function (days) {
 
 function addLists(input) {
   var dat = new Date();
-  let dateDB = new Date(dat.daddDays(input.time));
+  let dateDB = new Date(dat.addDays(input.time));
   let curDate = dat.addDays(input.time).toString().split(" ");
   curDate = curDate.slice(1, 4).join(" ");
 
