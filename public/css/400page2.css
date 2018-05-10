@@ -42,6 +42,18 @@ footer{
     margin-bottom: 55.667px;
 }
 
+<<<<<<< HEAD
 .container {
     margin-top: 100px;
+=======
+body {
+    background-image: url(https://firebasestorage.googleapis.com/v0/b/recette-f3ef5.appspot.com/o/board.jpg?alt=media&token=b1884009-f4d7-416c-a990-dd12c2af4919);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.container {
+    margin-top: 80px;
+>>>>>>> 65d81619a3ae3ff2655b7557df8c38325bf210eb
 }
