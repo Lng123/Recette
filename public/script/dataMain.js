@@ -155,7 +155,7 @@ function addList() {
         cardAn.setAttribute("data-toggle", "collapse");
         cardAn.setAttribute("href", "#collapse" + window.eleCounter);
         cardAn.innerHTML = item.value;
-        cardAn.setAttribute("name", "foodvalue");
+        cardAn.setAttribute("name", "foodValue");
         cardAn.style.fontSize = "18px";
 
         var daysLeft = calculateDayCount(new Date(), new Date(date.value));
@@ -286,7 +286,7 @@ var sbut = document.getElementById("searchbut");
 function searchapi() {
     var foodArray = [];
     var checkb = document.getElementsByClassName("chk");
-    var fname = document.getElementsByName("foodvalue");
+    var fname = document.getElementsByName("foodValue");
     for (var i = 0; i < window.eleCounter; i++) {
         if (checkb[i].checked) {
             console.log("number" + i);
