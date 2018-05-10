@@ -130,6 +130,7 @@ function addLists(input) {
   var dat = new Date();
   let curDate = dat.addDays(input.time).toString().split(" ");
   curDate = curDate.slice(1, 4).join(" ");
+  console.log(curDate);
   var list = document.getElementById("accordion");
   var card = document.createElement("div");
   var cardH = document.createElement("div");
@@ -165,9 +166,9 @@ function addLists(input) {
   cardB.setAttribute("data-parent", "#accordion");
 
   cardBody.setAttribute("class", "card-body");
-  cardBody.innerHTML = "This ingredient will expire on " + "<b>" + + "</b>";
+  cardBody.innerHTML = "This ingredient will expire on " + "<b>" + curDate + "</b>";
 
-  searchBut.setAttribute("onclick", "window.location.href = 'https://www.google.ca/search?q=" + curDate + " receipe'");
+  searchBut.setAttribute("onclick", "window.location.href = 'https://www.google.ca/search?q=" + input.name+ " receipe'");
   searchBut.setAttribute("class", "btn btn-outline-dark");
   searchBut.setAttribute("type", "button");
   searchBut.innerHTML = "Search";
@@ -193,8 +194,8 @@ function addLists(input) {
   let ref = db.collection("email").doc(sessionStorage.getItem("userEmail"));
   ref.collection("list").add(
     {
-      name: item.value,
-      expiaryDate: date.value
+      name: input.name,
+      expiaryDate: curDate
     }
   )
     .then(function (docRef) {

@@ -1,580 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
+<head>
 
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recette</title>
 
-<!--        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script> -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
-        <link rel="stylesheet" href="./css/400page2.css">
-<!--
-        <link rel="stylesheet" media="(min-width: 401px) and (max-width:600px)" href="600.css">
-        <link rel="stylesheet" media="(min-width: 601px) and (max-width:800px)" href="800.css">
-        <link rel="stylesheet" media="(min-width: 801px)" href="1280.css">
--->
-        <link href="https://fonts.googleapis.com/css?family=Dhurjati%7cOpen+Sans" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Allura" rel="stylesheet">
-        <link rel="stylesheet" href="./css/font-awesome.min.css">
-        <link rel="stylesheet" href="./css/bootstrap.css">
-        <title>Recette</title>
-        
-    </head>
+    <link rel="stylesheet" href="./css/400page2.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Dhurjati%7cOpen+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Allura" rel="stylesheet">
+    <link rel="stylesheet" href="./css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+
+</head>
 
 
-    <body>
-        <div style="height: 0px; overflow: hidden;">
-            <input type="file" id="fileInput" accept="image/*;capture=camera">
-        </div>
-        
-        <nav id="gradient" class="navbar navbar-expand-smbg-dar navbar-dark fixed-top">
-            
-            <a class="navbar-brand" href="#" id="brand">Recette</a>
-            <ul class="nav">
-                
-                <li class="nav-item" style="margin: 3px;">
-                    <button type="button" id="camera" onclick="uploadImage()" class="btn btn-outline-light ">
+<body>
+    <div style="height: 0px; overflow: hidden;">
+        <input type="file" id="fileInput" accept="image/*;capture=camera">
+    </div>
+
+    <nav id="gradient" class="navbar navbar-expand-smbg-dar navbar-dark fixed-top">
+
+        <a class="navbar-brand" href="#" id="brand">Recette</a>
+        <ul class="nav">
+
+            <li class="nav-item" style="margin: 3px;">
+                <button type="button" id="camera" onclick="uploadImage()" class="btn btn-outline-light ">
                         <img src="https://firebasestorage.googleapis.com/v0/b/recette-f3ef5.appspot.com/o/camera-slr.svg?alt=media&token=b8c594a8-5715-4fa5-83e8-6b4f49918fcf" alt="camera" id= "cam">
-                    </button>
-                </li>
+                </button>
+            </li>
 
-                <li class="nav-item" style="margin: 3px;">
-                    <!--    button does not add item to list the first click    -->
-            
-                    <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#myModal"> <img src="https://firebasestorage.googleapis.com/v0/b/recette-f3ef5.appspot.com/o/plus.svg?alt=media&token=5c0bf803-ae01-4835-ac77-86f5f06482e1" alt="add" id ="addBut">  </button>
-                </li>
-                
-            </ul>
-            
-        </nav>
-        
-        <!-- 
+            <li class="nav-item" style="margin: 3px;">
+                <!--    button does not add item to list the first click    -->
+
+                <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#myModal"> <img src="https://firebasestorage.googleapis.com/v0/b/recette-f3ef5.appspot.com/o/plus.svg?alt=media&token=5c0bf803-ae01-4835-ac77-86f5f06482e1" alt="add" id ="addBut">  </button>
+            </li>
+
+        </ul>
+
+    </nav>
+
+    <!-- 
         Add Food Modal
         Modal placeds outside to function inside sticky header
         -->
-        <div class="modal fade" id="myModal">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
 
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                        <h4 class="modal-title">Add a Food Item</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-
-                    <!-- Modal body -->
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="foodName">Enter Food:</label>
-                            <input type="text" class="form-control" id="foodName">
-                        </div>
-                        <div class="form-group">
-                            <label for="date">Enter Expiry Date:</label>
-                            <input type="date" class="form-control" id="date">
-
-                        </div>
-                    </div>
-
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                        <button type="button" onclick="addList()" class="btn btn-secondary" data-dismiss="modal">Submit</button>
-                    </div>
-
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Add a Food Item</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="foodName">Enter Food:</label>
+                        <input type="text" class="form-control" id="foodName">
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Enter Expiry Date:</label>
+                        <input type="date" class="form-control" id="date">
+
+                    </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" onclick="addList()" class="btn btn-secondary" data-dismiss="modal">Submit</button>
+                </div>
+
             </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="accordion">
+        </div>
+    </div>
+
+    <footer class="fixed-bottom">
+        <div id="gradient" style="height:0px;overflow:hidden">
+            <input type="file" id="fileInput" accept="image/*;capture=camera">
         </div>
 
-        <div class="container">
-            <div id="accordion">
-            </div>
-        </div>
-        
-<!--
-        <div id="accordion" class="panel-group">
-        <div class="card">
-        <div class="card-header">
-        <a class="card-link" data-toggle="collapse" href="#collapseOne">
-        Collapsible Group Item #1
-        </a>
-        </div>
-        <div id="collapseOne" class="collapse" data-parent="#accordion">
-        <div class="card-body">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat.
-        </div>
-        </div>
-        </div> 
--->
-
-        <!-- // // Aaron footer!-->
-        <footer class="fixed-bottom">
-            <div id="gradient" style="height:0px;overflow:hidden">
-                <input type="file" id="fileInput" accept="image/*;capture=camera">
-            </div>
+        <nav class="navbar navbar-expand-smbg-dar navbar-dark" id="footspace">
             
-            <nav class="navbar navbar-expand-smbg-dar navbar-dark" id ="footspace">
-                <ul class="nav">
-                    <li class="nav-item" style="float:right;">
-                        <!-- open the modal-->
-                        <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#thisModal">
-                            <img src="https://firebasestorage.googleapis.com/v0/b/recette-f3ef5.appspot.com/o/comment.svg?alt=media&token=31620009-1b0f-4893-a295-a400a5a387ac" alt="comment" id="commentButton">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="nav-item" style="float:right;">
+
+                    <button type="button" class="btn btn-outline-light" onclick=searchapi() id="searchbut">
+                            <img src="https://firebasestorage.googleapis.com/v0/b/recette-f3ef5.appspot.com/o/magnifying-glass.svg?alt=media&token=14a21a32-29a9-46ac-9c50-04b8d2462f2d" alt="search" id="search">
                         </button>
-                    </li>
-                    <li class="nav-item" style="float: right;">
-                        <!-- open the modal-->
-                        <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#aboutUs">
-                            <img src="https://firebasestorage.googleapis.com/v0/b/recette-f3ef5.appspot.com/o/comment.svg?alt=media&token=31620009-1b0f-4893-a295-a400a5a387ac" alt="comment" id="commentButton">
-                        </button>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="nav-item" style="float:right;">
-                        <!-- open the modal-->
-                    <!--
-                        <button type="button" class="btn btn-outline-light" onclick="location.href = 'page3.html';" id = "searchbut">
-                            <img src="img/magnifying-glass.svg" alt="search" id="search">
-                        </button>
--->
-                           <button type="button" class="btn btn-outline-light" onclick=searchapi() id = "searchbut">
-                            <img src="img/magnifying-glass.svg" alt="search" id="search">
-                        </button>
-                    </li>
+                </li>
 
-                </ul>
-            </nav>
-        </footer>
-
-        <!--
-        The Comment Modal
-        Modal not interactable when inside footer div
-        -->
-        <div class="modal fade" id="thisModal">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                        <h4 class="modal-title">Comments</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-
-                    <!-- Modal body -->
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <div class="input-group input-group-lg">
-                                    <span class="input-group-addon bg-danger text-white">
-
-                                    </span>
-                                    <input type="text" class="form-control bg-dark text-white" placeholder="Name">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="input-group input-group-lg">
-                                    <span class="input-group-addon bg-danger text-white">
-
-                                    </span>
-                                    <input type="email" class="form-control bg-dark text-white" placeholder="Email">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="input-group input-group-lg">
-                                    <span class="input-group-addon bg-danger text-white">
-
-                                    </span>
-                                    <textarea rows="5" class="form-control bg-dark text-white" placeholder="Message"></textarea>
-                                </div>
-                            </div>
-                            <input type="submit" value="Submit" class="btn btn-danger btn-block btn-lg">
-                        </form>
-                    </div>
-
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                        <button type="button" onclick="addList()" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        
-        <!-- Modal footer -->
-        <div class="modal fade" id="aboutUs">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                        <h4 class="modal-title">Recett Members</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-
-                    <!-- Modal body -->
-                    <div class="modal-body">
-
-                        <div>
-                            <div class="d-flex flex-nowrap text-white align-items-stretch text-center">
-
-                                <div class="port-item p-4 bg-primary" data-toggle="collapse" data-target="#brandon">
-                                    Brandon
-                                </div>
-                                <div class="port-item p-4 bg-secondary" data-toggle="collapse" data-target="#aidan">
-                                    Aidan
-                                </div>
-                                <div class="port-item p-4 bg-success" data-toggle="collapse" data-target="#aaron">
-                                    Aaron
-                                </div>
-                                <div class="port-item p-4 bg-danger" data-toggle="collapse" data-target="#lewis">
-                                    Lewis
-                                </div>
-                                <div class="port-item p-4 bg-warning" data-toggle="collapse" data-target="#louis">
-                                    Louis
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- About Brandon -->
-                    <div id="brandon" class="collapse">
-                        <div class="card card-body bg-success text-white py-5">
-                            <h2>Brandon Lee</h2>
-                            <p>Position: Leading Programmer</p>
-                        </div>
-
-                        <div class="card card-body py-5">
-                            <h3>What I did?</h3>
-                            <p>Leading a gourp 22 creates this website as simple as possible.</p>
-                            <div class="card-deck">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Work Experience</h4>
-                                        <p class="card-text">blah blah bla.</p>
-                                        <p class="p-2 mb-3 bg-dark text-white">
-                                            Position: Full Stack Developer
-                                        </p>
-                                        <p class="p-2 mb-3 bg-dark text-white">
-                                            Email
-                                        </p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <h6 class="text-muted">Dates: 2015 - 2017</h6>
-                                    </div>
-                                </div>
-
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Education</h4>
-                                        <p class="card-text">BCIT</p>
-                                        <p class="p-2 mb-3 bg-dark text-white">
-                                            Major: Computer System Technology (Diploma)
-                                        </p>
-                                        <p class="p-2 mb-3 bg-dark text-white">
-                                            Phone:bbbbbbbbbbbb
-                                        </p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <h6 class="text-muted">Dates: 2018 - Now</h6>
-                                    </div>
-                                </div>
-
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Programming Skills</h4>
-                                        <p class="card-text">bbbbbbbbbbbbbbbbbbb.</p>
-                                        <p class="p-2 mb-3 bg-dark text-white">
-                                            Position: Designer
-                                        </p>
-                                        <p class="p-2 mb-3 bg-dark text-white">
-                                            Phone: bbbbbbbbbbbbbbbbbb
-                                        </p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <h6 class="text-muted">Dates: 2010 - 2013</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                    <!-- About Aidan -->
-                    <div id="aidan" class="collapse">
-                        <div class="card card-body bg-success text-white py-5">
-                            <h2>Brandon Lee</h2>
-                            <p>Position: Leading Programmer</p>
-                        </div>
-
-                        <div class="card card-body py-5">
-                            <h3>What I did?</h3>
-                            <p>Leading a gourp 22 creates this website as simple as possible.</p>
-                            <div class="card-deck">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Work Experience</h4>
-                                        <p class="card-text">blah blah bla.</p>
-                                        <p class="p-2 mb-3 bg-dark text-white">
-                                            Position: Full Stack Developer
-                                        </p>
-                                        <p class="p-2 mb-3 bg-dark text-white">
-                                            Email
-                                        </p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <h6 class="text-muted">Dates: 2015 - 2017</h6>
-                                    </div>
-                                </div>
-
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Education</h4>
-                                        <p class="card-text">BCIT</p>
-                                        <p class="p-2 mb-3 bg-dark text-white">
-                                            Major: Computer System Technology (Diploma)
-                                        </p>
-                                        <p class="p-2 mb-3 bg-dark text-white">
-                                            Phone: (333) 333-3333
-                                        </p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <h6 class="text-muted">Dates: 2018 - Now</h6>
-                                    </div>
-                                </div>
-
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Programming Skills</h4>
-                                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, nostrum.</p>
-                                        <p class="p-2 mb-3 bg-dark text-white">
-                                            Position: Designer
-                                        </p>
-                                        <p class="p-2 mb-3 bg-dark text-white">
-                                            Phone: (222) 222-2222
-                                        </p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <h6 class="text-muted">Dates: 2010 - 2013</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <!-- About Aaron -->
-                    <div id="aaron" class="collapse">
-                        <div class="card card-body bg-success text-white py-5">
-                            <h2>Brandon Lee</h2>
-                            <p>Position: Leading Programmer</p>
-                        </div>
-
-                        <div class="card card-body py-5">
-                            <h3>What I did?</h3>
-                            <p>Leading a gourp 22 creates this website as simple as possible.</p>
-                            <div class="card-deck">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Work Experience</h4>
-                                        <p class="card-text">blah blah bla.</p>
-                                        <p class="p-2 mb-3 bg-dark text-white">
-                                            Position: Full Stack Developer
-                                        </p>
-                                        <p class="p-2 mb-3 bg-dark text-white">
-                                            Email
-                                        </p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <h6 class="text-muted">Dates: 2015 - 2017</h6>
-                                    </div>
-                                </div>
-
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Education</h4>
-                                        <p class="card-text">BCIT</p>
-                                        <p class="p-2 mb-3 bg-dark text-white">
-                                            Major: Computer System Technology (Diploma)
-                                        </p>
-                                        <p class="p-2 mb-3 bg-dark text-white">
-                                            Phone: (333) 333-3333
-                                        </p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <h6 class="text-muted">Dates: 2018 - Now</h6>
-                                    </div>
-                                </div>
-
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Programming Skills</h4>
-                                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, nostrum.</p>
-                                        <p class="p-2 mb-3 bg-dark text-white">
-                                            Position: Designer
-                                        </p>
-                                        <p class="p-2 mb-3 bg-dark text-white">
-                                            Phone: (222) 222-2222
-                                        </p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <h6 class="text-muted">Dates: 2010 - 2013</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <!-- About Louis-->
-                    <div id="lewis" class="collapse">
-                        <div class="card card-body bg-success text-white py-5">
-                            <h2>Brandon Lee</h2>
-                            <p>Position: Leading Programmer</p>
-                        </div>
-
-                        <div class="card card-body py-5">
-                            <h3>What I did?</h3>
-                            <p>Leading a gourp 22 creates this website as simple as possible.</p>
-                            <div class="card-deck">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Work Experience</h4>
-                                        <p class="card-text">blah blah bla.</p>
-                                        <p class="p-2 mb-3 bg-dark text-white">
-                                            Position: Full Stack Developer
-                                        </p>
-                                        <p class="p-2 mb-3 bg-dark text-white">
-                                            Email
-                                        </p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <h6 class="text-muted">Dates: 2015 - 2017</h6>
-                                    </div>
-                                </div>
-
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Education</h4>
-                                        <p class="card-text">BCIT</p>
-                                        <p class="p-2 mb-3 bg-dark text-white">
-                                            Major: Computer System Technology (Diploma)
-                                        </p>
-                                        <p class="p-2 mb-3 bg-dark text-white">
-                                            Phone: (333) 333-3333
-                                        </p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <h6 class="text-muted">Dates: 2018 - Now</h6>
-                                    </div>
-                                </div>
-
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Programming Skills</h4>
-                                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, nostrum.</p>
-                                        <p class="p-2 mb-3 bg-dark text-white">
-                                            Position: Designer
-                                        </p>
-                                        <p class="p-2 mb-3 bg-dark text-white">
-                                            Phone: (222) 222-2222
-                                        </p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <h6 class="text-muted">Dates: 2010 - 2013</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <!-- About Brandon -->
-                    <div id="louis" class="collapse">
-                        <div class="card card-body bg-success text-white py-5">
-                            <h2>Brandon Lee</h2>
-                            <p>Position: Leading Programmer</p>
-                        </div>
-
-                        <div class="card card-body py-5">
-                            <h3>What I did?</h3>
-                            <p>Leading a gourp 22 creates this website as simple as possible.</p>
-                            <div class="card-deck">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Work Experience</h4>
-                                        <p class="card-text">blah blah bla.</p>
-                                        <p class="p-2 mb-3 bg-dark text-white">
-                                            Position: Full Stack Developer
-                                        </p>
-                                        <p class="p-2 mb-3 bg-dark text-white">
-                                            Email
-                                        </p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <h6 class="text-muted">Dates: 2015 - 2017</h6>
-                                    </div>
-                                </div>
-
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Education</h4>
-                                        <p class="card-text">BCIT</p>
-                                        <p class="p-2 mb-3 bg-dark text-white">
-                                            Major: Computer System Technology (Diploma)
-                                        </p>
-                                        <p class="p-2 mb-3 bg-dark text-white">
-                                            Phone: (333) 333-3333
-                                        </p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <h6 class="text-muted">Dates: 2018 - Now</h6>
-                                    </div>
-                                </div>
-
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Programming Skills</h4>
-                                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, nostrum.</p>
-                                        <p class="p-2 mb-3 bg-dark text-white">
-                                            Position: Designer
-                                        </p>
-                                        <p class="p-2 mb-3 bg-dark text-white">
-                                            Phone: (222) 222-2222
-                                        </p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <h6 class="text-muted">Dates: 2010 - 2013</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                        <button type="button" onclick="addList()" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <!-- About us ends -->
-
-
-
-
-
-        <!-- <img id="frame" width="300px" height="300px" /> -->
-        <!-- <script src="email.js"></script> -->
-       <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+            </ul>
+        </nav>
+    </footer>
+    <!-- <img id="frame" width="300px" height="300px" /> -->
+    <!-- <script src="email.js"></script> -->
+    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase-functions.js"></script>
@@ -582,9 +118,9 @@
     <script src="./script/ocr.js"></script>
     <script src="./script/dataMain.js"></script>
     <script src="./script/backgroundmain.js"></script>
-    <script src="./script/aboutus.js"></script>
-    
-    </body>
+
+
+</body>
 
 
 </html>

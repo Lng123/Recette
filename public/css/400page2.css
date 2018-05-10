@@ -14,9 +14,7 @@
     height: auto;
     filter: invert(100%);
 }
-.container {
-    margin-top: 100px;
-}
+
 
 .btn:hover #cam,.btn:hover #addBut,.btn:hover #search {
         filter: brightness(0%);
@@ -38,4 +36,8 @@ footer{
     min-height: 400px;
     margin-bottom: 100px;
     clear: both;
+}
+
+#recipe{
+    margin-bottom: 55.667px;
 }

@@ -417,8 +417,9 @@ function searchhide() {
     var search = document.getElementById("searchbut");
     var checkb = document.getElementsByName("chkbox");
     search.style.display = 'none';
-
-    for (var i = 0; i < window.eleCounter; i++) {
+    checkb.addEventListener('change', function() {
+        console.log("enetered chkbox change");
+        for (var i = 0; i < window.eleCounter; i++) {
         if (checkb[i].checked) {
             console.log("number" + i);
             console.log(checkb[i].checked);
@@ -426,7 +427,10 @@ function searchhide() {
         }
 
     }
+    });
+    
 }
+
 var sbut = document.getElementById("searchbut");
 
 function searchapi() {

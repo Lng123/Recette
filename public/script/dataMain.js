@@ -60,91 +60,72 @@ function showList() {
             var cardBody = document.createElement("div");
             var searchBut = document.createElement("button");
             var chkBox = document.createElement("input");
+            var chkBoxDiv = document.createElement("div");
             var remBut = document.createElement("button");
+            var dayCounter = document.createElement("p");
             card.setAttribute("class", "card");
             card.setAttribute("id", "#number" + window.eleCounter);
+            card.setAttribute("style", "margin: 5px;");
+
             cardH.setAttribute("class", "card-header");
+
             cardAn.setAttribute("class", "card-link");
             cardAn.setAttribute("data-toggle", "collapse");
             cardAn.setAttribute("href", "#collapse" + window.eleCounter);
-            cardAn.innerHTML = userList[i].name;
+            cardAn.innerHTML = window.userList[i].name;
+            cardAn.style.fontSize = "18px";
+            cardAn.name = "foodValue";
+
+            dayCounter.innerHTML = window.userList[i].time + " days left";
+            dayCounter.style.float = "right";
+            dayCounter.style.fontSize = "18px";
+            if (userList[i].time <= 7) {
+                dayCounter.style.color = "red"
+            }
+
             cardB.setAttribute("id", "collapse" + window.eleCounter);
             cardB.setAttribute("class", "collapse");
             cardB.setAttribute("data-parent", "#accordion");
+
             cardBody.setAttribute("class", "card-body");
             cardBody.innerHTML = "The ingredients will expire on " + "<b>" + userList[i].expiaryDate + "</b>";
-            searchBut.setAttribute("onclick", "window.location.href = 'https://www.google.ca/search?q=" + userList[i].value + " receipe'");
-            searchBut.setAttribute("class", "btn btn-outline-dark");
+
             searchBut.setAttribute("type", "button");
             searchBut.innerHTML = "search";
 
             chkBox.setAttribute("type", "checkbox");
-            chkBox.setAttribute("id", "chkb");
+            chkBox.setAttribute("id", "chkb" + window.eleCounter);
+            chkBox.setAttribute("onclick", "searchhide()");
+            chkBox.setAttribute("name", "chkbox" + window.eleCounter);
+            chkBox.setAttribute("class", "chk");
+            chkBoxDiv.setAttribute("style", "margin: 15px; float: left;");
+
+            chkBoxDiv.setAttribute("style", "margin: 15px; float: left;");
 
             remBut.setAttribute("class", "btn btn-outline-dark");
             remBut.setAttribute("type", "button");
             remBut.innerHTML = "Remove";
             console.log(userList[i]);
 
-            console.log(document.getElementById("number0"));
+
             cardH.appendChild(cardAn);
-            cardH.appendChild(chkBox);
+            cardH.appendChild(dayCounter);
             cardB.appendChild(cardBody);
-            cardB.appendChild(searchBut);
             cardB.appendChild(remBut);
             card.appendChild(cardH);
             card.appendChild(cardB);
+            chkBoxDiv.appendChild(chkBox);
+            list.appendChild(chkBoxDiv);
             list.appendChild(card);
-
             remBut.addEventListener('click', function () {
-                rmEle(userList[i].id, card);
+                rmEle(userList[i].id, window.eleCounter);
             });
-
-        
             window.eleCounter++;
         }
     }
 
 }
 
-// function openCamera() {
-//     console.log("Entered the function");
-//     document.getElementById("fileInput").click();
-//     var file = document.getElementById("fileInput");
-//     var fileInput = document.getElementById('fileInput');
-//     fileInput.addEventListener('change', function (e) {
-//         var file = e.target.files[0];
-//         // Do something with the image file.
-//         var tmppath = URL.createObjectURL(file);
-//         console.log(file);
-//         console.log(tmppath);
-//         OCR({ url: "https://firebasestorage.googleapis.com/v0/b/recette-f3ef5.appspot.com/o/FB1.gif?alt=media&token=28727220-181c-440e-87ae-4808b5c9ba28" })
-//             .then(function (result) {
-//                 console.log(result);
-//             }).catch(function (err) {
-//                 console.log(err);
-//             });
-//         //var url = "https://firebasestorage.googleapis.com/v0/b/recette-f3ef5.appspot.com/o/FB1.gif?alt=media&token=28727220-181c-440e-87ae-4808b5c9ba28";
-//         // var storageRef = firebase.storage().ref('receipeImg/'+file.name);
-//         // storageRef.put(file)
-//         // .then(function(item) {
-//         //     console.log(item);
-//         //     // var req = {
-//         //     // url: "https://firebasestorage.googleapis.com/v0/b/recette-f3ef5.appspot.com/o/FB1.gif?alt=media&token=28727220-181c-440e-87ae-4808b5c9ba28"
-//         //     // }
-//         //     // OCR({url:"https://firebasestorage.googleapis.com/v0/b/recette-f3ef5.appspot.com/o/FB1.gif?alt=media&token=28727220-181c-440e-87ae-4808b5c9ba28" })
-//         //     // .then(function(result) {
-//         //     //     console.log(result);
-//         //     // }).catch(function(err) {
-//         //     //     console.log(err);
-//         //     // });
-//         // }).catch(function(err) {
-//         //     console.log(err);
-//         // }) 
-
-//     });
-
-// }
 
 function addList() {
     var butClicked = document.getElementById("addBut");
@@ -175,7 +156,15 @@ function addList() {
         cardAn.setAttribute("href", "#collapse" + window.eleCounter);
         cardAn.innerHTML = item.value;
         cardAn.setAttribute("name", "foodvalue");
+        cardAn.style.fontSize = "18px";
 
+        var daysLeft = calculateDayCount(new Date(), new Date(date.value));
+
+        dayCounter.innerHTML = daysLeft + " days left";
+        if (daysLeft <= 7) {
+            dayCounter.style.color = "red";
+        }
+        dayCounter.style.fontSize = "18px";
         dayCounter.innerHTML = "10 days left";
         dayCounter.setAttribute("class", "float-right");
 
@@ -186,17 +175,11 @@ function addList() {
         cardBody.setAttribute("class", "card-body");
         cardBody.innerHTML = "This ingredient will expire on " + "<b>" + date.value + "</b>";
 
-        searchBut.setAttribute("onclick", "window.location.href = 'https://www.google.ca/search?q=" + item.value + " receipe'");
-        searchBut.setAttribute("class", "btn btn-outline-dark");
-        searchBut.setAttribute("type", "button");
-        searchBut.innerHTML = "Search";
-        searchBut.setAttribute("style", "margin: 2px;");
-
         chkBox.setAttribute("type", "checkbox");
         chkBox.setAttribute("id", "chkb" + window.eleCounter);
         chkBox.setAttribute("onclick", "searchhide()");
-        chkBox.setAttribute("name", "chkbox");
-
+        chkBox.setAttribute("name", "chkbox" + window.eleCounter);
+        chkBox.setAttribute("class", "chk");
         chkBoxDiv.setAttribute("style", "margin: 15px; float: left;");
 
         remBut.setAttribute("class", "btn btn-outline-dark");
@@ -226,13 +209,14 @@ function addList() {
             rmEle(id, card);
         });
 
+        chkBoxDiv.appendChild(chkBox);
         cardH.appendChild(cardAn);
-        cardH.appendChild(chkBox);
+        cardH.appendChild(dayCounter);
         cardB.appendChild(cardBody);
-        cardB.appendChild(searchBut);
         cardB.appendChild(remBut);
         card.appendChild(cardH);
         card.appendChild(cardB);
+        list.appendChild(chkBoxDiv);
         list.appendChild(card);
         window.eleCounter++;
     } else {
@@ -257,7 +241,7 @@ function recogEx(list, item) {
     //     return (item['name'].indexOf(item.value));
     // });
     // console.log(index);
-    for (let i = 0; i < list.length; i++) {    
+    for (let i = 0; i < list.length; i++) {
         if (item.value === list[i].name) {
             console.log("true" + item2);
             result = true;
@@ -285,7 +269,7 @@ function rmEle(id, num) {
 
 function searchhide() {
     var search = document.getElementById("searchbut");
-    var checkb = document.getElementsByName("chkbox");
+    var checkb = document.getElementsByClassName("chk");
     search.style.display = 'none';
 
     for (var i = 0; i < window.eleCounter; i++) {
@@ -298,9 +282,10 @@ function searchhide() {
     }
 }
 var sbut = document.getElementById("searchbut");
+
 function searchapi() {
     var foodArray = [];
-    var checkb = document.getElementsByName("chkbox");
+    var checkb = document.getElementsByClassName("chk");
     var fname = document.getElementsByName("foodvalue");
     for (var i = 0; i < window.eleCounter; i++) {
         if (checkb[i].checked) {
@@ -310,7 +295,7 @@ function searchapi() {
         }
         console.log(foodArray);
         sessionStorage.setItem('farray', JSON.stringify(foodArray));
-        location.href = "./page3.html";
+        location.href = "page3.html";
     }
 }
 
@@ -325,3 +310,122 @@ function searchapi() {
 function getIngList() {
     return ingList;
 }
+
+function calculateDayCount(date1, date2) {
+    //Get 1 day in milliseconds
+    var one_day = 1000 * 60 * 60 * 24;
+
+    // Convert both dates to milliseconds
+    var date1 = date1.getTime();
+    var date2 = date2.getTime();
+
+    // Calculate the difference in milliseconds
+    var difference = Math.abs(date2 - date1);
+
+    // Convert back to days and return
+    return Math.round(difference / one_day);
+}
+
+function autocomplete(inp, arr) {
+    /*the autocomplete function takes two arguments,
+    the text field element and an array of possible autocompleted values:*/
+    var currentFocus;
+    /*execute a function when someone writes in the text field:*/
+    inp.addEventListener("input", function (e) {
+        var a, b, i, val = this.value;
+        /*close any already open lists of autocompleted values*/
+        closeAllLists();
+        if (!val) {
+            return false;
+        }
+        currentFocus = -1;
+        /*create a DIV element that will contain the items (values):*/
+        a = document.createElement("DIV");
+        a.setAttribute("id", this.id + "autocomplete-list");
+        a.setAttribute("class", "autocomplete-items");
+        /*append the DIV element as a child of the autocomplete container:*/
+        this.parentNode.appendChild(a);
+        /*for each item in the array...*/
+        for (i = 0; i < arr.length; i++) {
+            /*check if the item starts with the same letters as the text field value:*/
+            if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                /*create a DIV element for each matching element:*/
+                b = document.createElement("DIV");
+                /*make the matching letters bold:*/
+                b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                b.innerHTML += arr[i].substr(val.length);
+                /*insert a input field that will hold the current array item's value:*/
+                b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                /*execute a function when someone clicks on the item value (DIV element):*/
+                b.addEventListener("click", function (e) {
+                    /*insert the value for the autocomplete text field:*/
+                    inp.value = this.getElementsByTagName("input")[0].value;
+                    /*close the list of autocompleted values,
+                    (or any other open lists of autocompleted values:*/
+                    closeAllLists();
+                });
+                a.appendChild(b);
+            }
+        }
+    });
+    /*execute a function presses a key on the keyboard:*/
+    inp.addEventListener("keydown", function (e) {
+        var x = document.getElementById(this.id + "autocomplete-list");
+        if (x) x = x.getElementsByTagName("div");
+        if (e.keyCode == 40) {
+            /*If the arrow DOWN key is pressed,
+            increase the currentFocus variable:*/
+            currentFocus++;
+            /*and and make the current item more visible:*/
+            addActive(x);
+        } else if (e.keyCode == 38) { //up
+            /*If the arrow UP key is pressed,
+            decrease the currentFocus variable:*/
+            currentFocus--;
+            /*and and make the current item more visible:*/
+            addActive(x);
+        } else if (e.keyCode == 13) {
+            /*If the ENTER key is pressed, prevent the form from being submitted,*/
+            e.preventDefault();
+            if (currentFocus > -1) {
+                /*and simulate a click on the "active" item:*/
+                if (x) x[currentFocus].click();
+            }
+        }
+    });
+
+    function addActive(x) {
+        /*a function to classify an item as "active":*/
+        if (!x) return false;
+        /*start by removing the "active" class on all items:*/
+        removeActive(x);
+        if (currentFocus >= x.length) currentFocus = 0;
+        if (currentFocus < 0) currentFocus = (x.length - 1);
+        /*add class "autocomplete-active":*/
+        x[currentFocus].classList.add("autocomplete-active");
+    }
+
+    function removeActive(x) {
+        /*a function to remove the "active" class from all autocomplete items:*/
+        for (var i = 0; i < x.length; i++) {
+            x[i].classList.remove("autocomplete-active");
+        }
+    }
+
+    function closeAllLists(elmnt) {
+        /*close all autocomplete lists in the document,
+        except the one passed as an argument:*/
+        var x = document.getElementsByClassName("autocomplete-items");
+        for (var i = 0; i < x.length; i++) {
+            if (elmnt != x[i] && elmnt != inp) {
+                x[i].parentNode.removeChild(x[i]);
+            }
+        }
+    }
+    /*execute a function when someone clicks in the document:*/
+    document.addEventListener("click", function (e) {
+        closeAllLists(e.target);
+    });
+}
+
+autocomplete(document.getElementById("foodName"), ingList);
