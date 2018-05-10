@@ -31,7 +31,7 @@ function uploadImage() {
 
 function convertFile(e) {
   console.log("eneted convertFile");
- 
+
   var content = e.target.result;
 
   requestFile(content.replace('data:image/jpeg;base64,', ''));
@@ -61,7 +61,7 @@ function requestFile(content) {
   }).done(function (data) {
     console.log(data.responses);
     searchList(data.responses);
-
+    data.responses[0].textAnnotations
   });
 }
 
@@ -77,10 +77,10 @@ function searchList(content) {
     let temp = searchElement(resIndex[i]);
     if (temp !== null) {
       addLists(ingArr[temp]);
-      
+
     }
   }
-  
+
   console.log(result);
 }
 
@@ -120,17 +120,29 @@ function searchElement(input) {
   }
   return result;
 }
+
 Date.prototype.addDays = function (days) {
   var dat = new Date(this.valueOf());
   dat.setDate(dat.getDate() + days);
   return dat;
 }
 
+Date.prototype.subtractDays = function (days) {
+  var dat = new Date(this.valueOf());
+  dat.setDate(dat.getDate() - days);
+  return dat;
+}
+
 function addLists(input) {
   var dat = new Date();
+  let dateDB = new Date(dat.addDays(input.time));
   let curDate = dat.addDays(input.time).toString().split(" ");
   curDate = curDate.slice(1, 4).join(" ");
+
+  let dayLeft = dat.subtractDays(input.time).toString().split(" ");
+  dayLeft = dayLeft[2];
   console.log(curDate);
+  console.log(dayLeft);
   var list = document.getElementById("accordion");
   var card = document.createElement("div");
   var cardH = document.createElement("div");
@@ -146,6 +158,7 @@ function addLists(input) {
   var remBut = document.createElement("button");
   var id = "";
 
+
   card.setAttribute("class", "card");
   card.setAttribute("id", "#number" + window.eleCounter);
   card.setAttribute("style", "margin: 5px;");
@@ -156,9 +169,17 @@ function addLists(input) {
   cardAn.setAttribute("data-toggle", "collapse");
   cardAn.setAttribute("href", "#collapse" + window.eleCounter);
   cardAn.innerHTML = input.name;
-  cardAn.setAttribute("name", "foodvalue");
+  cardAn.setAttribute("name", "foodValue");
+  cardAn.style.fontSize = "18px";
 
-  dayCounter.innerHTML = "10 days left";
+  var daysLeft = calculateDayCount(new Date(), new Date(date.value));
+
+  dayCounter.innerHTML = dayLeft + " days left";
+  if (dayLeft <= 7) {
+    dayCounter.style.color = "red";
+  }
+
+  dayCounter.style.fontSize = "18px";
   dayCounter.setAttribute("class", "float-right");
 
   cardB.setAttribute("id", "collapse" + window.eleCounter);
@@ -168,17 +189,11 @@ function addLists(input) {
   cardBody.setAttribute("class", "card-body");
   cardBody.innerHTML = "This ingredient will expire on " + "<b>" + curDate + "</b>";
 
-  searchBut.setAttribute("onclick", "window.location.href = 'https://www.google.ca/search?q=" + input.name+ " receipe'");
-  searchBut.setAttribute("class", "btn btn-outline-dark");
-  searchBut.setAttribute("type", "button");
-  searchBut.innerHTML = "Search";
-  searchBut.setAttribute("style", "margin: 2px;");
-
   chkBox.setAttribute("type", "checkbox");
   chkBox.setAttribute("id", "chkb" + window.eleCounter);
   chkBox.setAttribute("onclick", "searchhide()");
-  chkBox.setAttribute("name", "chkbox");
-
+  chkBox.setAttribute("name", "chkbox" + window.eleCounter);
+  chkBox.setAttribute("class", "chk");
   chkBoxDiv.setAttribute("style", "margin: 15px; float: left;");
 
   remBut.setAttribute("class", "btn btn-outline-dark");
@@ -188,14 +203,12 @@ function addLists(input) {
   remBut.innerHTML = "Remove";
 
   console.log(window.eleCounter);
-  // butClicked.addEventListener('click', function () {
-  console.log(item);
-  console.log(date);
+  
   let ref = db.collection("email").doc(sessionStorage.getItem("userEmail"));
   ref.collection("list").add(
     {
       name: input.name,
-      expiaryDate: curDate
+      expiaryDate: dateDB
     }
   )
     .then(function (docRef) {
@@ -208,15 +221,15 @@ function addLists(input) {
     rmEle(id, card);
   });
 
+  chkBoxDiv.appendChild(chkBox);
   cardH.appendChild(cardAn);
-  cardH.appendChild(chkBox);
+  cardH.appendChild(dayCounter);
   cardB.appendChild(cardBody);
-  cardB.appendChild(searchBut);
   cardB.appendChild(remBut);
   card.appendChild(cardH);
   card.appendChild(cardB);
+  list.appendChild(chkBoxDiv);
   list.appendChild(card);
   window.eleCounter++;
-
 
 }
