@@ -235,7 +235,7 @@ hr.star-light {
     display: block;
     width: 32px;
     height: 28px;
-    margin-left: 15px;
+    right: 20px;
     background: transparent;
     border: none;
 }
@@ -306,6 +306,7 @@ hr.star-light {
     -webkit-transform: rotate(-45deg);
     -webkit-transition: -webkit-transform .2s cubic-bezier(.73,1,.28,.08);
 }
+
 .hamburger.is-open:before {
     content: '';
     display: block;
