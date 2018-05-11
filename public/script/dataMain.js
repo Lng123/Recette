@@ -90,7 +90,7 @@ function showList() {
             cardB.setAttribute("data-parent", "#accordion");
 
             cardBody.setAttribute("class", "card-body");
-            cardBody.innerHTML = "The ingredients will expire on " + "<b>" + userList[i].expiaryDate + "</b>";
+            cardBody.innerHTML = "The ingredients will expire on " + "<b>" + formatDate(userList[i].expiaryDate) + "</b>";
 
             searchBut.setAttribute("type", "button");
             searchBut.innerHTML = "search";
