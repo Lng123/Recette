@@ -283,11 +283,15 @@ textarea.form-control {
     margin-top: -2px;
 }
 .hamburger.is-open .hamb-top {
+    transform: rotate(45deg);
+    transition: .2s cubic-bezier(.73,1,.28,.08);
     -webkit-transform: rotate(45deg);
     -webkit-transition: -webkit-transform .2s cubic-bezier(.73,1,.28,.08);
 }
 .hamburger.is-open .hamb-middle { display: none; }
 .hamburger.is-open .hamb-bottom {
+    transform: rotate(-45deg);
+    transition: .2s cubic-bezier(.73,1,.28,.08);
     -webkit-transform: rotate(-45deg);
     -webkit-transition: -webkit-transform .2s cubic-bezier(.73,1,.28,.08);
 }
