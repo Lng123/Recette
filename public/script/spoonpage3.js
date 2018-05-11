@@ -17,7 +17,7 @@ var settings = {
   + 
    param
    // apples%2Cflour%2Csugar 
-  + "&limitLicense=false&number=5&ranking=1", 
+  + "&limitLicense=false&number=4&ranking=1", 
   "method": "GET",
   "headers": {
     "X-Mashape-Key": "BRCCNUxTIWmshvCO6klV6Hi0HVFsp1AqP3wjsnHTd2TJd7xljC",
