@@ -1,17 +1,3 @@
-// Initialize Firebase
-// var config = {
-//     apiKey: "AIzaSyDsDdSSCShjFlNOt1hTdcMbxisH1BSPgDE",
-//     authDomain: "recette-f3ef5.firebaseapp.com",
-//     databaseURL: "https://recette-f3ef5.firebaseio.com",
-//     projectId: "recette-f3ef5",
-//     storageBucket: "gs://recette-f3ef5.appspot.com",
-//     messagingSenderId: "242135902717"
-// };
-
-// firebase.initializeApp(config);
-// var db = firebase.firestore();
-// var functions = firebase.functions();
-
 var key = 'https://vision.googleapis.com/v1/images:annotate?key=' + window.apiKey;
 
 function uploadImage() {
@@ -203,12 +189,12 @@ function addLists(input) {
   remBut.innerHTML = "Remove";
 
   console.log(window.eleCounter);
-  
+
   let ref = db.collection("email").doc(sessionStorage.getItem("userEmail"));
   ref.collection("list").add(
     {
       name: input.name,
-      expiaryDate: dateDB
+      expiaryDate: dateDB.getTime()
     }
   )
     .then(function (docRef) {
