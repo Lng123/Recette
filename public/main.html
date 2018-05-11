@@ -19,13 +19,18 @@
     <link href="https://fonts.googleapis.com/css?family=Allura" rel="stylesheet">
     <link rel="stylesheet" href="./css/font-awesome.min.css">
     <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/loading.css">
 
 </head>
 
 
 <body>
+    <!-- hidden elements -->
     <div style="height: 0px; overflow: hidden;">
         <input type="file" id="fileInput" accept="image/*;capture=camera">
+    </div>
+    <div id="loading" class="loading" onClick="hideSpinner()">
+        Loading&#8230;
     </div>
 
     <nav id="gradient" class="navbar navbar-expand-smbg-dar navbar-dark fixed-top">
@@ -96,7 +101,7 @@
         </div>
 
         <nav class="navbar navbar-expand-smbg-dar navbar-dark" id="footspace">
-            
+
             <ul class="nav navbar-nav navbar-right">
                 <li class="nav-item" style="float:right;">
 

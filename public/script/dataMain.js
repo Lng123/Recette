@@ -54,6 +54,16 @@ function showList() {
     if (userList.length !== 0) {
         console.log(userList);
         for (let i = 0; i < userList.length; i++) {
+            var dat = new Date(userList[i].expiaryDate);
+            
+            var today = new Date();
+            console.log(today.getTime());
+            let expDate = dat.toString().split(" ");
+            expDate = expDate.slice(1, 4).join(" ");
+            
+            let dayLeft = dat.subtractDays(today.getDate()).toString().split(" ");
+            dayLeft = dayLeft[2];
+            console.log(dayLeft);
             var list = document.getElementById("accordion");
             var card = document.createElement("div");
             var cardH = document.createElement("div");
@@ -65,6 +75,7 @@ function showList() {
             var chkBoxDiv = document.createElement("div");
             var remBut = document.createElement("button");
             var dayCounter = document.createElement("p");
+
             card.setAttribute("class", "card");
             card.setAttribute("id", "#number" + window.eleCounter);
             card.setAttribute("style", "margin: 5px;");
@@ -78,10 +89,10 @@ function showList() {
             cardAn.style.fontSize = "18px";
             cardAn.name = "foodValue";
 
-            dayCounter.innerHTML = window.userList[i].time + " days left";
+            dayCounter.innerHTML = dayLeft + " days left";
             dayCounter.style.float = "right";
             dayCounter.style.fontSize = "18px";
-            if (userList[i].time <= 7) {
+            if (dayLeft <= 7) {
                 dayCounter.style.color = "red"
             }
 
@@ -90,7 +101,7 @@ function showList() {
             cardB.setAttribute("data-parent", "#accordion");
 
             cardBody.setAttribute("class", "card-body");
-            cardBody.innerHTML = "The ingredients will expire on " + "<b>" + formatDate(userList[i].expiaryDate) + "</b>";
+            cardBody.innerHTML = "The ingredients will expire on " + "<b>" + expDate + "</b>";
 
             searchBut.setAttribute("type", "button");
             searchBut.innerHTML = "search";
@@ -108,7 +119,9 @@ function showList() {
             remBut.setAttribute("type", "button");
             remBut.innerHTML = "Remove";
             console.log(userList[i]);
-
+            remBut.addEventListener('click', function () {
+                rmEle(userList[i].id, card);
+            });
 
             cardH.appendChild(cardAn);
             cardH.appendChild(dayCounter);
@@ -119,9 +132,8 @@ function showList() {
             chkBoxDiv.appendChild(chkBox);
             list.appendChild(chkBoxDiv);
             list.appendChild(card);
-            remBut.addEventListener('click', function () {
-                rmEle(userList[i].id, window.eleCounter);
-            });
+
+
             window.eleCounter++;
         }
     }
@@ -191,7 +203,7 @@ function addList() {
 
         var expDate = new Date(date.value);
         var expDateMilli = expDate.getTime();
-        
+
         console.log(window.eleCounter);
         // butClicked.addEventListener('click', function () {
         console.log(item);
@@ -437,21 +449,21 @@ function autocomplete(inp, arr) {
 
 //
 Date.prototype.addDays = function (days) {
-  var dat = new Date(this.valueOf());
-  dat.setDate(dat.getDate() + days);
-  return dat;
+    var dat = new Date(this.valueOf());
+    dat.setDate(dat.getDate() + days);
+    return dat;
 }
 
 Date.prototype.subtractDays = function (days) {
-  var dat = new Date(this.valueOf());
-  dat.setDate(dat.getDate() - days);
-  return dat;
+    var dat = new Date(this.valueOf());
+    dat.setDate(dat.getDate() - days);
+    return dat;
 }
 
 function formatDate(date) {
     var inputDate = new Date(date);
     var inputDateArray = inputDate.toString().split(" ");
-    return inputDateArray.splice(1,3).join(" "); 
+    return inputDateArray.splice(1, 3).join(" ");
 }
 
 autocomplete(document.getElementById("foodName"), ingList);

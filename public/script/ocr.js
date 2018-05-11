@@ -1,4 +1,5 @@
 var key = 'https://vision.googleapis.com/v1/images:annotate?key=' + window.apiKey;
+var loadingDiv = document.getElementById('loading');
 
 function uploadImage() {
 
@@ -8,6 +9,7 @@ function uploadImage() {
   var fileInput = document.getElementById('fileInput');
   fileInput.addEventListener('change', function (e) {
     var file = e.target.files[0];
+    loadingDiv.style.visibility = 'visible';
     // Do something with the image file.
     var reader = new FileReader();
     reader.onloadend = convertFile;
@@ -217,5 +219,5 @@ function addLists(input) {
   list.appendChild(chkBoxDiv);
   list.appendChild(card);
   window.eleCounter++;
-
+  loadingDiv.style.visibility = 'hidden';
 }
