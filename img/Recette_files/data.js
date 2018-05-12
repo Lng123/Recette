@@ -1,26 +1,4 @@
-let login = sessionStorage.getItem("userEmail");
-console.log(location.pathname);
-let str =location.pathname;
-let place = str.substring(str.length - 10, str.length);
-console.log(place);
-if(login !== null && place !== "login.html") {
-    location.href="./login.html";
-}else if(place === "index.html" && place !== "login.html") {
-    console.log("true");
-}else if(place == "login.html" && login !== null) {
-    console.log("false");
-}else {
-    location.href = "./index.html";
-}
-// console.log(login);
-// if(login !== null) {
-//     location.href="./indexLogined.html";
-// } else if(this.location === "./index.html") {
-//     console.log("here");
-// } else {
-//     location.href = "./index.html";
-// }
-    
+
 var config = {
     apiKey: "AIzaSyDsDdSSCShjFlNOt1hTdcMbxisH1BSPgDE",
     authDomain: "recette-f3ef5.firebaseapp.com",
