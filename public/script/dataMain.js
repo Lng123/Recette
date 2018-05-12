@@ -347,7 +347,22 @@ function calculateDayCount(date1, date2) {
     // Convert back to days and return
     return Math.round(difference / one_day);
 }
-
+function pad(number) {
+      if (number < 10) {
+        return '0' + number;
+      }
+      return number;
+    }
+Date.prototype.toISOString = function() {
+      return this.getUTCFullYear() +
+        '-' + pad(this.getUTCMonth() + 1) +
+        '-' + pad(this.getUTCDate());
+        // 'T' + pad(this.getUTCHours()) +
+        // ':' + pad(this.getUTCMinutes()) +
+        // ':' + pad(this.getUTCSeconds()) +
+        // '.' + (this.getUTCMilliseconds() / 1000).toFixed(3).slice(2, 5) +
+        // 'Z';
+    };
 function autocomplete(inp, arr) {
     /*the autocomplete function takes two arguments,
     the text field element and an array of possible autocompleted values:*/
@@ -379,12 +394,19 @@ function autocomplete(inp, arr) {
                 b.innerHTML += arr[i].name.substr(val.length);
                 /*insert a input field that will hold the current array item's value:*/
                 b.innerHTML += "<input type='hidden' value='" + arr[i].name + "'>";
+                let timeB = arr[i].time;
                 /*execute a function when someone clicks on the item value (DIV element):*/
                 b.addEventListener("click", function (e) {
                     /*insert the value for the autocomplete text field:*/
                     // inp.value = this.getElementsByTagName("input")[0].name;
                     console.log(this.getElementsByTagName("input"));
                     inp.value = this.getElementsByTagName("input")[0].value;
+                    let time = document.getElementById("date");
+                    let timeInp= new Date().addDays(timeB);
+                    timeInp = timeInp.toISOString();
+                    console.log(timeInp);
+                    time.value = timeInp;
+                    
                     /*close the list of autocompleted values,
                     (or any other open lists of autocompleted values:*/
                     closeAllLists();
