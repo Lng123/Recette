@@ -78,8 +78,8 @@ function showList() {
 
             card.setAttribute("class", "card");
             card.setAttribute("id", "#number" + window.eleCounter);
-            card.setAttribute("style", "margin: 5px;");
-
+            card.setAttribute("style", "margin-Left: -20px;");
+            
             cardH.setAttribute("class", "card-header");
 
             cardAn.setAttribute("class", "card-link");

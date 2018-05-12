@@ -2563,7 +2563,8 @@ tbody.collapse.show {
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
-  color:white; }
+  color:white;
+   }
  
 .card:hover {
     background-color: rgb(74, 79, 86);
