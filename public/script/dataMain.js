@@ -221,14 +221,14 @@ function addList() {
         remBut.setAttribute("class", "btn btn-outline-dark");
         remBut.setAttribute("style", "margin: 2px;");
         remBut.innerHTML = "Remove";
-
-        var expDateMilli = expDate.getTime();
-
+        
+        var dat = new Date();
+        let dateDB = new Date(date.value);
         let ref = db.collection("email").doc(sessionStorage.getItem("userEmail"));
         ref.collection("list").add(
             {
                 name: item.value,
-                expiaryDate: expDateMilli
+                expiaryDate: dateDB
             }
         )
             .then(function (docRef) {

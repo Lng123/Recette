@@ -19,6 +19,9 @@
 .btn:hover #cam, .btn:hover #addBut, .btn:hover #search {
         filter: brightness(0%);
 }
+html.can-touch .btn:hover #cam, .btn:hover #addBut, .btn:hover #search {
+    background-color: none;
+}
 footer{  
     bottom: 0%;
     position: fixed;
