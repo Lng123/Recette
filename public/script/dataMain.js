@@ -5,6 +5,7 @@ if (login !== null) {
 } else {
     location.href = "./index.html";
 }
+
 // Initialize Firebase
 var config = {
     apiKey: "AIzaSyDsDdSSCShjFlNOt1hTdcMbxisH1BSPgDE",
@@ -44,7 +45,7 @@ user.collection("list").get()
         if (querySnapshot !== null) {
             querySnapshot.forEach(function (doc) {
                 // doc.data() is never undefined for query doc snapshots
-                console.log(doc.id, " => ", doc.data());
+        
                 userList.push({
                     name: doc.data().name,
                     expiaryDate: doc.data().expiaryDate,
@@ -63,13 +64,13 @@ function showList() {
             var dat = new Date(userList[i].expiaryDate);
 
             var today = new Date();
-            console.log(today.getTime());
+          
             let expDate = dat.toString().split(" ");
             expDate = expDate.slice(1, 4).join(" ");
 
             let dayLeft = dat.subtractDays(today.getDate()).toString().split(" ");
             dayLeft = dayLeft[2];
-            console.log(dayLeft);
+
             var list = document.getElementById("accordion");
             var card = document.createElement("div");
             var cardH = document.createElement("div");
@@ -100,6 +101,7 @@ function showList() {
             dayCounter.innerHTML = dayLeft + " days left";
             dayCounter.style.float = "right";
             dayCounter.style.fontSize = "18px";
+
             if (dayLeft <= 7) {
                 dayCounter.style.color = "red"
             }
@@ -126,7 +128,7 @@ function showList() {
             remBut.setAttribute("class", "btn btn-outline-dark");
             remBut.setAttribute("type", "button");
             remBut.innerHTML = "Remove";
-            console.log(userList[i]);
+    
             let detId = "#Cnumber" + window.eleCounter;
             let delCon = container;
             remBut.addEventListener('click', function () {
@@ -172,13 +174,12 @@ function addList() {
     var container = document.createElement("div");
     var id = "";
 
-    console.log(date.value);
     if (recogEx(ingList, item)) {
         container.setAttribute("id", "#Cnumber" + window.eleCounter);
 
         card.setAttribute("class", "card");
         card.setAttribute("id", "#number" + window.eleCounter);
-      
+
 
         cardH.setAttribute("class", "card-header");
 
@@ -192,9 +193,11 @@ function addList() {
         var daysLeft = calculateDayCount(new Date(), new Date(date.value));
 
         dayCounter.innerHTML = daysLeft + " days left";
+        
         if (daysLeft <= 7) {
             dayCounter.style.color = "red";
         }
+
         dayCounter.style.fontSize = "18px";
         dayCounter.setAttribute("class", "float-right");
 
@@ -218,13 +221,8 @@ function addList() {
         remBut.setAttribute("style", "margin: 2px;");
         remBut.innerHTML = "Remove";
 
-        var expDate = new Date(date.value);
         var expDateMilli = expDate.getTime();
 
-        console.log(window.eleCounter);
-        // butClicked.addEventListener('click', function () {
-        console.log(item);
-        console.log(date);
         let ref = db.collection("email").doc(sessionStorage.getItem("userEmail"));
         ref.collection("list").add(
             {
@@ -272,13 +270,6 @@ function recogEx(list, item) {
     let item2 = "" + item.value;
     console.log(list);
     console.log(item.value);
-    // let list2 = JSON.stringify(list);
-    // console.log(list2);
-    // let data = JSON.parse(list2);
-    // let index = data.map(function(item) {
-    //     return (item['name'].indexOf(item.value));
-    // });
-    // console.log(index);
     for (let i = 0; i < list.length; i++) {
         if (item.value === list[i].name) {
             console.log("true" + item2);
@@ -288,24 +279,15 @@ function recogEx(list, item) {
     console.log(result);
     return result;
 }
-Element.prototype.remove = function () {
-    this.parentElement.removeChild(this);
-}
-NodeList.prototype.remove = HTMLCollection.prototype.remove = function () {
-    for (var i = this.length - 1; i >= 0; i--) {
-        if (this[i] && this[i].parentElement) {
-            this[i].parentElement.removeChild(this[i]);
-        }
-    }
-}
+
 function rmEle(id, num) {
     var user2 = db.collection("email").doc(sessionStorage.getItem("userEmail"));
     console.log(id);
     console.log(user);
     console.log(num);
-    
+
     num.remove();
-    window.eleCounter--;
+
 
     user2.collection("list").doc(id).delete()
         .then(function (e) {
@@ -317,7 +299,7 @@ function rmEle(id, num) {
         })
 }
 
-
+//searching functions
 function searchhide() {
     var search = document.getElementById("searchbut");
     var checkb = document.getElementsByClassName("chk");
@@ -332,6 +314,7 @@ function searchhide() {
 
     }
 }
+
 var sbut = document.getElementById("searchbut");
 
 function searchapi() {
@@ -348,33 +331,6 @@ function searchapi() {
         sessionStorage.setItem('farray', JSON.stringify(foodArray));
         location.href = "page3.html";
     }
-}
-
-
-//****** TESTING */
-
-
-
-
-
-
-function getIngList() {
-    return ingList;
-}
-
-function calculateDayCount(date1, date2) {
-    //Get 1 day in milliseconds
-    var one_day = 1000 * 60 * 60 * 24;
-
-    // Convert both dates to milliseconds
-    var date1 = date1.getTime();
-    var date2 = date2.getTime();
-
-    // Calculate the difference in milliseconds
-    var difference = Math.abs(date2 - date1);
-
-    // Convert back to days and return
-    return Math.round(difference / one_day);
 }
 
 function autocomplete(inp, arr) {
@@ -489,7 +445,14 @@ function autocomplete(inp, arr) {
     });
 }
 
-//
+autocomplete(document.getElementById("foodName"), ingList);
+
+//ingList accessor
+function getIngList() {
+    return ingList;
+}
+
+// Date Converter
 Date.prototype.addDays = function (days) {
     var dat = new Date(this.valueOf());
     dat.setDate(dat.getDate() + days);
@@ -502,16 +465,16 @@ Date.prototype.subtractDays = function (days) {
     return dat;
 }
 
-function formatDate(date) {
-    var inputDate = new Date(date);
-    var inputDateArray = inputDate.toString().split(" ");
-    return inputDateArray.splice(1, 3).join(" ");
+Element.prototype.remove = function () {
+    this.parentElement.removeChild(this);
 }
-function pad(number) {
-    if (number < 10) {
-        return '0' + number;
+
+NodeList.prototype.remove = HTMLCollection.prototype.remove = function () {
+    for (var i = this.length - 1; i >= 0; i--) {
+        if (this[i] && this[i].parentElement) {
+            this[i].parentElement.removeChild(this[i]);
+        }
     }
-    return number;
 }
 
 Date.prototype.toISOString = function () {
@@ -520,4 +483,32 @@ Date.prototype.toISOString = function () {
         '-' + pad(this.getUTCDate());
 
 };
-autocomplete(document.getElementById("foodName"), ingList);
+
+function formatDate(date) {
+    var inputDate = new Date(date);
+    var inputDateArray = inputDate.toString().split(" ");
+    return inputDateArray.splice(1, 3).join(" ");
+}
+
+function pad(number) {
+    if (number < 10) {
+        return '0' + number;
+    }
+    return number;
+}
+
+
+function calculateDayCount(date1, date2) {
+    //Get 1 day in milliseconds
+    var one_day = 1000 * 60 * 60 * 24;
+
+    // Convert both dates to milliseconds
+    var date1 = date1.getTime();
+    var date2 = date2.getTime();
+
+    // Calculate the difference in milliseconds
+    var difference = Math.abs(date2 - date1);
+
+    // Convert back to days and return
+    return Math.round(difference / one_day);
+}
