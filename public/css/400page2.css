@@ -16,7 +16,7 @@
 }
 
 
-.btn:hover #cam,.btn:hover #addBut,.btn:hover #search {
+.btn:hover #cam, .btn:hover #addBut, .btn:hover #search {
         filter: brightness(0%);
 }
 footer{  
@@ -51,4 +51,16 @@ body {
 
 .container {
     margin-top: 80px;
+}
+
+#remImg{
+
+    width: 100px;
+    height: 100px;
+}
+#remImg:hover {
+    color: black;
+}
+.btn:hover {
+    color: springgreen;
 }

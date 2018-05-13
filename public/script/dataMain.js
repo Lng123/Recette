@@ -16,8 +16,6 @@ var config = {
     messagingSenderId: "242135902717"
 };
 
-console.log(formatDate("2018-05-10"));
-
 firebase.initializeApp(config);
 var db = firebase.firestore();
 var functions = firebase.functions();
@@ -83,6 +81,7 @@ function showList() {
             var remBut = document.createElement("button");
             var dayCounter = document.createElement("p");
             var container = document.createElement("div");
+            var remImg = document.createElement("img");
 
             container.setAttribute("id", "#Cnumber" + window.eleCounter);
             card.setAttribute("class", "card");
@@ -125,10 +124,11 @@ function showList() {
 
             chkBoxDiv.setAttribute("style", "margin: 15px; float: left;");
 
-            remBut.setAttribute("class", "btn btn-outline-dark");
+            remBut.setAttribute("class", "btn btn-outline-light");
             remBut.setAttribute("type", "button");
-            remBut.innerHTML = "Remove";
-    
+            remImg.setAttribute("src", "https://firebasestorage.googleapis.com/v0/b/recette-f3ef5.appspot.com/o/src%2Fbaseline_delete_white_18dp.png?alt=media&token=32867197-c5a3-4950-b922-fe4f26c787cf");
+            remImg.setAttribute("id", "rmImg");
+
             let detId = "#Cnumber" + window.eleCounter;
             let delCon = container;
             remBut.addEventListener('click', function () {
@@ -139,6 +139,7 @@ function showList() {
             cardH.appendChild(cardAn);
             cardH.appendChild(dayCounter);
             cardB.appendChild(cardBody);
+            remBut.appendChild(remImg);
             cardB.appendChild(remBut);
             card.appendChild(cardH);
             card.appendChild(cardB);
