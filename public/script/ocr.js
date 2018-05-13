@@ -144,12 +144,13 @@ function addLists(input) {
   var chkBox = document.createElement("input");
   var chkBoxDiv = document.createElement("div");
   var remBut = document.createElement("button");
+  var container = document.createElement("div");
   var id = "";
 
-
+  container.setAttribute("id", "#Cnumber" + window.eleCounter);
   card.setAttribute("class", "card");
   card.setAttribute("id", "#number" + window.eleCounter);
-  card.setAttribute("style", "margin: 5px;");
+
 
   cardH.setAttribute("class", "card-header");
 
@@ -206,7 +207,7 @@ function addLists(input) {
   id = '' + id;
 
   remBut.addEventListener('click', function () {
-    rmEle(id, card);
+    rmEle(id, container);
   });
 
   chkBoxDiv.appendChild(chkBox);
@@ -216,8 +217,21 @@ function addLists(input) {
   cardB.appendChild(remBut);
   card.appendChild(cardH);
   card.appendChild(cardB);
-  list.appendChild(chkBoxDiv);
-  list.appendChild(card);
+  container.appendChild(chkBoxDiv);
+  container.appendChild(card);
+  
+
+  list.appendChild(container);
   window.eleCounter++;
   loadingDiv.style.visibility = 'hidden';
+}
+Element.prototype.remove = function () {
+    this.parentElement.removeChild(this);
+}
+NodeList.prototype.remove = HTMLCollection.prototype.remove = function () {
+    for (var i = this.length - 1; i >= 0; i--) {
+        if (this[i] && this[i].parentElement) {
+            this[i].parentElement.removeChild(this[i]);
+        }
+    }
 }

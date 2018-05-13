@@ -1,6 +1,6 @@
 let login = sessionStorage.getItem("userEmail");
 console.log(login);
-if(login !== null) {
+if (login !== null) {
     console.log("Have id");
 } else {
     location.href = "./index.html";
@@ -61,12 +61,12 @@ function showList() {
         console.log(userList);
         for (let i = 0; i < userList.length; i++) {
             var dat = new Date(userList[i].expiaryDate);
-            
+
             var today = new Date();
             console.log(today.getTime());
             let expDate = dat.toString().split(" ");
             expDate = expDate.slice(1, 4).join(" ");
-            
+
             let dayLeft = dat.subtractDays(today.getDate()).toString().split(" ");
             dayLeft = dayLeft[2];
             console.log(dayLeft);
@@ -81,11 +81,13 @@ function showList() {
             var chkBoxDiv = document.createElement("div");
             var remBut = document.createElement("button");
             var dayCounter = document.createElement("p");
+            var container = document.createElement("div");
 
+            container.setAttribute("id", "#Cnumber" + window.eleCounter);
             card.setAttribute("class", "card");
             card.setAttribute("id", "#number" + window.eleCounter);
             card.setAttribute("style", "margin-Left: -20px;");
-            
+
             cardH.setAttribute("class", "card-header");
 
             cardAn.setAttribute("class", "card-link");
@@ -125,19 +127,24 @@ function showList() {
             remBut.setAttribute("type", "button");
             remBut.innerHTML = "Remove";
             console.log(userList[i]);
+            let detId = "#Cnumber" + window.eleCounter;
+            let delCon = container;
             remBut.addEventListener('click', function () {
-                rmEle(userList[i].id, card);
+                rmEle(userList[i].id, delCon);
             });
 
+            chkBoxDiv.appendChild(chkBox);
             cardH.appendChild(cardAn);
             cardH.appendChild(dayCounter);
             cardB.appendChild(cardBody);
             cardB.appendChild(remBut);
             card.appendChild(cardH);
             card.appendChild(cardB);
-            chkBoxDiv.appendChild(chkBox);
-            list.appendChild(chkBoxDiv);
-            list.appendChild(card);
+            container.appendChild(chkBoxDiv);
+            container.appendChild(card);
+
+
+            list.appendChild(container);
 
 
             window.eleCounter++;
@@ -162,12 +169,16 @@ function addList() {
     var chkBox = document.createElement("input");
     var chkBoxDiv = document.createElement("div");
     var remBut = document.createElement("button");
+    var container = document.createElement("div");
     var id = "";
+
     console.log(date.value);
     if (recogEx(ingList, item)) {
+        container.setAttribute("id", "#Cnumber" + window.eleCounter);
+
         card.setAttribute("class", "card");
         card.setAttribute("id", "#number" + window.eleCounter);
-        card.setAttribute("style", "margin: 5px;");
+      
 
         cardH.setAttribute("class", "card-header");
 
@@ -226,9 +237,9 @@ function addList() {
                 id = docRef.id;
             });
         id = '' + id;
-
+        let delCon = container;
         remBut.addEventListener('click', function () {
-            rmEle(id, card);
+            rmEle(id, delCon);
         });
 
         chkBoxDiv.appendChild(chkBox);
@@ -238,9 +249,14 @@ function addList() {
         cardB.appendChild(remBut);
         card.appendChild(cardH);
         card.appendChild(cardB);
-        list.appendChild(chkBoxDiv);
-        list.appendChild(card);
+        container.appendChild(chkBoxDiv);
+        container.appendChild(card);
+
+
+        list.appendChild(container);
         window.eleCounter++;
+        item.value = "";
+        date.value = "";
     } else {
         alert("Sorry, we are still adding more ingredients!");
     }
@@ -272,16 +288,29 @@ function recogEx(list, item) {
     console.log(result);
     return result;
 }
-
+Element.prototype.remove = function () {
+    this.parentElement.removeChild(this);
+}
+NodeList.prototype.remove = HTMLCollection.prototype.remove = function () {
+    for (var i = this.length - 1; i >= 0; i--) {
+        if (this[i] && this[i].parentElement) {
+            this[i].parentElement.removeChild(this[i]);
+        }
+    }
+}
 function rmEle(id, num) {
     var user2 = db.collection("email").doc(sessionStorage.getItem("userEmail"));
     console.log(id);
     console.log(user);
     console.log(num);
+    
+    num.remove();
+    window.eleCounter--;
+
     user2.collection("list").doc(id).delete()
         .then(function (e) {
 
-            document.getElementById("accordion").removeChild(num);
+            console.log(e);
 
         }).catch(function (e) {
             console.log(e);
@@ -347,22 +376,7 @@ function calculateDayCount(date1, date2) {
     // Convert back to days and return
     return Math.round(difference / one_day);
 }
-function pad(number) {
-      if (number < 10) {
-        return '0' + number;
-      }
-      return number;
-    }
-Date.prototype.toISOString = function() {
-      return this.getUTCFullYear() +
-        '-' + pad(this.getUTCMonth() + 1) +
-        '-' + pad(this.getUTCDate());
-        // 'T' + pad(this.getUTCHours()) +
-        // ':' + pad(this.getUTCMinutes()) +
-        // ':' + pad(this.getUTCSeconds()) +
-        // '.' + (this.getUTCMilliseconds() / 1000).toFixed(3).slice(2, 5) +
-        // 'Z';
-    };
+
 function autocomplete(inp, arr) {
     /*the autocomplete function takes two arguments,
     the text field element and an array of possible autocompleted values:*/
@@ -402,11 +416,11 @@ function autocomplete(inp, arr) {
                     console.log(this.getElementsByTagName("input"));
                     inp.value = this.getElementsByTagName("input")[0].value;
                     let time = document.getElementById("date");
-                    let timeInp= new Date().addDays(timeB);
+                    let timeInp = new Date().addDays(timeB);
                     timeInp = timeInp.toISOString();
                     console.log(timeInp);
                     time.value = timeInp;
-                    
+
                     /*close the list of autocompleted values,
                     (or any other open lists of autocompleted values:*/
                     closeAllLists();
@@ -493,5 +507,17 @@ function formatDate(date) {
     var inputDateArray = inputDate.toString().split(" ");
     return inputDateArray.splice(1, 3).join(" ");
 }
+function pad(number) {
+    if (number < 10) {
+        return '0' + number;
+    }
+    return number;
+}
 
+Date.prototype.toISOString = function () {
+    return this.getUTCFullYear() +
+        '-' + pad(this.getUTCMonth() + 1) +
+        '-' + pad(this.getUTCDate());
+
+};
 autocomplete(document.getElementById("foodName"), ingList);
