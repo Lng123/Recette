@@ -94,7 +94,7 @@ function showList() {
             cardAn.setAttribute("data-toggle", "collapse");
             cardAn.setAttribute("href", "#collapse" + window.eleCounter);
             cardAn.innerHTML = window.userList[i].name;
-            cardAn.style.fontSize = "18px";
+            cardAn.style.fontSize = "21px";
             cardAn.name = "foodValue";
 
             dayCounter.innerHTML = dayLeft + " days left";
@@ -189,7 +189,7 @@ function addList() {
         cardAn.setAttribute("href", "#collapse" + window.eleCounter);
         cardAn.innerHTML = item.value;
         cardAn.setAttribute("name", "foodValue");
-        cardAn.style.fontSize = "18px";
+        cardAn.style.fontSize = "21px";
 
         var daysLeft = calculateDayCount(new Date(), new Date(date.value));
 
