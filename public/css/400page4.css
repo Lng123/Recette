@@ -31,3 +31,21 @@ footer{
 #recipe{
     margin-bottom: 55.667px;
 }
+
+#dropdown {
+    padding-bottom: 10px;
+}
+
+#dropdown ul {
+    right: 0;
+    left: auto;
+}
+
+#recipe {
+    float:left;
+    width: 400px;
+}
+
+#recipe img {
+    width: 100%;
+}
