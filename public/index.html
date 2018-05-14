@@ -4,7 +4,7 @@
 <head>
     <title>Recette</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width", initial-scale=1 > 
+    <meta name="viewport" content="width=device-width" , initial-scale=1>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -16,11 +16,11 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta name="google-signin-scope" content="profile email">
     <meta name="google-signin-client_id" content="242135902717-cvhpmq3i5jqsk48sde4mq426kjqh2kga.apps.googleusercontent.com">
-    
+
 </head>
 
 <body class="gradient">
-    <i class="material-icons">face</i>
+    
     <div>
         <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
             <span class="hamb-top"></span>
@@ -72,12 +72,20 @@
                             <div class="input-group">
                                 <input type="email" id="email" value="" class="form-control" size="50" placeholder="Email Address" required>
                                 <div class="input-group-btn">
-                                    <button type="button" onclick="clicked()" id="submit" class="btn btn-danger">Submit</button>
+                                    <button type="button" onclick="emailLogin()" id="submit" class="btn btn-danger">Submit</button>
                                 </div>
                             </div>
                         </div>
-                        <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-    
+                        <div>
+                        <!-- <div class="g-signin2" id="googleLogin" data-onsuccess="onSignIn" data-theme="dark"></div> -->
+                        </div>
+                        <div>
+                        <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+                        </fb:login-button></div>
+
+                        <div id="status">
+                        </div>
+
                     </div>
                 </form>
                 <div id="error-msg"></div>

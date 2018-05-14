@@ -51,9 +51,101 @@ let getEmail = db.collection("email").get().then(function (querySnapshot) {
 });
 
 function logout() {
+    if (window.googleLogined) {
+        return signOut();
+    }
     sessionStorage.clear();
     location.href="./index.html";
 }
+
+function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+}
+
+var invalid = true;
+
+// Email log in verification
+
+$('#email').on('input', function() {
+    var input=$(this);
+    var re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    var is_email=re.test(input.val());
+
+    if(is_email){
+        input.removeClass("alert alert-danger").addClass("alert alert-success");
+        $("#error-msg").css({"display":"none"});
+        window.invalid = false;
+    }
+    else{
+        input.removeClass("alert alert-success").addClass("alert alert-danger");
+        $("#error-msg").html("please enter a valid email address");
+        $("#error-msg").css({"display":"block"});
+        window.invalid = true;
+    }
+});
+
+$('#email').keypress(function (e) {
+    var key = e.which;
+    if(key == 13)  // the enter key code
+    {
+        $("#submit").click();
+        return false;
+    }
+});
+function emailLogin() {
+    console.log(email.value);
+    clicked(email.value);
+    email.value = "";
+}
+function clicked(emailVal) {
+    
+    console.log("clicked");
+    console.log(emailVal);
+    console.log(window.invalid);
+    if(window.invalid) {
+        return false;
+    }
+
+    let result = "no";
+    let email = "";
+    console.log(userFile);
+    for (let i = 0; i < userFile.length; i++) {
+        if (userFile[i].data().email === emailVal) {
+            alert("Welcome back!");
+            console.log(userFile[i].data());
+            sessionStorage.setItem("userEmail", userFile[i].id);
+            location.href = "main.html";
+            console.log(userFile[i].id);
+            
+            userId = userFile[i].id;
+            break;
+        }
+
+        result = "yes";
+    }
+
+    if (result === "yes") {
+        db.collection("email").add(
+            { email: emailVal}
+        )
+            .then(function (docRef) {
+                console.log("added!!" + docRef.id);
+                sessionStorage.setItem("userEmail", docRef.id);
+                alert("Welcome to Recette!!");
+                userId = docRef.id;
+                console.log(userId);
+                window.location.href = "main.html"
+
+            });
+    }
+
+}
+var userId2 = userId;
+
+
 // var ingredient = [
 //     { name: "apple", time: 28 },
 //     { name: "apricots", time: 3 },
@@ -191,79 +283,3 @@ function logout() {
 //     }
 // }
 // addIng();
-
-var invalid = true;
-
-// Email log in verification
-
-$('#email').on('input', function() {
-    var input=$(this);
-    var re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    var is_email=re.test(input.val());
-
-    if(is_email){
-        input.removeClass("alert alert-danger").addClass("alert alert-success");
-        $("#error-msg").css({"display":"none"});
-        invalid = false;
-    }
-    else{
-        input.removeClass("alert alert-success").addClass("alert alert-danger");
-        $("#error-msg").html("please enter a valid email address");
-        $("#error-msg").css({"display":"block"});
-        invalid = true;
-    }
-});
-
-$('#email').keypress(function (e) {
-    var key = e.which;
-    if(key == 13)  // the enter key code
-    {
-        $("#submit").click();
-        return false;
-    }
-});
-
-function clicked() {
-    console.log(email.value);
-
-    if(invalid) {
-        return false;
-    }
-
-    let result = "no";
-
-    for (let i = 0; i < userFile.length; i++) {
-        if (userFile[i].data().email === email.value) {
-            alert("Welcome back!");
-            console.log(userFile[i].data());
-            sessionStorage.setItem("userEmail", userFile[i].id);
-            location.href = "main.html";
-            console.log(userFile[i].id);
-            email.value = "";
-            userId = userFile[i].id;
-            break;
-        }
-
-        result = "yes";
-    }
-
-    if (result === "yes") {
-        db.collection("email").add(
-            { email: email.value }
-        )
-            .then(function (docRef) {
-                console.log("added!!" + docRef.id);
-                sessionStorage.setItem("userEmail", docRef.id);
-                email.value = "";
-                alert("Welcome to Recette!!");
-                userId = docRef.id;
-                console.log(userId);
-                window.location.href = "main.html"
-
-            });
-    }
-
-}
-var userId2 = userId;
-
-

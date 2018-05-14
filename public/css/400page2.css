@@ -355,3 +355,7 @@ body {
     background-color: rgba(85, 183, 145,.8);
     z-index: 1;
 }
+
+.chk {
+    margin-left: 50px;
+}
