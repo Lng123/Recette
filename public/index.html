@@ -13,11 +13,14 @@
     <link rel="stylesheet" href="./css/400.css">
     <link href="https://fonts.googleapis.com/css?family=Dhurjati%7cOpen+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Alex+Brush" rel="stylesheet">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="242135902717-cvhpmq3i5jqsk48sde4mq426kjqh2kga.apps.googleusercontent.com">
     
 </head>
 
 <body class="gradient">
-
+    <i class="material-icons">face</i>
     <div>
         <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
             <span class="hamb-top"></span>
@@ -34,7 +37,7 @@
         <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
             <ul class="nav sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="#">Recette</a>
+                    <a href="./index.html">Recette</a>
                 </li>
                 <li>
                     <a href="./index.html">Home</a>
@@ -73,6 +76,8 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+    
                     </div>
                 </form>
                 <div id="error-msg"></div>
@@ -89,6 +94,7 @@
     <script src="./script/data.js"></script>
     <script src="./script/NavBar.js"></script>
     <script src="./script/logo.js"></script>
+    <script src="./script/gLogin.js"></script>
 </body>
 
 </html>

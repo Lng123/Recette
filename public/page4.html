@@ -16,7 +16,7 @@
         <script src = "./script/spoonpage41.js"></script> <!--Activate only when needed, uses api requests-->
         <script src="./script/spoon4dummy.js"></script>        
 
-        <link rel="stylesheet" href="css/400page3.css">
+        <link rel="stylesheet" href="css/400page4.css">
 <!--
         <link rel="stylesheet" media="(min-width: 401px) and (max-width:600px)" href="600.css">
         <link rel="stylesheet" media="(min-width: 601px) and (max-width:800px)" href="800.css">
@@ -36,13 +36,22 @@
             <input type="file" id="fileInput" accept="image/*;capture=camera">
         </div>
         <nav id="gradient" class="navbar navbar-expand-smbg-dar navbar-dark">
-            <a class="navbar-brand" href="#" id="brand">Recette</a>
+            <a class="navbar-brand" href="./index.html" id="brand">Recette</a>
             <ul class="nav">
 
                 <li class="nav-item" style="margin: 3px;">
 
                     <button type="button" class="btn btn-outline-light" onclick="location.href = 'page3.html';"> <img src="https://firebasestorage.googleapis.com/v0/b/recette-f3ef5.appspot.com/o/arrow-thick-left.svg?alt=media&token=d3379616-fdd3-4812-b8dd-85bea7161b62" alt="backbutton" id ="back">  </button>
-
+                    
+                    
+            <span class="dropdown " id= "dropdown">
+            <button class="btn btn-outline-light" type="button" data-toggle="dropdown"><img src="https://firebasestorage.googleapis.com/v0/b/recette-f3ef5.appspot.com/o/vertical%20dots.svg?alt=media&token=c3b45ed6-6571-445b-a86d-544013bf4369" alt="backbutton" id ="back"> </button>
+            <ul class="dropdown-menu dropdown-menu-right" >
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Back to results</a></li>
+            <li><a href="https://spoonacular.com/food-api/docs/find-recipes-by-ingredients">Find more recipes</a></li>
+            </ul>
+            </span>
 
                     <!-- The Modal -->
                     <div class="modal fade" id="myModal">
@@ -81,7 +90,6 @@
             </ul>
         </nav>
         <div class="container" id= "recipe">
-            <p id ="test">test</p>
 
             <div id="accordion">
 

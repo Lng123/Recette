@@ -1,17 +1,18 @@
 var key = 'https://vision.googleapis.com/v1/images:annotate?key=' + window.apiKey;
 var loadingDiv = document.getElementById('loading');
-
+var fileInput = document.getElementById('fileInput');
 function uploadImage() {
 
   document.getElementById("fileInput").click();
   console.log("eneted uploadImage");
 
-  var fileInput = document.getElementById('fileInput');
+  
   fileInput.addEventListener('change', function (e) {
     var file = e.target.files[0];
     loadingDiv.style.visibility = 'visible';
     // Do something with the image file.
     var reader = new FileReader();
+    console.log(reader);
     reader.onloadend = convertFile;
     reader.readAsDataURL(file);
   });
@@ -22,7 +23,9 @@ function convertFile(e) {
 
   var content = e.target.result;
 
-  requestFile(content.replace('data:image/jpeg;base64,', ''));
+  content = (/base64,(.+)/.exec(content)[1]);
+  requestFile(content);
+  
 }
 
 
@@ -50,26 +53,30 @@ function requestFile(content) {
     console.log(data.responses);
     searchList(data.responses);
     data.responses[0].textAnnotations
+    fileInput.value = "";
   });
 }
 
 function searchList(content) {
   let resIndex = [];
   let ingArr = getIngList();
+  let swt = true;
   content[0].textAnnotations.shift();
   content[0].textAnnotations.map(function (item) {
     resIndex.push(item['description'].toUpperCase());
   });
-  let result = [];
   for (let i = 0; i < resIndex.length; i++) {
     let temp = searchElement(resIndex[i]);
+
     if (temp !== null) {
       addLists(ingArr[temp]);
-
-    }
+      swt = false;
+    } 
   }
-
-  console.log(result);
+  if (swt) {
+    loadingDiv.style.visibility = 'hidden';
+  }
+  
 }
 
 function searchElement(input) {
@@ -131,6 +138,7 @@ function addLists(input) {
   dayLeft = dayLeft[2];
   console.log(curDate);
   console.log(dayLeft);
+
   var list = document.getElementById("accordion");
   var card = document.createElement("div");
   var cardH = document.createElement("div");
@@ -159,9 +167,7 @@ function addLists(input) {
   cardAn.setAttribute("href", "#collapse" + window.eleCounter);
   cardAn.innerHTML = input.name;
   cardAn.setAttribute("name", "foodValue");
-  cardAn.style.fontSize = "18px";
-
-  var daysLeft = calculateDayCount(new Date(), new Date(date.value));
+  cardAn.style.fontSize = "21px";
 
   dayCounter.innerHTML = dayLeft + " days left";
   if (dayLeft <= 7) {
@@ -223,6 +229,7 @@ function addLists(input) {
 
   list.appendChild(container);
   window.eleCounter++;
+
   loadingDiv.style.visibility = 'hidden';
 }
 Element.prototype.remove = function () {

@@ -36,7 +36,8 @@
 
     <nav id="gradient" class="navbar navbar-expand-smbg-dar navbar-dark fixed-top">
 
-        <a class="navbar-brand" href="#" id="brand">Recette</a>
+        <a class="navbar-brand" href="./index.html" id="brand">Recette</a>
+        <ul class="nav">
 
         <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
             <span class="hamb-top"></span>
@@ -71,10 +72,8 @@
 
                     </div>
                 </div>
-
-
                 <div class="modal-footer">
-                    <button type="button" onclick="addList()" class="btn btn-secondary" data-dismiss="modal">Submit</button>
+                    <button type="button" id="submitButton" onclick="addList()" class="btn btn-secondary" data-dismiss="modal">Submit</button>
                 </div>
 
 
@@ -170,9 +169,7 @@
                         <img src="https://firebasestorage.googleapis.com/v0/b/recette-f3ef5.appspot.com/o/magnifying-glass.svg?alt=media&token=14a21a32-29a9-46ac-9c50-04b8d2462f2d"
                             alt="search" id="search">
                     </button>
-
-
-
+                    
                 </li>
                 <li>
                     <button type="button" class="btn btn-outline-light" id="deleteBut">
@@ -180,7 +177,6 @@
                             alt="search" id="search">
                     </button>
                 </li>
-
 
             </ul>
             <ul class="nav">
