@@ -17,6 +17,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Dhurjati%7cOpen+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Allura" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="./css/font-awesome.min.css">
     <link rel="stylesheet" href="./css/bootstrap.css">
     <link rel="stylesheet" href="./css/loading.css">
@@ -36,21 +37,12 @@
     <nav id="gradient" class="navbar navbar-expand-smbg-dar navbar-dark fixed-top">
 
         <a class="navbar-brand" href="#" id="brand">Recette</a>
-        <ul class="nav">
 
-            <li class="nav-item" style="margin: 3px;">
-                <button type="button" id="camera" onclick="uploadImage()" class="btn btn-outline-light ">
-                        <img src="https://firebasestorage.googleapis.com/v0/b/recette-f3ef5.appspot.com/o/camera-slr.svg?alt=media&token=b8c594a8-5715-4fa5-83e8-6b4f49918fcf" alt="camera" id= "cam">
-                </button>
-            </li>
-
-            <li class="nav-item" style="margin: 3px;">
-                <!--    button does not add item to list the first click    -->
-
-                <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#myModal"> <img src="https://firebasestorage.googleapis.com/v0/b/recette-f3ef5.appspot.com/o/plus.svg?alt=media&token=5c0bf803-ae01-4835-ac77-86f5f06482e1" alt="add" id ="addBut">  </button>
-            </li>
-
-        </ul>
+        <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+            <span class="hamb-top"></span>
+            <span class="hamb-middle"></span>
+            <span class="hamb-bottom"></span>
+        </button>
 
     </nav>
 
@@ -58,17 +50,16 @@
         Add Food Modal
         Modal placeds outside to function inside sticky header
         -->
-    <div class="modal fade" id="myModal">
+    <div class="modal fade" id="manualEnter">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
 
-                <!-- Modal Header -->
                 <div class="modal-header">
                     <h4 class="modal-title">Add a Food Item</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
-                <!-- Modal body -->
+
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="foodName">Enter Food:</label>
@@ -81,18 +72,88 @@
                     </div>
                 </div>
 
-                <!-- Modal footer -->
+
                 <div class="modal-footer">
                     <button type="button" onclick="addList()" class="btn btn-secondary" data-dismiss="modal">Submit</button>
                 </div>
+
+
 
             </div>
         </div>
     </div>
 
-    <div class="container">
-        <div id="accordion">
+    <div id="botModel">
+    <div class="modal fade" id="selectionModel" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Add Items</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <button type="button" id="camera" onclick="uploadImage()" class="btn btn-secondary btn-lg btn-block">
+                        <i class="material-icons" id="ocrButton">
+                            camera_alt
+                        </i>
+                        <span>Upload receipt image</span>
+                    </button>
+
+                    <button type="button" id="keyboard" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" data-target="#manualEnter" data-dismiss="modal">
+                        <i class="material-icons" id="keyboardButton">
+                            keyboard
+                        </i>
+                        Add item manually
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
         </div>
+    </div>
+    </div>
+
+
+    <div id="wrapper">
+        <div class="overlay"></div>
+
+        <!-- Sidebar -->
+
+        <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+            <ul class="nav sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">Recette</a>
+                </li>
+                <li>
+                    <a href="./index.html">Home</a>
+                </li>
+                <li>
+                    <a href="./AboutUs.html">About</a>
+                </li>
+                <li>
+                    <a href="#">Tutorial</a>
+                </li>
+                <li>
+                    <a href="./contact.html">Contact</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- /#sidebar-wrapper -->
+
+
+        <div id="page-content-wrapper">
+            <div class="container">
+                <div id="accordion">
+                </div>
+            </div>
+
+        </div>
+
     </div>
 
     <footer class="fixed-bottom">
@@ -106,16 +167,29 @@
                 <li class="nav-item" style="float:right;">
 
                     <button type="button" class="btn btn-outline-light" onclick=searchapi() id="searchbut">
-                            <img src="https://firebasestorage.googleapis.com/v0/b/recette-f3ef5.appspot.com/o/magnifying-glass.svg?alt=media&token=14a21a32-29a9-46ac-9c50-04b8d2462f2d" alt="search" id="search">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/recette-f3ef5.appspot.com/o/magnifying-glass.svg?alt=media&token=14a21a32-29a9-46ac-9c50-04b8d2462f2d"
+                            alt="search" id="search">
                     </button>
-                    
-                    
-                    
+
+
+
                 </li>
                 <li>
                     <button type="button" class="btn btn-outline-light" id="deleteBut">
-                            <img src="https://firebasestorage.googleapis.com/v0/b/recette-f3ef5.appspot.com/o/magnifying-glass.svg?alt=media&token=14a21a32-29a9-46ac-9c50-04b8d2462f2d" alt="search" id="search">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/recette-f3ef5.appspot.com/o/magnifying-glass.svg?alt=media&token=14a21a32-29a9-46ac-9c50-04b8d2462f2d"
+                            alt="search" id="search">
                     </button>
+                </li>
+
+
+            </ul>
+            <ul class="nav">
+
+                <li class="nav-item" style="margin: 3px;">
+
+                    <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#selectionModel">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/recette-f3ef5.appspot.com/o/plus.svg?alt=media&token=5c0bf803-ae01-4835-ac77-86f5f06482e1"
+                            alt="add" id="addBut"> </button>
                 </li>
 
             </ul>
@@ -132,7 +206,8 @@
     <script src="./script/ocr.js"></script>
     <script src="./script/dataMain.js"></script>
     <script src="./script/backgroundmain.js"></script>
-    
+    <script src="./script/NavBar.js"></script>
+
 
 
 </body>
