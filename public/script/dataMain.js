@@ -1,4 +1,5 @@
 let login = sessionStorage.getItem("userEmail");
+var loadingDiv = document.getElementById('loading');
 console.log(login);
 if (login !== null) {
     console.log("Have id");
@@ -37,7 +38,7 @@ db.collection("ingredient").get()
     });
 
 window.ingListW = ingList;
-
+window.loadingDiv.style.visibility = 'visible';
 user.collection("list").get()
     .then(function (querySnapshot) {
         if (querySnapshot !== null) {
@@ -50,15 +51,20 @@ user.collection("list").get()
                     id: doc.id
                 });
             });
+            
+            console.log(loadingDiv.style.visibility);
             showList();
+            window.loadingDiv.style.visibility = 'hidden';
         }
     });
 
 function showList() {
-
+    
     if (userList.length !== 0) {
         console.log(userList);
+        
         for (let i = 0; i < userList.length; i++) {
+            
             var dat = new Date(userList[i].expiaryDate);
 
             var today = new Date();
@@ -152,7 +158,9 @@ function showList() {
 
             window.eleCounter++;
         }
+        
     }
+    
 
 }
 
