@@ -129,11 +129,10 @@ body {
 }
 
 #sidebar-wrapper {
-    z-index: 1000;
-    left: 220px;
-    width: 0;
+    z-index: 1050;
+    width: 10px;
     height: 100%;
-    margin-left: -220px;
+    margin-left: -250px;
     overflow-y: auto;
     overflow-x: hidden;
     background: #1a1a1a;
