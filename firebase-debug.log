@@ -1,0 +1,71 @@
+[debug] [2018-05-15T04:38:00.417Z] ----------------------------------------------------------------------
+[debug] [2018-05-15T04:38:00.420Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2018-05-15T04:38:00.420Z] CLI Version:   3.18.4
+[debug] [2018-05-15T04:38:00.421Z] Platform:      darwin
+[debug] [2018-05-15T04:38:00.421Z] Node Version:  v10.0.0
+[debug] [2018-05-15T04:38:00.421Z] Time:          Mon May 14 2018 21:38:00 GMT-0700 (PDT)
+[debug] [2018-05-15T04:38:00.422Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-05-15T04:38:00.438Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-05-15T04:38:00.438Z] > authorizing via signed-in user
+[debug] [2018-05-15T04:38:00.441Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/recette-f3ef5  
+  
+ Mon May 14 2018 21:38:00 GMT-0700 (PDT)
+[debug] [2018-05-15T04:38:00.826Z] <<< HTTP RESPONSE 200
+[debug] [2018-05-15T04:38:00.829Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/recette-f3ef5/tokens  
+  
+ Mon May 14 2018 21:38:00 GMT-0700 (PDT)
+[debug] [2018-05-15T04:38:01.175Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'recette-f3ef5'...
+[info] 
+[info] i  deploying database, storage, firestore, hosting
+[info] i  database: checking rules syntax...
+[debug] [2018-05-15T04:38:01.493Z] >>> HTTP REQUEST PUT https://recette-f3ef5.firebaseio.com/.settings/rules.json?dryRun=true  
+ {
+  "rules": {
+    ".read": "auth != null",
+    ".write": "auth != null"
+  }
+} 
+ Mon May 14 2018 21:38:01 GMT-0700 (PDT)
+[debug] [2018-05-15T04:38:01.890Z] <<< HTTP RESPONSE 200
+[info] ✔  database: rules syntax for database recette-f3ef5 is valid
+[debug] [2018-05-15T04:38:01.892Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/recette-f3ef5  
+  
+ Mon May 14 2018 21:38:01 GMT-0700 (PDT)
+[debug] [2018-05-15T04:38:02.514Z] <<< HTTP RESPONSE 200
+[info] i  storage: checking storage.rules for compilation errors...
+[debug] [2018-05-15T04:38:02.518Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/recette-f3ef5:test  
+ { source: { files: [ [Object] ] } } 
+ Mon May 14 2018 21:38:02 GMT-0700 (PDT)
+[debug] [2018-05-15T04:38:02.692Z] <<< HTTP RESPONSE 200
+[info] ✔  storage: rules file storage.rules compiled successfully
+[info] i  firestore: checking firestore.rules for compilation errors...
+[debug] [2018-05-15T04:38:02.698Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/recette-f3ef5:test  
+ { source: { files: [ [Object] ] } } 
+ Mon May 14 2018 21:38:02 GMT-0700 (PDT)
+[debug] [2018-05-15T04:38:03.123Z] <<< HTTP RESPONSE 200
+[info] ✔  firestore: rules file firestore.rules compiled successfully
+[info] i  storage: uploading rules storage.rules...
+[debug] [2018-05-15T04:38:03.129Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/recette-f3ef5/rulesets  
+ { source: { files: [ [Object] ] } } 
+ Mon May 14 2018 21:38:03 GMT-0700 (PDT)
+[debug] [2018-05-15T04:38:03.637Z] <<< HTTP RESPONSE 200
+[debug] [2018-05-15T04:38:03.637Z] [rules] created ruleset projects/recette-f3ef5/rulesets/142d9647-18c0-4dbe-85d6-bedee2b64e4f
+[info] i  firestore: uploading rules firestore.rules...
+[debug] [2018-05-15T04:38:03.639Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/recette-f3ef5/rulesets  
+ { source: { files: [ [Object] ] } } 
+ Mon May 14 2018 21:38:03 GMT-0700 (PDT)
+[debug] [2018-05-15T04:38:03.639Z] >>> HTTP REQUEST GET https://firestore.googleapis.com/v1beta1/projects/recette-f3ef5/databases/(default)/indexes  
+  
+ Mon May 14 2018 21:38:03 GMT-0700 (PDT)
+[debug] [2018-05-15T04:38:03.806Z] <<< HTTP RESPONSE 200
+[debug] [2018-05-15T04:38:03.806Z] [rules] created ruleset projects/recette-f3ef5/rulesets/9c124f33-5514-44c8-90c3-0d4172ba8d69
+[debug] [2018-05-15T04:38:04.147Z] <<< HTTP RESPONSE 200
+[info] i  hosting: preparing public directory for upload...
+[debug] [2018-05-15T04:38:04.253Z] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/recette-f3ef5/uploads/-LCX4oWJj31ymKl9CjPP?fileCount=44&message=  
+  
+ Mon May 14 2018 21:38:04 GMT-0700 (PDT)
+[debug] [2018-05-15T04:38:05.303Z] <<< HTTP RESPONSE 200
+[debug] [2018-05-15T04:38:05.304Z] [hosting] .tgz uploaded successfully, waiting for extraction
