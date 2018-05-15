@@ -34,16 +34,43 @@
         Loading&#8230;
     </div>
 
-    <nav id="gradient" class="navbar navbar-expand-smbg-dar navbar-dark fixed-top">
-
-        <a class="navbar-brand" href="./index.html" id="brand">Recette</a>
-        <ul class="nav">
-
+     <div id="navCon">
+        <!-- Sidebar -->
         <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
             <span class="hamb-top"></span>
             <span class="hamb-middle"></span>
             <span class="hamb-bottom"></span>
         </button>
+        <div id="wrapper">
+            <div class="overlay"></div>
+            <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+                <ul class="nav sidebar-nav">
+                    <li class="sidebar-brand">
+                        <a href="#">Recette</a>
+                    </li>
+                    <li>
+                        <a href="./index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="./AboutUs.html">About</a>
+                    </li>
+                    <li>
+                        <a href="#">Tutorial</a>
+                    </li>
+                    <li>
+                        <a href="./contact.html">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- /#sidebar-wrapper -->
+        </div>
+    </div>
+    <div>
+    <nav id="gradient" class="navbar navbar-expand-smbg-dar navbar-dark fixed-top">
+
+        <a class="navbar-brand" href="./index.html" id="brand">Recette</a>
+        <ul class="nav">
 
     </nav>
 
@@ -116,35 +143,6 @@
     </div>
     </div>
 
-
-    <div id="wrapper">
-        <div class="overlay"></div>
-
-        <!-- Sidebar -->
-
-        <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
-            <ul class="nav sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="#">Recette</a>
-                </li>
-                <li>
-                    <a href="./index.html">Home</a>
-                </li>
-                <li>
-                    <a href="./AboutUs.html">About</a>
-                </li>
-                <li>
-                    <a href="#">Tutorial</a>
-                </li>
-                <li>
-                    <a href="./contact.html">Contact</a>
-                </li>
-            </ul>
-        </nav>
-
-        <!-- /#sidebar-wrapper -->
-
-
         <div id="page-content-wrapper">
             <div class="container">
                 <div id="accordion">
@@ -191,6 +189,7 @@
             </ul>
         </nav>
     </footer>
+    </div>
     <!-- <img id="frame" width="300px" height="300px" /> -->
     <!-- <script src="email.js"></script> -->
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>

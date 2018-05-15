@@ -115,10 +115,10 @@ function showList() {
             dayCounterButton.type = "button";
             dayCounterButton.style.float = "right";
     
-            if (daysLeft > 7) {
+            if (dayLeft > 7) {
                 //buttons are interactive; disabling them causes color to dim
                 dayCounterButton.setAttribute("class", "btn btn-primary");
-            } else if (daysLeft <= 7) {
+            } else if (dayLeft <= 7) {
                 //food will expire soon
                 dayCounterButton.setAttribute("class", "btn btn-warning");
             } else {
