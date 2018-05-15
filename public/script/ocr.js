@@ -6,7 +6,7 @@ function uploadImage() {
   document.getElementById("fileInput").click();
   console.log("eneted uploadImage");
 
-  
+
   fileInput.addEventListener('change', function (e) {
     var file = e.target.files[0];
     loadingDiv.style.visibility = 'visible';
@@ -25,7 +25,7 @@ function convertFile(e) {
 
   content = (/base64,(.+)/.exec(content)[1]);
   requestFile(content);
-  
+
 }
 
 
@@ -71,12 +71,12 @@ function searchList(content) {
     if (temp !== null) {
       addLists(ingArr[temp]);
       swt = false;
-    } 
+    }
   }
   if (swt) {
     loadingDiv.style.visibility = 'hidden';
   }
-  
+
 }
 
 function searchElement(input) {
@@ -151,11 +151,15 @@ function addLists(input) {
   var date = document.getElementById("date");
   var chkBox = document.createElement("input");
   var chkBoxDiv = document.createElement("div");
+  var box = document.createElement("i");
+  var boxChecked = document.createElement("i");
+  var label = document.createElement("label");
   var remBut = document.createElement("button");
   var container = document.createElement("div");
   var id = "";
 
   container.setAttribute("id", "#Cnumber" + window.eleCounter);
+  container.setAttribute("class", "CClass");
   card.setAttribute("class", "card");
   card.setAttribute("id", "#number" + window.eleCounter);
 
@@ -185,11 +189,23 @@ function addLists(input) {
   cardBody.innerHTML = "This ingredient will expire on " + "<b>" + curDate + "</b>";
 
   chkBox.setAttribute("type", "checkbox");
-  chkBox.setAttribute("id", "chkb" + window.eleCounter);
-  chkBox.setAttribute("onclick", "searchhide()");
-  chkBox.setAttribute("name", "chkbox" + window.eleCounter);
+  label.setAttribute("id", "chkb" + window.eleCounter);
+  label.setAttribute("onclick", "searchhide()");
+  label.setAttribute("name", "chkbox" + window.eleCounter);
   chkBox.setAttribute("class", "chk");
-  chkBoxDiv.setAttribute("style", "margin: 15px; float: left;");
+  chkBoxDiv.setAttribute("class", "chkDiv");
+  chkBoxDiv.classList.add("hidden");
+  chkBoxDiv.setAttribute("style", "float: left;");
+
+  label.classList.add("btn");
+
+  box.classList.add("far");
+  box.classList.add("fa-square");
+  box.classList.add("box");
+
+  boxChecked.classList.add("fas");
+  boxChecked.classList.add("fa-check-square");
+  boxChecked.classList.add("boxChecked");
 
   remBut.setAttribute("class", "btn btn-outline-dark");
   remBut.setAttribute("type", "button");
@@ -216,7 +232,10 @@ function addLists(input) {
     rmEle(id, container);
   });
 
-  chkBoxDiv.appendChild(chkBox);
+  label.appendChild(chkBox);
+  label.appendChild(box);
+  label.appendChild(boxChecked);
+  chkBoxDiv.appendChild(label);
   cardH.appendChild(cardAn);
   cardH.appendChild(dayCounter);
   cardB.appendChild(cardBody);
@@ -225,7 +244,7 @@ function addLists(input) {
   card.appendChild(cardB);
   container.appendChild(chkBoxDiv);
   container.appendChild(card);
-  
+
 
   list.appendChild(container);
   window.eleCounter++;
@@ -233,12 +252,12 @@ function addLists(input) {
   loadingDiv.style.visibility = 'hidden';
 }
 Element.prototype.remove = function () {
-    this.parentElement.removeChild(this);
+  this.parentElement.removeChild(this);
 }
 NodeList.prototype.remove = HTMLCollection.prototype.remove = function () {
-    for (var i = this.length - 1; i >= 0; i--) {
-        if (this[i] && this[i].parentElement) {
-            this[i].parentElement.removeChild(this[i]);
-        }
+  for (var i = this.length - 1; i >= 0; i--) {
+    if (this[i] && this[i].parentElement) {
+      this[i].parentElement.removeChild(this[i]);
     }
+  }
 }

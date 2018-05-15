@@ -43,7 +43,7 @@ user.collection("list").get()
         if (querySnapshot !== null) {
             querySnapshot.forEach(function (doc) {
                 // doc.data() is never undefined for query doc snapshots
-        
+
                 userList.push({
                     name: doc.data().name,
                     expiaryDate: doc.data().expiaryDate,
@@ -62,7 +62,7 @@ function showList() {
             var dat = new Date(userList[i].expiaryDate);
 
             var today = new Date();
-          
+
             let expDate = dat.toString().split(" ");
             expDate = expDate.slice(1, 4).join(" ");
 
@@ -78,15 +78,18 @@ function showList() {
             var searchBut = document.createElement("button");
             var chkBox = document.createElement("input");
             var chkBoxDiv = document.createElement("div");
+            var box = document.createElement("i");
+            var boxChecked = document.createElement("i");
+            var label = document.createElement("label");
             var remBut = document.createElement("button");
             var dayCounter = document.createElement("p");
             var container = document.createElement("div");
             var remImg = document.createElement("img");
 
             container.setAttribute("id", "#Cnumber" + window.eleCounter);
+            container.setAttribute("class", "CClass");
             card.setAttribute("class", "card");
             card.setAttribute("id", "#number" + window.eleCounter);
-            card.setAttribute("style", "margin-Left: -20px;");
 
             cardH.setAttribute("class", "card-header");
 
@@ -116,13 +119,23 @@ function showList() {
             searchBut.innerHTML = "search";
 
             chkBox.setAttribute("type", "checkbox");
-            chkBox.setAttribute("id", "chkb" + window.eleCounter);
-            chkBox.setAttribute("onclick", "searchhide()");
-            chkBox.setAttribute("name", "chkbox" + window.eleCounter);
+            label.setAttribute("id", "chkb" + window.eleCounter);
+            label.setAttribute("onclick", "searchhide()");
+            label.setAttribute("name", "chkbox" + window.eleCounter);
             chkBox.setAttribute("class", "chk");
-            chkBoxDiv.setAttribute("style", "margin: 15px; float: left;");
+            chkBoxDiv.setAttribute("class", "chkDiv");
+            chkBoxDiv.classList.add("hidden");
+            chkBoxDiv.setAttribute("style", "float: left;");
 
-            chkBoxDiv.setAttribute("style", "margin: 15px; float: left;");
+            label.classList.add("btn");
+
+            box.classList.add("far");
+            box.classList.add("fa-square");
+            box.classList.add("box");
+
+            boxChecked.classList.add("fas");
+            boxChecked.classList.add("fa-check-square");
+            boxChecked.classList.add("boxChecked");
 
             remBut.setAttribute("class", "btn btn-outline-light");
             remBut.setAttribute("type", "button");
@@ -135,7 +148,10 @@ function showList() {
                 rmEle(userList[i].id, delCon);
             });
 
-            chkBoxDiv.appendChild(chkBox);
+            label.appendChild(chkBox);
+            label.appendChild(box);
+            label.appendChild(boxChecked);
+            chkBoxDiv.appendChild(label);
             cardH.appendChild(cardAn);
             cardH.appendChild(dayCounter);
             cardB.appendChild(cardBody);
@@ -171,12 +187,16 @@ function addList() {
     var date = document.getElementById("date");
     var chkBox = document.createElement("input");
     var chkBoxDiv = document.createElement("div");
+    var label = document.createElement("label");
+    var box = document.createElement("i");
+    var boxChecked = document.createElement("i");
     var remBut = document.createElement("button");
     var container = document.createElement("div");
     var id = "";
 
     if (recogEx(ingList, item)) {
         container.setAttribute("id", "#Cnumber" + window.eleCounter);
+        container.setAttribute("class", "CClass");
 
         card.setAttribute("class", "card");
         card.setAttribute("id", "#number" + window.eleCounter);
@@ -194,7 +214,7 @@ function addList() {
         var daysLeft = calculateDayCount(new Date(), new Date(date.value));
 
         dayCounter.innerHTML = daysLeft + " days left";
-        
+
         if (daysLeft <= 7) {
             dayCounter.style.color = "red";
         }
@@ -210,18 +230,29 @@ function addList() {
         cardBody.innerHTML = "This ingredient will expire on " + "<b>" + formatDate(date.value) + "</b>";
 
         chkBox.setAttribute("type", "checkbox");
-        chkBox.setAttribute("id", "chkb" + window.eleCounter);
-        chkBox.setAttribute("onclick", "searchhide()");
-        chkBox.setAttribute("name", "chkbox" + window.eleCounter);
+        label.setAttribute("id", "chkb" + window.eleCounter);
+        label.setAttribute("onclick", "searchhide()");
+        label.setAttribute("name", "chkbox" + window.eleCounter);
         chkBox.setAttribute("class", "chk");
-        chkBoxDiv.setAttribute("style", "margin: 15px; float: left;");
+        chkBoxDiv.setAttribute("class", "chkDiv");
+        chkBoxDiv.classList.add("hidden");
+        chkBoxDiv.setAttribute("style", "float: left;");
+
+        label.classList.add("btn");
+
+        box.classList.add("far");
+        box.classList.add("fa-square");
+        box.classList.add("box");
+
+        boxChecked.classList.add("fas");
+        boxChecked.classList.add("fa-check-square");
+        boxChecked.classList.add("boxChecked");
 
         remBut.setAttribute("class", "btn btn-outline-dark");
         remBut.setAttribute("type", "button");
-        remBut.setAttribute("class", "btn btn-outline-dark");
         remBut.setAttribute("style", "margin: 2px;");
         remBut.innerHTML = "Remove";
-        
+
         var dat = new Date();
         let dateDB = new Date(date.value);
         let ref = db.collection("email").doc(sessionStorage.getItem("userEmail"));
@@ -241,7 +272,10 @@ function addList() {
             rmEle(id, delCon);
         });
 
-        chkBoxDiv.appendChild(chkBox);
+        label.appendChild(chkBox);
+        label.appendChild(box);
+        label.appendChild(boxChecked);
+        chkBoxDiv.appendChild(label);
         cardH.appendChild(cardAn);
         cardH.appendChild(dayCounter);
         cardB.appendChild(cardBody);

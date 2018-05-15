@@ -2,6 +2,14 @@
   background-color: #499c79;
 }
 
+.hidden{
+    display: none;
+}
+
+.hidden::before{
+    display: none;
+}
+
 #botModel .modal.fade:not(.in) .modal-dialog {
     -webkit-transform: translate3d(0, 25%, 0);
     transform: translate3d(0, 25%, 0);
@@ -354,4 +362,50 @@ body {
     bottom: 0;
     background-color: rgba(85, 183, 145,.8);
     z-index: 1;
+}
+
+
+
+label input[type="checkbox"] ~ i.fa.fa-square-o{
+    color: #c8c8c8;    display: inline;
+}
+label input[type="checkbox"] ~ i.fa.fa-check-square-o{
+    display: none;
+}
+label input[type="checkbox"]:checked ~ i.fa.fa-square-o{
+    display: none;
+}
+label input[type="checkbox"]:checked ~ i.fa.fa-check-square-o{
+    color: #7AA3CC;    display: inline;
+}
+label:hover input[type="checkbox"] ~ i.fa {
+color: #7AA3CC;
+}
+
+.box, .boxChecked{
+    font-size: 21pt;
+    color: white;
+}
+
+.chkDiv {
+    margin-top: 10px;
+}
+
+input[type="checkbox"] ~ i.far.fa-square{
+    color: white;    display: inline;
+}
+input[type="checkbox"] ~ i.fas.fa-check-square{
+    display: none;
+}
+
+input[type="checkbox"]:checked ~ i.far.fa-square{
+    display: none;
+}
+
+input[type="checkbox"]:checked ~ i.fas.fa-check-square{
+    color: white;    display: inline;
+}
+
+.chk {
+    display:none;
 }
