@@ -28,13 +28,11 @@
     filter: invert(100%);
 }
 
-#ocrButton, #keyboardButton{
-
+#ocrButton, #keyboardButton, #foodBankButton{
     margin-right: 10px;
-    
 }
 
-#camera, #keyboard {
+#camera, #keyboard, #foodBank{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -93,6 +91,7 @@ body {
 
 #submitButton{
     background-color: #499c79;
+    width: auto;
 }
 
 .container {
@@ -435,22 +434,9 @@ body {
 }
 
 
-
-label input[type="checkbox"] ~ i.fa.fa-square-o{
-    color: #c8c8c8;    display: inline;
-}
-label input[type="checkbox"] ~ i.fa.fa-check-square-o{
-    display: none;
-}
-label input[type="checkbox"]:checked ~ i.fa.fa-square-o{
-    display: none;
-}
-label input[type="checkbox"]:checked ~ i.fa.fa-check-square-o{
-    color: #7AA3CC;    display: inline;
-}
-label:hover input[type="checkbox"] ~ i.fa {
-color: #7AA3CC;
-}
+/*-------------------------------*/
+/*            Checkbox           */
+/*-------------------------------*/
 
 .box, .boxChecked{
     font-size: 21pt;
