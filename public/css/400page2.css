@@ -34,9 +34,23 @@
     background-color: #499c79;
 }
 
-
-.btn:hover #cam, .btn:active #cam, .btn:hover #addBut, .btn:active #addBut, .btn:hover #search, .btn:active #search {
+ button:active #cam, button:active #addBut, button:active #search {
         filter: brightness(0%);
+}
+
+button {
+    background-color: #499c79;
+    border: 1px solid #FFF;
+    height: 40px;
+    width: 45px;
+    border-radius: 4px;
+    padding-bottom: 5px;
+    
+}
+
+
+button:active {
+        background-color: #FFF;
 }
 
 footer{  
