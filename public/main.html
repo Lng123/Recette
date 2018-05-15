@@ -18,7 +18,8 @@
     <link href="https://fonts.googleapis.com/css?family=Dhurjati%7cOpen+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Allura" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+        crossorigin="anonymous">
     <link rel="stylesheet" href="./css/font-awesome.min.css">
     <link rel="stylesheet" href="./css/bootstrap.css">
     <link rel="stylesheet" href="./css/loading.css">
@@ -35,7 +36,7 @@
         Loading&#8230;
     </div>
 
-     <div id="navCon">
+    <div id="navCon">
         <!-- Sidebar -->
         <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
             <span class="hamb-top"></span>
@@ -68,87 +69,88 @@
         </div>
     </div>
     <div>
-    <nav id="gradient" class="navbar navbar-expand-smbg-dar navbar-dark fixed-top">
+        <nav id="gradient" class="navbar navbar-expand-smbg-dar navbar-dark fixed-top">
 
-        <a class="navbar-brand" href="./index.html" id="brand">Recette</a>
-        <ul class="nav">
+            <a class="navbar-brand" href="./index.html" id="brand">Recette</a>
+            <ul class="nav">
 
-    </nav>
+        </nav>
 
-    <!-- 
+        <!-- 
         Add Food Modal
         Modal placeds outside to function inside sticky header
         -->
-    <div class="modal fade" id="manualEnter">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
+        <div class="modal fade" id="manualEnter">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
 
-                <div class="modal-header">
-                    <h4 class="modal-title">Add a Food Item</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="foodName">Enter Food:</label>
-                        <input type="text" class="form-control" id="foodName">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Add a Food Item</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
-                    <div class="form-group">
-                        <label for="date">Enter Expiry Date:</label>
-                        <input type="date" class="form-control" id="date">
 
+
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="foodName">Enter Food:</label>
+                            <input type="text" class="form-control" id="foodName">
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Enter Expiry Date:</label>
+                            <input type="date" class="form-control" id="date">
+
+                        </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" id="submitButton" onclick="addList()" class="btn btn-secondary" data-dismiss="modal">Submit</button>
-                </div>
+                    <div class="modal-footer">
+                        <button type="button" id="submitButton" onclick="addList()" class="btn btn-secondary" data-dismiss="modal">Submit</button>
+                    </div>
 
 
 
-            </div>
-        </div>
-    </div>
-
-    <div id="botModel">
-    <div class="modal fade" id="selectionModel" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Add Items</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-
-                    <button type="button" id="camera" onclick="uploadImage()" class="btn btn-secondary btn-lg btn-block">
-                        <i class="material-icons" id="ocrButton">
-                            camera_alt
-                        </i>
-                        <span>Upload receipt image</span>
-                    </button>
-
-                    <button type="button" id="keyboard" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" data-target="#manualEnter" data-dismiss="modal">
-                        <i class="material-icons" id="keyboardButton">
-                            keyboard
-                        </i>
-                        Add item manually
-                    </button>
-                    <button type="button" id="foodBank" class="btn btn-secondary btn-lg btn-block" onclick="location.href='./map.html'">
-                        <i class="material-icons" id="foodBankButton">
-                            place
-                        </i>
-                        Food bank
-                    </button>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
-    </div>
-    </div>
+
+        <div id="botModel">
+            <div class="modal fade" id="selectionModel" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Add Items</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+                            <button type="button" id="camera" onclick="uploadImage()" class="btn btn-secondary btn-lg btn-block">
+                                <i class="material-icons" id="ocrButton">
+                                    camera_alt
+                                </i>
+                                <span>Upload receipt image</span>
+                            </button>
+
+                            <button type="button" id="keyboard" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" data-target="#manualEnter"
+                                data-dismiss="modal">
+                                <i class="material-icons" id="keyboardButton">
+                                    keyboard
+                                </i>
+                                Add item manually
+                            </button>
+                            <button type="button" id="foodBank" class="btn btn-secondary btn-lg btn-block" onclick="location.href='./map.html'">
+                                <i class="material-icons" id="foodBankButton">
+                                    place
+                                </i>
+                                Food bank
+                            </button>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="closeButton" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div id="page-content-wrapper">
             <div class="container">
@@ -169,15 +171,7 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <li class="nav-item" style="float:right;">
-
                     <button type="button" onclick=searchapi() id="searchbut">
-                        <img src="https://firebasestorage.googleapis.com/v0/b/recette-f3ef5.appspot.com/o/magnifying-glass.svg?alt=media&token=14a21a32-29a9-46ac-9c50-04b8d2462f2d"
-                            alt="search" id="search">
-                    </button>
-                    
-                </li>
-                <li>
-                    <button type="button" id="deleteBut">
                         <img src="https://firebasestorage.googleapis.com/v0/b/recette-f3ef5.appspot.com/o/magnifying-glass.svg?alt=media&token=14a21a32-29a9-46ac-9c50-04b8d2462f2d"
                             alt="search" id="search">
                     </button>
@@ -185,6 +179,11 @@
 
             </ul>
             <ul class="nav">
+                <li class="nav-item" style="margin: 3px;">
+                    <button type="button" id="deleteBut">
+                        <i class="fas fa-trash-alt" id="trash"></i>
+                    </button>
+                </li>
 
                 <li class="nav-item" style="margin: 3px;">
 

@@ -64,9 +64,6 @@ footer{
     position: fixed;
 }
 
-#searchbut {
-    display: none;
-}
 
 #footspace{
     height: 55.667px;
@@ -91,6 +88,10 @@ body {
 
 #submitButton{
     background-color: #499c79;
+    width: auto;
+}
+
+#closeButton{
     width: auto;
 }
 
@@ -214,7 +215,7 @@ body {
 .sidebar-nav {
     position: absolute;
     top: 0;
-    width: 200px;
+    width: 220px;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -463,4 +464,10 @@ input[type="checkbox"]:checked ~ i.fas.fa-check-square{
 
 .chk {
     display:none;
+}
+
+#trash{
+    color: white;
+    font-size: 17pt;
+    margin-top: 7px;
 }

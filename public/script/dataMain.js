@@ -376,7 +376,7 @@ function rmEle(id, num) {
 function searchhide() {
     var search = document.getElementById("searchbut");
     var checkb = document.getElementsByClassName("chk");
-    search.style.display = 'none';
+    // search.style.display = 'none';
 
     for (var i = 0; i < window.eleCounter; i++) {
         if (checkb[i].checked) {
