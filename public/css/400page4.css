@@ -9,16 +9,31 @@
 
 }
 
-#back{
+#back, #options{
     width: 20px;
     height: auto;
     filter: invert(100%);
 }
 
+button {
+    background-color: #499c79;
+    border: 1px solid #FFF;
+    height: 40px;
+    width: 45px;
+    border-radius: 4px;
+    padding-bottom: 5px;
+    
+}
 
-.btn:hover #back {
+button:active #back,button:active #options {
         filter: brightness(0%);
 }
+
+button:active {
+        background-color: #FFF;
+}
+
+
 footer{
     bottom: 0%;
     position: fixed;

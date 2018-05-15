@@ -35,16 +35,43 @@
         Loading&#8230;
     </div>
 
-    <nav id="gradient" class="navbar navbar-expand-smbg-dar navbar-dark fixed-top">
-
-        <a class="navbar-brand" href="./index.html" id="brand">Recette</a>
-        <ul class="nav">
-
+     <div id="navCon">
+        <!-- Sidebar -->
         <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
             <span class="hamb-top"></span>
             <span class="hamb-middle"></span>
             <span class="hamb-bottom"></span>
         </button>
+        <div id="wrapper">
+            <div class="overlay"></div>
+            <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+                <ul class="nav sidebar-nav">
+                    <li class="sidebar-brand">
+                        <a href="#">Recette</a>
+                    </li>
+                    <li>
+                        <a href="./index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="./AboutUs.html">About</a>
+                    </li>
+                    <li>
+                        <a href="#">Tutorial</a>
+                    </li>
+                    <li>
+                        <a href="./contact.html">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- /#sidebar-wrapper -->
+        </div>
+    </div>
+    <div>
+    <nav id="gradient" class="navbar navbar-expand-smbg-dar navbar-dark fixed-top">
+
+        <a class="navbar-brand" href="./index.html" id="brand">Recette</a>
+        <ul class="nav">
 
     </nav>
 
@@ -108,6 +135,12 @@
                         </i>
                         Add item manually
                     </button>
+                    <button type="button" id="keyboard" class="btn btn-secondary btn-lg btn-block" onclick="location.href='./map.html'">
+                        <i class="material-icons" id="keyboardButton">
+                            keyboard
+                        </i>
+                        Food bank
+                    </button>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -116,35 +149,6 @@
         </div>
     </div>
     </div>
-
-
-    <div id="wrapper">
-        <div class="overlay"></div>
-
-        <!-- Sidebar -->
-
-        <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
-            <ul class="nav sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="#">Recette</a>
-                </li>
-                <li>
-                    <a href="./index.html">Home</a>
-                </li>
-                <li>
-                    <a href="./AboutUs.html">About</a>
-                </li>
-                <li>
-                    <a href="#">Tutorial</a>
-                </li>
-                <li>
-                    <a href="./contact.html">Contact</a>
-                </li>
-            </ul>
-        </nav>
-
-        <!-- /#sidebar-wrapper -->
-
 
         <div id="page-content-wrapper">
             <div class="container">
@@ -166,14 +170,14 @@
             <ul class="nav navbar-nav navbar-right">
                 <li class="nav-item" style="float:right;">
 
-                    <button type="button" class="btn btn-outline-light" onclick=searchapi() id="searchbut">
+                    <button type="button" onclick=searchapi() id="searchbut">
                         <img src="https://firebasestorage.googleapis.com/v0/b/recette-f3ef5.appspot.com/o/magnifying-glass.svg?alt=media&token=14a21a32-29a9-46ac-9c50-04b8d2462f2d"
                             alt="search" id="search">
                     </button>
                     
                 </li>
                 <li>
-                    <button type="button" class="btn btn-outline-light" id="deleteBut">
+                    <button type="button" id="deleteBut">
                         <img src="https://firebasestorage.googleapis.com/v0/b/recette-f3ef5.appspot.com/o/magnifying-glass.svg?alt=media&token=14a21a32-29a9-46ac-9c50-04b8d2462f2d"
                             alt="search" id="search">
                     </button>
@@ -184,7 +188,7 @@
 
                 <li class="nav-item" style="margin: 3px;">
 
-                    <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#selectionModel">
+                    <button type="button" data-toggle="modal" data-target="#selectionModel">
                         <img src="https://firebasestorage.googleapis.com/v0/b/recette-f3ef5.appspot.com/o/plus.svg?alt=media&token=5c0bf803-ae01-4835-ac77-86f5f06482e1"
                             alt="add" id="addBut"> </button>
                 </li>
@@ -192,6 +196,7 @@
             </ul>
         </nav>
     </footer>
+    </div>
     <!-- <img id="frame" width="300px" height="300px" /> -->
     <!-- <script src="email.js"></script> -->
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>

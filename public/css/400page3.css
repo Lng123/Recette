@@ -16,8 +16,22 @@
 }
 
 
-.btn:hover #back {
+button:active #back {
         filter: brightness(0%);
+}
+button {
+    background-color: #499c79;
+    border: 1px solid #FFF;
+    height: 40px;
+    width: 45px;
+    border-radius: 4px;
+    padding-bottom: 5px;
+    
+}
+
+
+button:active {
+        background-color: #FFF;
 }
 footer{
     bottom: 0%;

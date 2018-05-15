@@ -1,4 +1,5 @@
 let login = sessionStorage.getItem("userEmail");
+var loadingDiv = document.getElementById('loading');
 console.log(login);
 if (login !== null) {
     console.log("Have id");
@@ -37,7 +38,7 @@ db.collection("ingredient").get()
     });
 
 window.ingListW = ingList;
-
+window.loadingDiv.style.visibility = 'visible';
 user.collection("list").get()
     .then(function (querySnapshot) {
         if (querySnapshot !== null) {
@@ -50,15 +51,20 @@ user.collection("list").get()
                     id: doc.id
                 });
             });
+            
+            console.log(loadingDiv.style.visibility);
             showList();
+            window.loadingDiv.style.visibility = 'hidden';
         }
     });
 
 function showList() {
-
+    
     if (userList.length !== 0) {
         console.log(userList);
+        
         for (let i = 0; i < userList.length; i++) {
+            
             var dat = new Date(userList[i].expiaryDate);
 
             var today = new Date();
@@ -83,6 +89,7 @@ function showList() {
             var label = document.createElement("label");
             var remBut = document.createElement("button");
             var dayCounter = document.createElement("p");
+            var dayCounterButton = document.createElement("button");
             var container = document.createElement("div");
             var remImg = document.createElement("img");
 
@@ -100,13 +107,30 @@ function showList() {
             cardAn.style.fontSize = "21px";
             cardAn.name = "foodValue";
 
-            dayCounter.innerHTML = dayLeft + " days left";
-            dayCounter.style.float = "right";
-            dayCounter.style.fontSize = "18px";
+            // dayCounter.innerHTML = dayLeft + " days left";
+            // dayCounter.style.float = "right";
+            // dayCounter.style.fontSize = "18px";
 
-            if (dayLeft <= 7) {
-                dayCounter.style.color = "red"
+            // if (dayLeft <= 7) {
+            //     dayCounter.style.color = "red"
+            // }
+
+            dayCounterButton.type = "button";
+            dayCounterButton.style.float = "right";
+    
+            if (dayLeft > 7) {
+                //buttons are interactive; disabling them causes color to dim
+                dayCounterButton.setAttribute("class", "btn btn-primary");
+            } else if (dayLeft <= 7) {
+                //food will expire soon
+                dayCounterButton.setAttribute("class", "btn btn-warning");
+            } else {
+                // food is expired
+                dayCounterButton.setAttribute("class", "btn btn-danger");
             }
+    
+            dayCounterButton.innerHTML = dayLeft;
+            dayCounter.style.fontSize = "21px";
 
             cardB.setAttribute("id", "collapse" + window.eleCounter);
             cardB.setAttribute("class", "collapse");
@@ -153,7 +177,7 @@ function showList() {
             label.appendChild(boxChecked);
             chkBoxDiv.appendChild(label);
             cardH.appendChild(cardAn);
-            cardH.appendChild(dayCounter);
+            cardH.appendChild(dayCounterButton);
             cardB.appendChild(cardBody);
             remBut.appendChild(remImg);
             cardB.appendChild(remBut);
@@ -168,7 +192,9 @@ function showList() {
 
             window.eleCounter++;
         }
+        
     }
+    
 
 }
 
@@ -180,6 +206,7 @@ function addList() {
     var cardH = document.createElement("div");
     var cardB = document.createElement("div");
     var dayCounter = document.createElement("p");
+    var dayCounterButton = document.createElement("button");
     var cardAn = document.createElement("a");
     var cardBody = document.createElement("div");
     var searchBut = document.createElement("button");
@@ -201,7 +228,6 @@ function addList() {
         card.setAttribute("class", "card");
         card.setAttribute("id", "#number" + window.eleCounter);
 
-
         cardH.setAttribute("class", "card-header");
 
         cardAn.setAttribute("class", "card-link");
@@ -212,15 +238,27 @@ function addList() {
         cardAn.style.fontSize = "21px";
 
         var daysLeft = calculateDayCount(new Date(), new Date(date.value));
+        dayCounterButton.type = "button";
+        dayCounterButton.style.float = "right";
 
-        dayCounter.innerHTML = daysLeft + " days left";
-
-        if (daysLeft <= 7) {
-            dayCounter.style.color = "red";
+        if (daysLeft > 7) {
+            dayCounterButton.setAttribute("class", "btn btn-primary");
+        } else if (daysLeft <= 7) {
+            //food will expire soon
+            dayCounterButton.setAttribute("class", "btn btn-warning");
+        } else {
+            // food is expired
+            dayCounterButton.setAttribute("class", "btn btn-danger");
         }
 
-        dayCounter.style.fontSize = "18px";
-        dayCounter.setAttribute("class", "float-right");
+        dayCounterButton.innerHTML = daysLeft;
+        dayCounter.style.fontSize = "21px";
+
+        // dayCounter.innerHTML = daysLeft + " days left";
+        
+        // if (daysLeft <= 7) {
+        //     dayCounter.style.color = "red";
+        // }
 
         cardB.setAttribute("id", "collapse" + window.eleCounter);
         cardB.setAttribute("class", "collapse");
@@ -277,7 +315,7 @@ function addList() {
         label.appendChild(boxChecked);
         chkBoxDiv.appendChild(label);
         cardH.appendChild(cardAn);
-        cardH.appendChild(dayCounter);
+        cardH.appendChild(dayCounterButton);
         cardB.appendChild(cardBody);
         cardB.appendChild(remBut);
         card.appendChild(cardH);

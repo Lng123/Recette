@@ -9,7 +9,7 @@ function uploadImage() {
 
   fileInput.addEventListener('change', function (e) {
     var file = e.target.files[0];
-    loadingDiv.style.visibility = 'visible';
+    window.loadingDiv.style.visibility = 'visible';
     // Do something with the image file.
     var reader = new FileReader();
     console.log(reader);
@@ -74,7 +74,7 @@ function searchList(content) {
     }
   }
   if (swt) {
-    loadingDiv.style.visibility = 'hidden';
+    window.loadingDiv.style.visibility = 'hidden';
   }
 
 }
@@ -249,7 +249,7 @@ function addLists(input) {
   list.appendChild(container);
   window.eleCounter++;
 
-  loadingDiv.style.visibility = 'hidden';
+  window.loadingDiv.style.visibility = 'hidden';
 }
 Element.prototype.remove = function () {
   this.parentElement.removeChild(this);
