@@ -64,26 +64,16 @@ footer{
     position: fixed;
 }
 
+#searchbut {
+    display: none;
+}
 
 #footspace{
     height: 55.667px;
 }
 
-#accordion {
-    min-height: 400px;
-    margin-bottom: 100px;
-    clear: both;
-}
-
 #recipe{
     margin-bottom: 55.667px;
-}
-
-body {
-    background-image: url(https://firebasestorage.googleapis.com/v0/b/recette-f3ef5.appspot.com/o/board.jpg?alt=media&token=b1884009-f4d7-416c-a990-dd12c2af4919);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
 }
 
 #submitButton{
@@ -91,22 +81,10 @@ body {
     width: auto;
 }
 
-#closeButton{
-    width: auto;
-}
-
 .container {
     margin-top: 80px;
 }
 
-#remImg{
-
-    width: 100px;
-    height: 100px;
-}
-#remImg:hover {
-    color: black;
-}
 .btn:hover {
     color: springgreen;
 }
@@ -215,7 +193,7 @@ body {
 .sidebar-nav {
     position: absolute;
     top: 0;
-    width: 220px;
+    width: 200px;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -314,12 +292,9 @@ body {
     box-shadow: none;
 }
 
-/*--------------------*/
-/*      Hamburger     */
-/*--------------------*/
 
 .hamburger {
-    position: fixed;
+    position: relative;
     top: 20px;
     float:right;
     z-index: 1050;
@@ -327,7 +302,7 @@ body {
     width: 32px;
     height: 28px;
     right: 20px;
-    background: transparent !important;
+    background: transparent;
     border: none;
 }
 .hamburger:hover,
@@ -438,40 +413,3 @@ body {
 }
 
 
-/*-------------------------------*/
-/*            Checkbox           */
-/*-------------------------------*/
-
-.box, .boxChecked{
-    font-size: 21pt;
-    color: white;
-}
-
-.chkDiv {
-    margin-top: 10px;
-}
-
-input[type="checkbox"] ~ i.far.fa-square{
-    color: white;    display: inline;
-}
-input[type="checkbox"] ~ i.fas.fa-check-square{
-    display: none;
-}
-
-input[type="checkbox"]:checked ~ i.far.fa-square{
-    display: none;
-}
-
-input[type="checkbox"]:checked ~ i.fas.fa-check-square{
-    color: white;    display: inline;
-}
-
-.chk {
-    display:none;
-}
-
-#trash{
-    color: white;
-    font-size: 17pt;
-    margin-top: 7px;
-}
