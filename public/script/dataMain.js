@@ -159,7 +159,7 @@ function showList() {
 
             chkBoxDiv.appendChild(chkBox);
             cardH.appendChild(cardAn);
-            cardH.appendChild(dayCounter);
+            cardH.appendChild(dayCounterButton);
             cardB.appendChild(cardBody);
             remBut.appendChild(remImg);
             cardB.appendChild(remBut);
