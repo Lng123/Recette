@@ -240,6 +240,7 @@ body {
     -moz-transition:  width .2s ease-in;
     -ms-transition:  width .2s ease-in;
     transition: width .2s ease-in;
+    margin-left: 15px;
 
 }
 .sidebar-nav li:first-child a {
