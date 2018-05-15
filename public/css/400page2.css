@@ -314,6 +314,9 @@ body {
     box-shadow: none;
 }
 
+/*--------------------*/
+/*      Hamburger     */
+/*--------------------*/
 
 .hamburger {
     position: relative;
@@ -324,7 +327,7 @@ body {
     width: 32px;
     height: 28px;
     right: 20px;
-    background: transparent;
+    background: transparent !important;
     border: none;
 }
 .hamburger:hover,
