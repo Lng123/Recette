@@ -1,6 +1,6 @@
 
 /* remove item by checkbox function! */
-$(document).ready(function(){
+$(document).ready(function () {
     $("#trashButton").click(function () {
 
         for (var i = 0; i < checkedArray.length; i++) {
@@ -90,7 +90,7 @@ function showList() {
             let expDate = dat.toString().split(" ");
             expDate = expDate.slice(1, 4).join(" ");
 
-            let dayLeft = dat.subtractDays(today.getDate()).toString().split(" ");
+            let dayLeft = dat.subtractDays(today).toString().split(" ");
             console.log(dayLeft);
             dayLeft = dayLeft[2];
 
@@ -140,19 +140,18 @@ function showList() {
 
             dayCounterButton.type = "button";
             dayCounterButton.style.float = "right";
+
             if (dayLeft < 0) {
+                dayCounterButton.setAttribute("class", "btn btn-danger specialButton");
                 card.style.background = "linear-gradient(to right, #49959c , rgba(74, 79, 86, 0.7))";
+                cardAn.prepend(icon);
             }
             if (dayLeft === "0") {
                 dayCounterButton.setAttribute("class", "btn btn-danger specialButton");
-                dayCounterButton.innerHTML = "Expires<br/>today";
+                dayCounterButton.innerHTML = "Last<br/>today";
+                dayCounterButton.style.fontSize = "16px";
                 cardAn.prepend(icon);
             } else if (dayLeft > 7) {
-
-                //buttons are interactive; disabling them causes color to dim
-                dayCounterButton.setAttribute("class", "btn btn-primary specialButton");
-                dayCounter.innerHTML = dayLeft + "<br/>Days";
-            } else if (dayLeft <= 7) {
                 //food will expire soon
                 dayCounterButton.setAttribute("class", "btn btn-warning specialButton");
                 dayCounter.innerHTML = dayLeft + "<br/>Days";
@@ -229,7 +228,7 @@ function showList() {
 
             window.eleCounter++;
         }
-        
+
     }
 
 
@@ -374,7 +373,7 @@ function addList() {
         window.eleCounter++;
         item.value = "";
         date.value = "";
-        
+
     } else {
         alert("Sorry, we are still adding more ingredients!");
     }
@@ -594,10 +593,16 @@ Date.prototype.addDays = function (days) {
 
 Date.prototype.subtractDays = function (days) {
     var dat = new Date(this.valueOf());
-    if (dat.getDate() === days) {
+    if (dat.getDate() === days.getDate()
+        && dat.getMonth() === dat.getMonth()) {
         return "/ / 0";
+    } else if (dat.getTime() < days.getTime()) {
+        console.log("dat: " + dat.getDate());
+        console.log("daYS: " + days.getDate());
+        console.log("past");
+        return "/ / " + (dat.getDay() - days.getDay());
     }
-    dat.setDate(dat.getDate() - days);
+    dat.setDate(dat.getDate() - days.getDate());
     return dat;
 }
 
