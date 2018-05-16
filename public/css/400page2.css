@@ -112,6 +112,11 @@ body {
     color: springgreen;
 }
 
+.specialButton {
+    height: auto;
+    width: auto;
+}
+
 
 /*-------------------------------*/
 /*           Wrappers            */

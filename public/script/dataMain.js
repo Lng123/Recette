@@ -89,6 +89,7 @@ function showList() {
             var remBut = document.createElement("button");
             var dayCounter = document.createElement("p");
             var dayCounterButton = document.createElement("button");
+            var dayCounterLabel = document.createElement("p");
             var container = document.createElement("div");
             var remImg = document.createElement("img");
 
@@ -119,17 +120,24 @@ function showList() {
     
             if (dayLeft > 7) {
                 //buttons are interactive; disabling them causes color to dim
-                dayCounterButton.setAttribute("class", "btn btn-primary");
+                dayCounterButton.setAttribute("class", "btn btn-primary specialButton");
             } else if (dayLeft <= 7) {
                 //food will expire soon
-                dayCounterButton.setAttribute("class", "btn btn-warning");
+                dayCounterButton.setAttribute("class", "btn btn-warning specialButton");
             } else {
                 // food is expired
-                dayCounterButton.setAttribute("class", "btn btn-danger");
+                dayCounterButton.setAttribute("class", "btn btn-danger specialButton");
             }
     
-            dayCounterButton.innerHTML = dayLeft;
-            dayCounter.style.fontSize = "21px";
+            // dayCounterButton.innerHTML = dayLeft + "<br>days";
+
+            dayCounter.innerHTML = dayLeft;
+            // dayCounter.style.fontSize = "21px";
+            dayCounter.style.margin = "0px";
+
+            dayCounterLabel.innerHTML = "Days";
+            dayCounterLabel.style.fontSize = "12px";
+            dayCounterLabel.style.margin = "0px";
 
             cardB.setAttribute("id", "collapse" + window.eleCounter);
             cardB.setAttribute("class", "collapse");
@@ -173,6 +181,8 @@ function showList() {
             label.appendChild(boxChecked);
             chkBoxDiv.appendChild(label);
             cardH.appendChild(cardAn);
+            dayCounterButton.appendChild(dayCounter);
+            dayCounterButton.appendChild(dayCounterLabel);
             cardH.appendChild(dayCounterButton);
             cardB.appendChild(cardBody);
             remBut.appendChild(remImg);
@@ -181,7 +191,6 @@ function showList() {
             card.appendChild(cardB);
             container.appendChild(chkBoxDiv);
             container.appendChild(card);
-
 
             list.appendChild(container);
 
@@ -202,6 +211,7 @@ function addList() {
     var cardH = document.createElement("div");
     var cardB = document.createElement("div");
     var dayCounter = document.createElement("p");
+    var dayCounterLabel = document.createElement("p");
     var dayCounterButton = document.createElement("button");
     var cardAn = document.createElement("a");
     var cardBody = document.createElement("div");
@@ -237,17 +247,23 @@ function addList() {
         dayCounterButton.style.float = "right";
 
         if (daysLeft > 7) {
-            dayCounterButton.setAttribute("class", "btn btn-primary");
+            dayCounterButton.setAttribute("class", "btn btn-primary specialButton");
         } else if (daysLeft <= 7) {
             //food will expire soon
-            dayCounterButton.setAttribute("class", "btn btn-warning");
+            dayCounterButton.setAttribute("class", "btn btn-warning specialButton");
         } else {
             // food is expired
-            dayCounterButton.setAttribute("class", "btn btn-danger");
+            dayCounterButton.setAttribute("class", "btn btn-danger specialButton");
         }
 
-        dayCounterButton.innerHTML = daysLeft;
-        dayCounter.style.fontSize = "21px";
+        dayCounter.innerHTML = daysLeft;
+        // dayCounter.style.fontSize = "21px";
+        dayCounter.style.margin = "0px";
+
+        dayCounterLabel.innerHTML = "Days";
+        dayCounterLabel.style.fontSize = "12px";
+        dayCounterLabel.style.margin = "0px";
+
 
         // dayCounter.innerHTML = daysLeft + " days left";
         
@@ -310,6 +326,8 @@ function addList() {
         label.appendChild(boxChecked);
         chkBoxDiv.appendChild(label);
         cardH.appendChild(cardAn);
+        dayCounterButton.appendChild(dayCounter);
+        dayCounterButton.appendChild(dayCounterLabel);
         cardH.appendChild(dayCounterButton);
         cardB.appendChild(cardBody);
         cardB.appendChild(remBut);
