@@ -40,8 +40,11 @@ img {
 
 @media (min-width: 768px) {
     .input-group{
-        display: block!important;
+        display: flex !important;
         max-width: 330px;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
     }
 
     .input-group-btn{
@@ -49,7 +52,14 @@ img {
     }
 
     #input{
-        margin-right: 70.63px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #inputDetail {
+        display: flex;
+        flex-direction: column;
     }
 }
 

@@ -39,7 +39,7 @@ db.collection("ingredient").get()
 
 window.ingListW = ingList;
 window.loadingDiv.style.visibility = 'visible';
-user.collection("list").get()
+user.collection("list").orderBy("expiaryDate","asc").get()
     .then(function (querySnapshot) {
         if (querySnapshot !== null) {
             querySnapshot.forEach(function (doc) {
@@ -308,7 +308,7 @@ function addList() {
         ref.collection("list").add(
             {
                 name: item.value,
-                expiaryDate: dateDB
+                expiaryDate: dateDB.getTime()
             }
         )
             .then(function (docRef) {
