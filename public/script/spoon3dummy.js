@@ -4,17 +4,26 @@ var data = [{"id":487385,"title":"vrat wale aloo or vrat ke aloo , aloo for fast
 
 window.onload = function() { 
     console.log(data);
-    var recipeDiv = document.getElementById("recipe");
+    var car = document.getElementById("car");
+    var first = true;
     for(var key in data){
-    var a = document.createElement("a");
+    var item = document.createElement("div");
     var img = document.createElement("img");
-    a.setAttribute("href","#");
-    a.setAttribute("onclick", "sendId(this.id)");
-    a.setAttribute("id", "" + data[key].id);
-    a.innerHTML = "<br/>" + data[key].title + "<br/>";
+    if (first) {
+            item.setAttribute("class","carousel-item active");
+            first = false;
+    }else{
+    item.setAttribute("class","carousel-item");
+        }
+    item.setAttribute("href","#");
+    item.setAttribute("onclick", "sendId(this.id)");
+    item.setAttribute("id", "" + data[key].id);
+    item.innerHTML = "<br/>" + data[key].title + "<br/>";
     img.setAttribute("src", "" +data[key].image );
-    recipeDiv.appendChild(a);
-    recipeDiv.appendChild(img);
+    img.style.width ="100%";
+    item.appendChild(img);
+    car.appendChild(item);
+
     }
     
     }

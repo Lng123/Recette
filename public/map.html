@@ -1,210 +1,45 @@
-<!-- <!DOCTYPE html>
-<html>
-  <head>
-    <title>Geolocation</title>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="map"></div>
-    <script>
-      // Note: This example requires that you consent to location sharing when
-      // prompted by your browser. If you see the error "The Geolocation service
-      // failed.", it means you probably did not give permission for the browser to
-      // locate you.
-
-      function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 49.2827, lng: 123.1207},
-          zoom: 15
-        });
-        var infoWindow = new google.maps.InfoWindow({map: map});
-
-        // Try HTML5 geolocation.
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
-
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('Location found.');
-            map.setCenter(pos);
-          }, function() {
-            handleLocationError(true, infoWindow, map.getCenter());
-          });
-        } else {
-          // Browser doesn't support Geolocation
-          handleLocationError(false, infoWindow, map.getCenter());
-        }
-      }
-
-      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(browserHasGeolocation ?
-                              'Error: The Geolocation service failed.' :
-                              'Error: Your browser doesn\'t support geolocation.');
-      }
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_3oCfP42Nr681yA1BKdrXRLB-u3UG_Ag&callback=initMap">
-    </script>
-  </body>
-</html> -->
-<!-- <!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <title>Search for up to 200 places with Radar Search</title>
-    <style>
-        /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-
-        #map {
-            height: 100%;
-        }
-        /* Optional: Makes the sample page fill the window. */
-
-        html,
-        body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-    </style>
-    <script>
-        // This example requires the Places library. Include the libraries=places
-        // parameter when you first load the API. For example:
-        // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
-
-        var map;
-        var infoWindow;
-        var service;
-
-        function initMap() {
-            var lat, lng;
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function (position) {
-                    var pos = {
-                        lat : position.coords.latitude,
-                        lng: position.coords.longitude
-                    }
-                    lat = position.coords.latitude;
-                    lng = position.coords.longitude;
-                    var map = new google.maps.Map(document.getElementById('map'), {
-                        center: { lat: lat, lng: lng },
-                        zoom: 15,
-                        styles: [{
-                            stylers: [{ visibility: 'simplified' }]
-                        }, {
-                            elementType: 'labels',
-                            stylers: [{ visibility: 'off' }]
-                        }]
-                    });
-                    var infoWindow = new google.maps.InfoWindow({ map: map });
-                    infoWindow.setPosition(pos);
-                    infoWindow.setContent('Location found.');
-                    map.setCenter(pos);
-
-                    service = new google.maps.places.PlacesService(map);
-                    // The idle event is a debounced event, so we can query & listen without
-                    // throwing too many requests at the server.
-                    console.log(map);
-                    map.addListener('idle', performSearch);
-                }, function () {
-                    handleLocationError(true, infoWindow, map.getCenter());
-                });
-            } else {
-                // Browser doesn't support Geolocation
-                handleLocationError(false, infoWindow, map.getCenter());
-            }
-
-            // Try HTML5 geolocation.
-
-
-
-        }
-
-
-        function performSearch() {
-            var request = {
-                bounds: map.getBounds(),
-                keyword: 'food donation'
-            };
-            service.radarSearch(request, callback);
-        }
-
-        function callback(results, status) {
-            if (status !== google.maps.places.PlacesServiceStatus.OK) {
-                console.error(status);
-                return;
-            }
-            for (var i = 0, result; result = results[i]; i++) {
-                addMarker(result);
-            }
-        }
-
-        function addMarker(place) {
-            var marker = new google.maps.Marker({
-                map: map,
-                position: place.geometry.location,
-                icon: {
-                    url: 'https://developers.google.com/maps/documentation/javascript/images/circle.png',
-                    anchor: new google.maps.Point(10, 10),
-                    scaledSize: new google.maps.Size(10, 17)
-                }
-            });
-
-            google.maps.event.addListener(marker, 'click', function () {
-                service.getDetails(place, function (result, status) {
-                    if (status !== google.maps.places.PlacesServiceStatus.OK) {
-                        console.error(status);
-                        return;
-                    }
-                    infoWindow.setContent(result.name);
-                    infoWindow.open(map, marker);
-                });
-            });
-        }
-    </script>
-</head>
-
-<body>
-    <div id="map"></div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_3oCfP42Nr681yA1BKdrXRLB-u3UG_Ag&callback=initMap&libraries=places,visualization"
-        async defer></script>
-
-</body>
-
-</html> -->
-
 <!DOCTYPE html>
 <html>
 
 <head>
+    <title>Recette</title>
+
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="./css/map.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Dhurjati%7cOpen+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Allura" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/loading.css">
+
     <title>Search for up to 200 places with Radar Search</title>
     <style>
         /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
 
         #map {
-            height: 100%;
+            height: 80%;
+            margin-top: 45px;
+            display: relative;
+            position: absolute;
+            width: 100%;
+        }
+
+        #mapCon {
+            padding-top: 24px;
+            padding-bottom: 30px;
+            display: flex;
         }
         /* Optional: Makes the sample page fill the window. */
 
@@ -215,6 +50,7 @@
             padding: 0;
         }
     </style>
+
     <script>
         // This example requires the Places library. Include the libraries=places
         // parameter when you first load the API. For example:
@@ -251,7 +87,7 @@
                     // The idle event is a debounced event, so we can query & listen without
                     // throwing too many requests at the server.
                     map.addListener('idle', performSearch);
-               
+
                 }, function () {
                     handleLocationError(true, infoWindow, map.getCenter());
                 });
@@ -280,15 +116,15 @@
                 addMarker(result);
             }
         }
-
+        var url = "";
         function addMarker(place) {
             var marker = new google.maps.Marker({
                 map: map,
                 position: place.geometry.location,
                 icon: {
-                    url: 'https://developers.google.com/maps/documentation/javascript/images/circle.png',
+                    url: 'https://firebasestorage.googleapis.com/v0/b/recette-f3ef5.appspot.com/o/src%2Ffood-1294826_1280.png?alt=media&token=18ec8e45-5456-4211-8b10-0c141580f020',
                     anchor: new google.maps.Point(10, 10),
-                    scaledSize: new google.maps.Size(10, 17)
+                    scaledSize: new google.maps.Size(12, 19)
                 }
             });
 
@@ -298,18 +134,138 @@
                         console.error(status);
                         return;
                     }
-                    infoWindow.setContent(result.name);
+                    console.log(result);
+                    var urlDiv = `<div onclick="showDetails()"><strong>`;
+                    url = result.url;
+                    console.log(url);
+                    infoWindow.setContent(urlDiv + result.name + '</strong>' +
+                        '<br>' +
+                        result.formatted_address + '</div>');
                     infoWindow.open(map, marker);
                 });
             });
         }
+        function showDetails() {
+            window.location.href= url;
+        }
+
+        
     </script>
 </head>
 
 <body>
-    <div id="map"></div>
+
+
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_3oCfP42Nr681yA1BKdrXRLB-u3UG_Ag&callback=initMap&libraries=places,visualization"
         async defer></script>
+    <div id="navCon">
+        <!-- Sidebar -->
+        <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+            <span class="hamb-top"></span>
+            <span class="hamb-middle"></span>
+            <span class="hamb-bottom"></span>
+        </button>
+        <div id="wrapper">
+            <div class="overlay"></div>
+            <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+                <ul class="nav sidebar-nav">
+                    <li class="sidebar-brand">
+                        <a href="#">Recette</a>
+                    </li>
+                    <li>
+                        <a href="./index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="./AboutUs.html">About</a>
+                    </li>
+                    <li>
+                        <a href="#">Tutorial</a>
+                    </li>
+                    <li>
+                        <a href="./contact.html">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- /#sidebar-wrapper -->
+        </div>
+    </div>
+    <div>
+        <nav id="gradient" class="navbar navbar-expand-smbg-dar navbar-dark fixed-top">
+
+            <a class="navbar-brand" href="./index.html" id="brand">Recette</a>
+            <ul class="nav">
+
+        </nav>
+        <div id="mapCon">
+            <div id="map"></div>
+        </div>
+        <div class="modal fade" id="manualEnter">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                       
+                    </div>
+
+
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="foodName">Enter Food:</label>
+                            <input type="text" class="form-control" id="foodName">
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Enter Expiry Date:</label>
+                            <input type="date" class="form-control" id="date">
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="submitButton" onclick="addList()" class="btn btn-secondary" data-dismiss="modal">Submit</button>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+        <footer class="fixed-bottom">
+
+
+            <nav class="navbar navbar-expand-smbg-dar navbar-dark" id="footspace">
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="nav-item" style="float:right;">
+
+                        <button type="button" id="searchbut">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/recette-f3ef5.appspot.com/o/magnifying-glass.svg?alt=media&token=14a21a32-29a9-46ac-9c50-04b8d2462f2d"
+                            alt="search" id="search">
+                    </button>
+
+                    </li>
+                    <li>
+                        <button type="button" id="deleteBut">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/recette-f3ef5.appspot.com/o/magnifying-glass.svg?alt=media&token=14a21a32-29a9-46ac-9c50-04b8d2462f2d"
+                            alt="search" id="search">
+                    </button>
+                    </li>
+
+                </ul>
+                <ul class="nav">
+
+                    <li class="nav-item" style="margin: 3px;">
+
+                        <button type="button" data-toggle="modal" data-target="#selectionModel">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/recette-f3ef5.appspot.com/o/plus.svg?alt=media&token=5c0bf803-ae01-4835-ac77-86f5f06482e1"
+                            alt="add" id="addBut"> </button>
+                    </li>
+
+                </ul>
+            </nav>
+        </footer>
+    </div>
+    <script src="./script/NavBar.js"></script>
+    <script src="./script/backgroundmain.js"></script>
 </body>
 
 </html>

@@ -1,4 +1,4 @@
-/*
+
 var data = JSON.parse(sessionStorage.getItem('farray'));
 console.log(data);
 
@@ -33,11 +33,14 @@ $.ajax(settings).done(function (response) {
     var listData = "testing";
         for(var key in response){
     var a = document.createElement("a");
+    var img = document.createElement("img");
     a.setAttribute("href","#");
     a.setAttribute("onclick", "sendId(this.id)");
     a.setAttribute("id", "" + response[key].id);
     a.innerHTML = response[key].title + "<br/>";
+    img.setAttribute("src", "" + response[key].image );
     $("#recipe").append(a);
+    $("#recipe").append(img);
     }
 
     
@@ -50,4 +53,3 @@ function sendId(clicked_id) {
     location.href = "page4.html";
     
 };
-*/
