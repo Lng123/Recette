@@ -66,13 +66,16 @@ function showList() {
         for (let i = 0; i < userList.length; i++) {
             
             var dat = new Date(userList[i].expiaryDate);
-
+        
+            
+            console.log(dat);
             var today = new Date();
 
             let expDate = dat.toString().split(" ");
             expDate = expDate.slice(1, 4).join(" ");
 
-            let dayLeft = dat.subtractDays(today.getDate()).toString().split(" ");
+            let dayLeft = dat.subtractDays(today.getDay());
+            console.log(dayLeft);
             dayLeft = dayLeft[2];
 
             var list = document.getElementById("accordion");
@@ -96,10 +99,12 @@ function showList() {
             container.setAttribute("id", "#Cnumber" + window.eleCounter);
             container.setAttribute("class", "CClass");
             card.setAttribute("class", "card");
-            card.setAttribute("id", "#number" + window.eleCounter);
-
+            
+            
+            card.setAttribute("data-toggle", "collapse");
+            card.setAttribute("href", "#collapse" + window.eleCounter);
+            
             cardH.setAttribute("class", "card-header");
-
             cardAn.setAttribute("class", "card-link");
             cardAn.setAttribute("data-toggle", "collapse");
             cardAn.setAttribute("href", "#collapse" + window.eleCounter);
