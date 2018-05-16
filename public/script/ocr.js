@@ -158,10 +158,10 @@ function addLists(input) {
   var container = document.createElement("div");
   var id = "";
 
-  container.setAttribute("id", "#Cnumber" + window.eleCounter);
+  container.setAttribute("id", "Cnumber" + window.eleCounter);
   container.setAttribute("class", "CClass");
   card.setAttribute("class", "card");
-  card.setAttribute("id", "#number" + window.eleCounter);
+  card.setAttribute("id", "number" + window.eleCounter);
 
 
   cardH.setAttribute("class", "card-header");
@@ -190,7 +190,7 @@ function addLists(input) {
 
   chkBox.setAttribute("type", "checkbox");
   label.setAttribute("id", "chkb" + window.eleCounter);
-  label.setAttribute("onclick", "searchhide()");
+  label.setAttribute("onclick", "if_chk_checked()");
   label.setAttribute("name", "chkbox" + window.eleCounter);
   chkBox.setAttribute("class", "chk");
   chkBoxDiv.setAttribute("class", "chkDiv");

@@ -1,3 +1,19 @@
+
+/* remove item by checkbox function! */
+$(document).ready(function(){
+    $("#trashButton").click(function () {
+
+        for (var i = 0; i < checkedArray.length; i++) {
+            var str = "#Cnumber" + checkedArray[i];
+            $(str).remove();
+
+        }
+        $(".chkDiv").toggleClass('hidden');
+        if_chk_checked();
+    })
+})
+
+
 let login = sessionStorage.getItem("userEmail");
 var loadingDiv = document.getElementById('loading');
 console.log(login);
@@ -39,7 +55,7 @@ db.collection("ingredient").get()
 
 window.ingListW = ingList;
 window.loadingDiv.style.visibility = 'visible';
-user.collection("list").orderBy("expiaryDate","asc").get()
+user.collection("list").orderBy("expiaryDate", "asc").get()
     .then(function (querySnapshot) {
         if (querySnapshot !== null) {
             querySnapshot.forEach(function (doc) {
@@ -51,7 +67,7 @@ user.collection("list").orderBy("expiaryDate","asc").get()
                     id: doc.id
                 });
             });
-            
+
             console.log(loadingDiv.style.visibility);
             showList();
             window.loadingDiv.style.visibility = 'hidden';
@@ -59,15 +75,15 @@ user.collection("list").orderBy("expiaryDate","asc").get()
     });
 
 function showList() {
-    
+
     if (userList.length !== 0) {
         console.log(userList);
-        
+
         for (let i = 0; i < userList.length; i++) {
-            
+
             var dat = new Date(userList[i].expiaryDate);
-        
-            
+
+
             console.log(dat);
             var today = new Date();
 
@@ -96,14 +112,15 @@ function showList() {
             var container = document.createElement("div");
             var remImg = document.createElement("img");
             var icon = document.createElement("i");
-            
 
-            container.setAttribute("id", "#Cnumber" + window.eleCounter);
+
+            container.setAttribute("id", "Cnumber" + window.eleCounter);
             container.setAttribute("class", "CClass");
             card.setAttribute("class", "card");
+            card.setAttribute("id", "number" + window.eleCounter);
             card.setAttribute("data-toggle", "collapse");
             card.setAttribute("href", "#collapse" + window.eleCounter);
-            
+
             cardH.setAttribute("class", "card-header");
             cardAn.setAttribute("class", "card-link");
             cardAn.setAttribute("data-toggle", "collapse");
@@ -123,7 +140,7 @@ function showList() {
 
             dayCounterButton.type = "button";
             dayCounterButton.style.float = "right";
-            if (dayLeft < 0 ) {
+            if (dayLeft < 0) {
                 card.style.background = "linear-gradient(to right, #49959c , rgba(74, 79, 86, 0.7))";
             }
             if (dayLeft === "0") {
@@ -131,7 +148,7 @@ function showList() {
                 dayCounterButton.innerHTML = "Expires<br/>today";
                 cardAn.prepend(icon);
             } else if (dayLeft > 7) {
-            
+
                 //buttons are interactive; disabling them causes color to dim
                 dayCounterButton.setAttribute("class", "btn btn-primary specialButton");
                 dayCounter.innerHTML = dayLeft + "<br/>Days";
@@ -143,12 +160,12 @@ function showList() {
                 // food is expired
                 dayCounterButton.setAttribute("class", "btn btn-danger specialButton");
                 dayCounter.innerHTML = dayLeft + "<br/>Days";
-                            
+
             }
-    
+
             // dayCounterButton.innerHTML = dayLeft + "<br>days";
 
-            
+
             // dayCounter.style.fontSize = "21px";
             dayCounter.style.margin = "0px";
 
@@ -165,7 +182,7 @@ function showList() {
 
             chkBox.setAttribute("type", "checkbox");
             label.setAttribute("id", "chkb" + window.eleCounter);
-            label.setAttribute("onclick", "searchhide()");
+            label.setAttribute("onclick", "if_chk_checked()");
             label.setAttribute("name", "chkbox" + window.eleCounter);
             chkBox.setAttribute("class", "chk");
             chkBoxDiv.setAttribute("class", "chkDiv");
@@ -214,7 +231,7 @@ function showList() {
         }
         
     }
-    
+
 
 }
 
@@ -242,11 +259,11 @@ function addList() {
     var id = "";
 
     if (recogEx(ingList, item)) {
-        container.setAttribute("id", "#Cnumber" + window.eleCounter);
+        container.setAttribute("id", "Cnumber" + window.eleCounter);
         container.setAttribute("class", "CClass");
 
         card.setAttribute("class", "card");
-        card.setAttribute("id", "#number" + window.eleCounter);
+        card.setAttribute("id", "number" + window.eleCounter);
 
         cardH.setAttribute("class", "card-header");
 
@@ -260,7 +277,7 @@ function addList() {
         var daysLeft = calculateDayCount(new Date(), new Date(date.value));
         dayCounterButton.type = "button";
         dayCounterButton.style.float = "right";
-        if (daysLeft < 0 ) {
+        if (daysLeft < 0) {
             card.style.background = "linear-gradient(to right, #49959c , rgba(74, 79, 86, 0.7))";
         }
         if (daysLeft > 7) {
@@ -283,7 +300,7 @@ function addList() {
 
 
         // dayCounter.innerHTML = daysLeft + " days left";
-        
+
         // if (daysLeft <= 7) {
         //     dayCounter.style.color = "red";
         // }
@@ -297,7 +314,7 @@ function addList() {
 
         chkBox.setAttribute("type", "checkbox");
         label.setAttribute("id", "chkb" + window.eleCounter);
-        label.setAttribute("onclick", "searchhide()");
+        label.setAttribute("onclick", "if_chk_checked()");
         label.setAttribute("name", "chkbox" + window.eleCounter);
         chkBox.setAttribute("class", "chk");
         chkBoxDiv.setAttribute("class", "chkDiv");
@@ -357,9 +374,11 @@ function addList() {
         window.eleCounter++;
         item.value = "";
         date.value = "";
+        
     } else {
         alert("Sorry, we are still adding more ingredients!");
     }
+
 
 }
 
@@ -401,25 +420,33 @@ function rmEle(id, num) {
         })
 }
 
+var checkedArray = [];
 //searching functions
-function searchhide() {
+function if_chk_checked() {
     var search = document.getElementById("searchbut");
     var trash = document.getElementById("trashButton")
     var checkb = document.getElementsByClassName("chk");
-    
+
     search.style.display = 'none';
     trash.style.display = 'none';
 
     for (var i = 0; i < window.eleCounter; i++) {
+
         if (checkb[i].checked) {
-            console.log("number" + i);
-            console.log(checkb[i].checked);
             search.style.display = 'inline';
             trash.style.display = 'inline';
+
+            if (checkedArray.indexOf(i) < 0) {
+                checkedArray.push(i);
+            } else {
+                var itemtoRemove = i;
+                checkedArray.splice($.inArray(itemtoRemove, checkedArray), 1);
+            }
         }
 
     }
 }
+
 
 var sbut = document.getElementById("searchbut");
 
@@ -567,7 +594,7 @@ Date.prototype.addDays = function (days) {
 
 Date.prototype.subtractDays = function (days) {
     var dat = new Date(this.valueOf());
-    if(dat.getDate() === days) {
+    if (dat.getDate() === days) {
         return "/ / 0";
     }
     dat.setDate(dat.getDate() - days);
@@ -621,3 +648,4 @@ function calculateDayCount(date1, date2) {
     // Convert back to days and return
     return Math.round(difference / one_day);
 }
+
