@@ -93,6 +93,7 @@ body {
 
 #closeButton{
     width: auto;
+    background-color: green;
 }
 
 .container {

@@ -79,6 +79,27 @@ hr.star-light {
     color:white;
 }
 
+#userStatus{
+    margin-top: -35px;
+    text-align: center;
+}
+
+#userStatus p{
+    margin-bottom: 20px;
+    color: white;
+    font-size: 15pt;
+}
+
+#userStatus .btn-info{
+    margin-right: 15px;
+}
+#userStatus .btn-danger{
+    margin-left: 15px;
+}
+#userStatus .btn-danger p{
+
+}
+
 
 /*-------------------------------*/
 /*           Wrappers            */
