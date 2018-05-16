@@ -142,8 +142,10 @@ function showList() {
             dayCounterButton.style.float = "right";
 
             if (dayLeft < 0) {
-                dayCounterButton.setAttribute("class", "btn btn-danger specialButton");
+                
                 card.style.background = "linear-gradient(to right, #49959c , rgba(74, 79, 86, 0.7))";
+                dayCounterButton.setAttribute("class", "btn btn-danger specialButton");
+                dayCounter.innerHTML = dayLeft + "<br/>Days";
                 cardAn.prepend(icon);
             }
             if (dayLeft === "0") {
@@ -151,21 +153,17 @@ function showList() {
                 dayCounterButton.innerHTML = "Last<br/>today";
                 dayCounterButton.style.fontSize = "16px";
                 cardAn.prepend(icon);
-            } else if (dayLeft > 7) {
+            } else if (dayLeft < 7) {
                 //food will expire soon
                 dayCounterButton.setAttribute("class", "btn btn-warning specialButton");
                 dayCounter.innerHTML = dayLeft + "<br/>Days";
             } else {
                 // food is expired
-                dayCounterButton.setAttribute("class", "btn btn-danger specialButton");
+                dayCounterButton.setAttribute("class", "btn btn-primary specialButton");
                 dayCounter.innerHTML = dayLeft + "<br/>Days";
 
             }
 
-            // dayCounterButton.innerHTML = dayLeft + "<br>days";
-
-
-            // dayCounter.style.fontSize = "21px";
             dayCounter.style.margin = "0px";
 
 
