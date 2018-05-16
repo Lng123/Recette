@@ -74,7 +74,7 @@ function showList() {
             let expDate = dat.toString().split(" ");
             expDate = expDate.slice(1, 4).join(" ");
 
-            let dayLeft = dat.subtractDays(today.getDay()).toString().split(" ");
+            let dayLeft = dat.subtractDays(today.getDate()).toString().split(" ");
             console.log(dayLeft);
             dayLeft = dayLeft[2];
 
@@ -95,12 +95,12 @@ function showList() {
             var dayCounterLabel = document.createElement("p");
             var container = document.createElement("div");
             var remImg = document.createElement("img");
+            var icon = document.createElement("i");
+            
 
             container.setAttribute("id", "#Cnumber" + window.eleCounter);
             container.setAttribute("class", "CClass");
             card.setAttribute("class", "card");
-            
-            
             card.setAttribute("data-toggle", "collapse");
             card.setAttribute("href", "#collapse" + window.eleCounter);
             
@@ -111,7 +111,8 @@ function showList() {
             cardAn.innerHTML = window.userList[i].name;
             cardAn.style.fontSize = "21px";
             cardAn.name = "foodValue";
-
+            icon.setAttribute("class", "fas fa-exclamation-triangle");
+            icon.style.marginRight = "5px";
             // dayCounter.innerHTML = dayLeft + " days left";
             // dayCounter.style.float = "right";
             // dayCounter.style.fontSize = "18px";
@@ -122,25 +123,33 @@ function showList() {
 
             dayCounterButton.type = "button";
             dayCounterButton.style.float = "right";
-    
-            if (dayLeft > 7) {
+            if (dayLeft === "0") {
+                dayCounterButton.setAttribute("class", "btn btn-danger specialButton");
+                dayCounterButton.innerHTML = "Expires<br/>today";
+                cardAn.prepend(icon);
+            } else if (dayLeft > 7) {
+            
                 //buttons are interactive; disabling them causes color to dim
                 dayCounterButton.setAttribute("class", "btn btn-primary specialButton");
+                dayCounter.innerHTML = dayLeft + "<br/>Days";
             } else if (dayLeft <= 7) {
                 //food will expire soon
                 dayCounterButton.setAttribute("class", "btn btn-warning specialButton");
+                dayCounter.innerHTML = dayLeft + "<br/>Days";
             } else {
                 // food is expired
                 dayCounterButton.setAttribute("class", "btn btn-danger specialButton");
+                dayCounter.innerHTML = dayLeft + "<br/>Days";
+                            
             }
     
             // dayCounterButton.innerHTML = dayLeft + "<br>days";
 
-            dayCounter.innerHTML = dayLeft;
+            
             // dayCounter.style.fontSize = "21px";
             dayCounter.style.margin = "0px";
 
-            dayCounterLabel.innerHTML = "Days";
+
             dayCounterLabel.style.fontSize = "12px";
             dayCounterLabel.style.margin = "0px";
 
@@ -553,6 +562,9 @@ Date.prototype.addDays = function (days) {
 
 Date.prototype.subtractDays = function (days) {
     var dat = new Date(this.valueOf());
+    if(dat.getDate() === days) {
+        return "/ / 0";
+    }
     dat.setDate(dat.getDate() - days);
     return dat;
 }
