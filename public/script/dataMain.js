@@ -81,7 +81,6 @@ function showList() {
             var cardB = document.createElement("div");
             var cardAn = document.createElement("a");
             var cardBody = document.createElement("div");
-            var searchBut = document.createElement("button");
             var chkBox = document.createElement("input");
             var chkBoxDiv = document.createElement("div");
             var box = document.createElement("i");
@@ -138,9 +137,6 @@ function showList() {
 
             cardBody.setAttribute("class", "card-body");
             cardBody.innerHTML = "The ingredients will expire on " + "<b>" + expDate + "</b>";
-
-            searchBut.setAttribute("type", "button");
-            searchBut.innerHTML = "search";
 
             chkBox.setAttribute("type", "checkbox");
             label.setAttribute("id", "chkb" + window.eleCounter);
@@ -209,7 +205,6 @@ function addList() {
     var dayCounterButton = document.createElement("button");
     var cardAn = document.createElement("a");
     var cardBody = document.createElement("div");
-    var searchBut = document.createElement("button");
     var item = document.getElementById("foodName");
     var date = document.getElementById("date");
     var chkBox = document.createElement("input");
@@ -375,14 +370,18 @@ function rmEle(id, num) {
 //searching functions
 function searchhide() {
     var search = document.getElementById("searchbut");
+    var trash = document.getElementById("trashButton")
     var checkb = document.getElementsByClassName("chk");
-    // search.style.display = 'none';
+    
+    search.style.display = 'none';
+    trash.style.display = 'none';
 
     for (var i = 0; i < window.eleCounter; i++) {
         if (checkb[i].checked) {
             console.log("number" + i);
             console.log(checkb[i].checked);
-            search.style.display = 'block';
+            search.style.display = 'inline';
+            trash.style.display = 'inline';
         }
 
     }
