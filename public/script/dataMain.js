@@ -185,8 +185,6 @@ function showList() {
             dayCounterButton.appendChild(dayCounterLabel);
             cardH.appendChild(dayCounterButton);
             cardB.appendChild(cardBody);
-            remBut.appendChild(remImg);
-            cardB.appendChild(remBut);
             card.appendChild(cardH);
             card.appendChild(cardB);
             container.appendChild(chkBoxDiv);
@@ -330,7 +328,6 @@ function addList() {
         dayCounterButton.appendChild(dayCounterLabel);
         cardH.appendChild(dayCounterButton);
         cardB.appendChild(cardBody);
-        cardB.appendChild(remBut);
         card.appendChild(cardH);
         card.appendChild(cardB);
         container.appendChild(chkBoxDiv);
