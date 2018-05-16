@@ -123,6 +123,9 @@ function showList() {
 
             dayCounterButton.type = "button";
             dayCounterButton.style.float = "right";
+            if (dayLeft < 0 ) {
+                card.style.background = "linear-gradient(to right, #49959c , rgba(74, 79, 86, 0.7))";
+            }
             if (dayLeft === "0") {
                 dayCounterButton.setAttribute("class", "btn btn-danger specialButton");
                 dayCounterButton.innerHTML = "Expires<br/>today";
@@ -257,7 +260,9 @@ function addList() {
         var daysLeft = calculateDayCount(new Date(), new Date(date.value));
         dayCounterButton.type = "button";
         dayCounterButton.style.float = "right";
-
+        if (daysLeft < 0 ) {
+            card.style.background = "linear-gradient(to right, #49959c , rgba(74, 79, 86, 0.7))";
+        }
         if (daysLeft > 7) {
             dayCounterButton.setAttribute("class", "btn btn-primary specialButton");
         } else if (daysLeft <= 7) {
