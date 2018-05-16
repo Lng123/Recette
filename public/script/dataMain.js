@@ -74,7 +74,7 @@ function showList() {
             let expDate = dat.toString().split(" ");
             expDate = expDate.slice(1, 4).join(" ");
 
-            let dayLeft = dat.subtractDays(today.getDay());
+            let dayLeft = dat.subtractDays(today.getDay()).toString().split(" ");
             console.log(dayLeft);
             dayLeft = dayLeft[2];
 
