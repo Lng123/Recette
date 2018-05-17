@@ -1,15 +1,46 @@
 
 /* remove item by checkbox function! */
 $(document).ready(function () {
+
     $("#trashButton").click(function () {
+        var str;
+        var index;
+        var itemID;
+        var checkedArray = [];
+
+        $(":checked").each(function () {
+            checkedArray.push($(this).parent().attr('id'));
+        })
 
         for (var i = 0; i < checkedArray.length; i++) {
-            var str = "#Cnumber" + checkedArray[i];
-            $(str).remove();
+            str = "#Cnumber" + checkedArray[i].substr(4);
+            index = checkedArray[i].substr(4);
+            itemID = userList[index].id;
 
+            let ele = $(str);
+
+            rmEle(itemID, ele);
+
+            chkbCounter--;
         }
+
+        for (var i = 0; i < checkedArray.length; i++) {
+            userList.splice(checkedArray[i], 1);
+        }
+        checkedArray = [];
+
+        var count = 0;
+        $(':checkbox').each(function(){
+            let chkbIdName = "chkb" + count;
+            console.log(chkbIdName);
+            $(this).parent().removeAttr('id');
+            $(this).parent().attr('id', chkbIdName);
+            count++;
+        })
+
         $(".chkDiv").toggleClass('hidden');
-        if_chk_checked();
+        $('#searchbut').css('display', 'none');
+        $('#trashButton').css('display', 'none');
     })
 })
 
@@ -40,6 +71,7 @@ var functions = firebase.functions();
 
 var camBut = document.getElementById("camera");
 var eleCounter = 0;
+var chkbCounter = 0;
 var a = sessionStorage.getItem("userEmail");
 var ingList = [];
 var userList = [];
@@ -142,7 +174,7 @@ function showList() {
             dayCounterButton.style.float = "right";
 
             if (dayLeft < 0) {
-                
+
                 card.style.background = "linear-gradient(to right, #49959c , rgba(74, 79, 86, 0.7))";
                 dayCounterButton.setAttribute("class", "btn btn-danger specialButton");
                 dayCounter.innerHTML = dayLeft + "<br/>Days";
@@ -178,15 +210,15 @@ function showList() {
             cardBody.innerHTML = "The ingredients will expire on " + "<b>" + expDate + "</b>";
 
             chkBox.setAttribute("type", "checkbox");
-            label.setAttribute("id", "chkb" + window.eleCounter);
-            label.setAttribute("onclick", "if_chk_checked()");
-            label.setAttribute("name", "chkbox" + window.eleCounter);
+            label.setAttribute("id", "chkb" + window.chkbCounter);
+            label.setAttribute("name", "chkbox" + window.chkbCounter);
             chkBox.setAttribute("class", "chk");
             chkBoxDiv.setAttribute("class", "chkDiv");
             chkBoxDiv.classList.add("hidden");
             chkBoxDiv.setAttribute("style", "float: left;");
 
             label.classList.add("btn");
+            label.classList.add("chkbLabel");
 
             box.classList.add("far");
             box.classList.add("fa-square");
@@ -225,8 +257,9 @@ function showList() {
 
 
             window.eleCounter++;
+            window.chkbCounter++;
         }
-
+        if_chk_checked();
     }
 
 
@@ -310,15 +343,15 @@ function addList() {
         cardBody.innerHTML = "This ingredient will expire on " + "<b>" + formatDate(date.value) + "</b>";
 
         chkBox.setAttribute("type", "checkbox");
-        label.setAttribute("id", "chkb" + window.eleCounter);
-        label.setAttribute("onclick", "if_chk_checked()");
-        label.setAttribute("name", "chkbox" + window.eleCounter);
+        label.setAttribute("id", "chkb" + window.chkbCounter);
+        label.setAttribute("name", "chkbox" + window.chkbCounter);
         chkBox.setAttribute("class", "chk");
         chkBoxDiv.setAttribute("class", "chkDiv");
         chkBoxDiv.classList.add("hidden");
         chkBoxDiv.setAttribute("style", "float: left;");
 
         label.classList.add("btn");
+        label.classList.add("chkbLabel");
 
         box.classList.add("far");
         box.classList.add("fa-square");
@@ -345,8 +378,18 @@ function addList() {
             .then(function (docRef) {
                 console.log(docRef);
                 id = docRef.id;
+                userList[window.chkbCounter-1] = (
+                    {
+                        name: window.name,
+                        expiaryDate: dateDB.getTime(),
+                        id: id,
+                    }
+                );
+                console.log(userList);
             });
         id = '' + id;
+        console.log(id);
+
         let delCon = container;
         remBut.addEventListener('click', function () {
             rmEle(id, delCon);
@@ -369,8 +412,11 @@ function addList() {
 
         list.appendChild(container);
         window.eleCounter++;
+        window.chkbCounter++;
         item.value = "";
         date.value = "";
+
+        if_chk_checked();
 
     } else {
         alert("Sorry, we are still adding more ingredients!");
@@ -386,7 +432,7 @@ function search(item) {
 function recogEx(list, item) {
     let result = false;
     let item2 = "" + item.value;
-    console.log(list);
+    // console.log(list);
     console.log(item.value);
     for (let i = 0; i < list.length; i++) {
         if (item.value === list[i].name) {
@@ -408,40 +454,42 @@ function rmEle(id, num) {
 
 
     user2.collection("list").doc(id).delete()
-        .then(function (e) {
-
-            console.log(e);
-
-        }).catch(function (e) {
-            console.log(e);
-        })
+        .then(function () {
+            console.log("Document successfully deleted!");
+        }).catch(function (error) {
+            console.error("Error removing document: ", error);
+        });
 }
 
-var checkedArray = [];
+// var checkedArray = [];
 //searching functions
 function if_chk_checked() {
-    var search = document.getElementById("searchbut");
-    var trash = document.getElementById("trashButton")
-    var checkb = document.getElementsByClassName("chk");
 
-    search.style.display = 'none';
-    trash.style.display = 'none';
+    $(".chkbLabel").click(function () {
+        var search = document.getElementById("searchbut");
+        var trash = document.getElementById("trashButton");
+        var checkb = document.getElementsByClassName("chk");
 
-    for (var i = 0; i < window.eleCounter; i++) {
+        search.style.display = 'none';
+        trash.style.display = 'none';
 
-        if (checkb[i].checked) {
-            search.style.display = 'inline';
-            trash.style.display = 'inline';
 
-            if (checkedArray.indexOf(i) < 0) {
-                checkedArray.push(i);
-            } else {
-                var itemtoRemove = i;
-                checkedArray.splice($.inArray(itemtoRemove, checkedArray), 1);
+        for (var i = 0; i < window.chkbCounter; i++) {
+
+            if (checkb[i].checked) {
+                search.style.display = 'inline';
+                trash.style.display = 'inline';
+
+                // if (checkedArray.indexOf(i) < 0) {
+                //     checkedArray.push(i);
+                // } else {
+                //     var itemtoRemove = i;
+                //     checkedArray.splice($.inArray(itemtoRemove, checkedArray), 1);
+                // }
             }
-        }
 
-    }
+        }
+    })
 }
 
 
@@ -485,7 +533,7 @@ function autocomplete(inp, arr) {
         /*for each item in the array...*/
         for (i = 0; i < arr.length; i++) {
             /*check if the item starts with the same letters as the text field value:*/
-            console.log(arr[i]);
+            // console.log(arr[i]);
             if (arr[i].name.substr(0, val.length).toUpperCase() == val.toUpperCase()) {
                 /*create a DIV element for each matching element:*/
                 b = document.createElement("DIV");
