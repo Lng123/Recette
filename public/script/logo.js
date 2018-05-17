@@ -14,12 +14,12 @@ var bcit = document.createElement("img");
 })();
 
 window.onload = function() {
-    bcit.src="https://firebasestorage.googleapis.com/v0/b/recette-f3ef5.appspot.com/o/recipe%2Fbcit-logo.png?alt=media&token=02ba9f04-4fee-4caa-8a36-2519246a8cc7";
-    bcit.style.width = "180px";
+    bcit.src="https://firebasestorage.googleapis.com/v0/b/recette-f3ef5.appspot.com/o/src%2Fbcit.png?alt=media&token=6ab554aa-225a-4150-9d65-56318efd33df";
+    bcit.style.width = "130px";
     bcit.style.height = "auto";
     bcit.style.position = "relative";
     bcit.style.zIndex = "-1";
-    bcit.style.top = "130px";    
+    bcit.style.top = "160px";    
 }
 
 function easter() {
