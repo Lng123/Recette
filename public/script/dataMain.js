@@ -1,7 +1,8 @@
 
-/* remove item by checkbox function! */
+
 $(document).ready(function () {
 
+    /* remove item by checkbox function! */
     $("#trashButton").click(function () {
         var str;
         var index;
@@ -32,10 +33,11 @@ $(document).ready(function () {
 
         // Update Id numbers!
         var count = 0;
-        $(':checkbox').each(function(){
+        $(':checkbox').each(function () {
             let chkbIdName = "chkb" + count;
             let cnumberIdName = "Cnumber" + count;
             let chkbName = "chkbox" + count;
+            let cardID = "number" + count;
 
             //update checkbox ID
             $(this).parent().removeAttr('id');
@@ -48,13 +50,18 @@ $(document).ready(function () {
             //update Cnumber ID
             $(this).parent().parent().parent().removeAttr('id');
             $(this).parent().parent().parent().attr('id', cnumberIdName);
-            
+
+            //update card ID
+            $(this).parent().parent().siblings().removeAttr('id');
+            $(this).parent().parent().siblings().attr('id', cardID);
+
             count++;
         })
 
         $(".chkDiv").toggleClass('hidden');
-        $('#searchbut').css('display', 'none');
-        $('#trashButton').css('display', 'none');
+        $('#searchbut').addClass('hidden');
+        $('#trashButton').addClass('hidden');
+        $('#selectAll').addClass('hidden');
     })
 })
 
@@ -274,6 +281,7 @@ function showList() {
             window.chkbCounter++;
         }
         if_chk_checked();
+        allChk();
     }
 
 
@@ -392,7 +400,7 @@ function addList() {
             .then(function (docRef) {
                 console.log(docRef);
                 id = docRef.id;
-                userList[window.chkbCounter-1] = (
+                userList[window.chkbCounter - 1] = (
                     {
                         name: window.name,
                         expiaryDate: dateDB.getTime(),
@@ -431,6 +439,7 @@ function addList() {
         date.value = "";
 
         if_chk_checked();
+        allChk();
 
     } else {
         alert("Sorry, we are still adding more ingredients!");
@@ -478,31 +487,17 @@ function rmEle(id, num) {
 //searching functions
 function if_chk_checked() {
 
-    $(".chkbLabel").click(function () {
-        var search = document.getElementById("searchbut");
-        var trash = document.getElementById("trashButton");
-        var checkb = document.getElementsByClassName("chk");
+    $(":checkbox").change(function () {
 
-        search.style.display = 'none';
-        trash.style.display = 'none';
-
-
-        for (var i = 0; i < window.chkbCounter; i++) {
-
-            if (checkb[i].checked) {
-                search.style.display = 'inline';
-                trash.style.display = 'inline';
-
-                // if (checkedArray.indexOf(i) < 0) {
-                //     checkedArray.push(i);
-                // } else {
-                //     var itemtoRemove = i;
-                //     checkedArray.splice($.inArray(itemtoRemove, checkedArray), 1);
-                // }
-            }
-
+        if ($(":checked").length > 0) {
+            $('#searchbut').removeClass('hidden');
+            $('#trashButton').removeClass('hidden');
+        } else {
+            $('#searchbut').addClass('hidden');
+            $('#trashButton').addClass('hidden');
         }
     })
+
 }
 
 
@@ -713,57 +708,22 @@ function calculateDayCount(date1, date2) {
     return Math.round(difference / one_day);
 }
 
-var count = 0;
-var count2 = 0;
-window.onload = function() {
-    count = 0;
-}
-
-function selectshow() {
-    var selectAll = document.getElementById("selectAll");
-    if (count % 2 == 0) {
-    selectAll.style.display = "block";
-    } else {
-        selectAll.style.display = "none";
-    }
-    count++;
-    count2 = 0;
-}
 
 function allChk() {
-    var checkb = document.getElementsByClassName("chk");
-    for (var i = 0; i < checkb.length; i++) {
-    if (count2 % 2 ==0) {
-        checkb[i].checked = true;
-    } else {
-        checkb[i].checked = false;
-      }
-    }
-    
-    count2++;
-    
-        var search = document.getElementById("searchbut");
-        var trash = document.getElementById("trashButton");
-        var checkb = document.getElementsByClassName("chk");
+    var clicks = 0
 
-        search.style.display = 'none';
-        trash.style.display = 'none';
-
-
-        for (var i = 0; i < window.chkbCounter; i++) {
-
-            if (checkb[i].checked) {
-                search.style.display = 'inline';
-                trash.style.display = 'inline';
-
-                // if (checkedArray.indexOf(i) < 0) {
-                //     checkedArray.push(i);
-                // } else {
-                //     var itemtoRemove = i;
-                //     checkedArray.splice($.inArray(itemtoRemove, checkedArray), 1);
-                // }
-            }
+    $('#selectAll').click(function () {
+        if (clicks == 0 || clicks % 2 == 0) {
+            $(':checkbox').prop('checked', true);
+            $('#searchbut').removeClass('hidden');
+            $('#trashButton').removeClass('hidden');
+        } else {
+            $(':checked').prop('checked', false);
+            $('#searchbut').addClass('hidden');
+            $('#trashButton').addClass('hidden');
 
         }
-    
+        clicks++;
+    });
+
 }

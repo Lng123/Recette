@@ -517,6 +517,3 @@ input[type="checkbox"]:checked ~ i.fas.fa-check-square{
     height:48px;
 }
 
-#selectAll {
-    display: none;
-}

@@ -1,17 +1,22 @@
 $(document).ready(function () {
-  $('#deleteBut').click(function () {
+  $('#select').click(function () {
     $(".chkDiv").toggleClass('hidden');
-    $('.chk').prop('checked', false);
-    $('#searchbut').css('display','none');
-    $('#trashButton').css('display','none');
+    $('#selectAll').toggleClass('hidden');
+
+    if ((".chkDiv").hasClass('hidden')){
+      $('.chk').prop('checked', false);
+      $('#searchbut').addClass('hidden');
+      $('#trashButton').addClass('hidden');
+    }
   });
 
-  $("#plusButton").click(function(){
-    if(!$(".chkDiv").hasClass('hidden')){
+  $("#plusButton").click(function () {
+    if (!$(".chkDiv").hasClass('hidden')) {
       $(".chkDiv").addClass('hidden');
       $('.chk').prop('checked', false);
-      $('#searchbut').css('display','none');
-      $('#trashButton').css('display','none');
+      $('#searchbut').addClass('hidden');
+      $('#trashButton').addClass('hidden');
+      $('#selectAll').addClass('hidden');
     }
   })
 });
