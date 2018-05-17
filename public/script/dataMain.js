@@ -61,9 +61,9 @@ $(document).ready(function () {
 
 let login = sessionStorage.getItem("userEmail");
 var loadingDiv = document.getElementById('loading');
-console.log(login);
+
 if (login !== null) {
-    console.log("Have id");
+    console.log("Successful Login");
 } else {
     location.href = "./index.html";
 }
@@ -465,7 +465,6 @@ function rmEle(id, num) {
     console.log(num);
 
     num.remove();
-
 
     user2.collection("list").doc(id).delete()
         .then(function () {
