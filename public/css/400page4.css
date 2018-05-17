@@ -45,6 +45,8 @@ footer{
 
 #recipe{
     margin-bottom: 55.667px;
+        text-align: center;
+    font-size: 4vw;
 }
 
 #dropdown {
@@ -56,13 +58,16 @@ footer{
     left: auto;
 }
 
-#recipe {
-    float:left;
-    width: 400px;
-}
-
 #recipe img {
     width: 100%;
+    max-width: 400px;
     border-style: solid;
     border-color: #000;
+}
+
+div h1 {
+    font-size: 10vw;
+}
+div h2 {
+    font-size: 8vw;
 }
