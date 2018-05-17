@@ -45,3 +45,18 @@ footer{
 #recipe{
     margin-bottom: 55.667px;
 }
+
+#contain {
+    height: 10%;
+    width: 400px;
+}
+
+.carousel-indicators {
+    position:absolute;
+    top:270px;
+}
+
+.carousel-control-prev , .carousel-control-next {
+    height: 300px;
+}
+

@@ -3,7 +3,7 @@ $(document).ready(function () {
     $(".chkDiv").toggleClass('hidden');
     $('#selectAll').toggleClass('hidden');
 
-    if ((".chkDiv").hasClass('hidden')){
+    if ($(".chkDiv.hidde").length > 0){
       $('.chk').prop('checked', false);
       $('#searchbut').addClass('hidden');
       $('#trashButton').addClass('hidden');
