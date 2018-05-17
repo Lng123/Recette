@@ -8,6 +8,7 @@ $(document).ready(function () {
         var itemID;
         var checkedArray = [];
 
+        // Determine which boxes are checked when remove button clicked
         $(":checked").each(function () {
             checkedArray.push($(this).parent().attr('id'));
         })
@@ -29,12 +30,25 @@ $(document).ready(function () {
         }
         checkedArray = [];
 
+        // Update Id numbers!
         var count = 0;
         $(':checkbox').each(function(){
             let chkbIdName = "chkb" + count;
-            console.log(chkbIdName);
+            let cnumberIdName = "Cnumber" + count;
+            let chkbName = "chkbox" + count;
+
+            //update checkbox ID
             $(this).parent().removeAttr('id');
             $(this).parent().attr('id', chkbIdName);
+
+            //update checkbox name attribute
+            $(this).parent().removeAttr('name');
+            $(this).parent().attr('name', chkbName);
+
+            //update Cnumber ID
+            $(this).parent().parent().parent().removeAttr('id');
+            $(this).parent().parent().parent().attr('id', cnumberIdName);
+            
             count++;
         })
 
