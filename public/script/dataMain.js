@@ -700,3 +700,57 @@ function calculateDayCount(date1, date2) {
     return Math.round(difference / one_day);
 }
 
+var count = 0;
+var count2 = 0;
+window.onload = function() {
+    count = 0;
+}
+
+function selectshow() {
+    var selectAll = document.getElementById("selectAll");
+    if (count % 2 == 0) {
+    selectAll.style.display = "block";
+    } else {
+        selectAll.style.display = "none";
+    }
+    count++;
+    count2 = 0;
+}
+
+function allChk() {
+    var checkb = document.getElementsByClassName("chk");
+    for (var i = 0; i < checkb.length; i++) {
+    if (count2 % 2 ==0) {
+        checkb[i].checked = true;
+    } else {
+        checkb[i].checked = false;
+      }
+    }
+    
+    count2++;
+    
+        var search = document.getElementById("searchbut");
+        var trash = document.getElementById("trashButton");
+        var checkb = document.getElementsByClassName("chk");
+
+        search.style.display = 'none';
+        trash.style.display = 'none';
+
+
+        for (var i = 0; i < window.chkbCounter; i++) {
+
+            if (checkb[i].checked) {
+                search.style.display = 'inline';
+                trash.style.display = 'inline';
+
+                // if (checkedArray.indexOf(i) < 0) {
+                //     checkedArray.push(i);
+                // } else {
+                //     var itemtoRemove = i;
+                //     checkedArray.splice($.inArray(itemtoRemove, checkedArray), 1);
+                // }
+            }
+
+        }
+    
+}

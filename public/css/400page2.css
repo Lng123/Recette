@@ -22,8 +22,14 @@
 
 }
 
-#cam{
+#cam,{
     width: 20px;
+    height: auto;
+    filter: invert(100%);
+}
+
+#check{
+    width: 25px;
     height: auto;
     filter: invert(100%);
 }
@@ -40,7 +46,8 @@
     background-color: #499c79;
 }
 
- button:active #cam, button:active #addBut, button:active #search {
+ button:active #cam, button:active #addBut, button:active #search, button:active #check, button:active #selectButton
+, button:active #trash{
         filter: brightness(0%);
 }
 
@@ -510,4 +517,6 @@ input[type="checkbox"]:checked ~ i.fas.fa-check-square{
     height:48px;
 }
 
-
+#selectAll {
+    display: none;
+}
