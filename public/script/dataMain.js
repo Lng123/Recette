@@ -16,7 +16,7 @@ $(document).ready(function () {
         for (var i = 0; i < checkedArray.length; i++) {
             str = "#Cnumber" + checkedArray[i].substr(4);
             index = checkedArray[i].substr(4);
-            itemID = userList[index].id;
+            itemID = window.userList[index].id;
 
             let ele = $(str);
 
@@ -26,13 +26,13 @@ $(document).ready(function () {
         }
 
         for (var i = 0; i < checkedArray.length; i++) {
-            userList.splice(checkedArray[i], 1);
+            window.userList.splice(checkedArray[i], 1);
         }
         checkedArray = [];
 
         // Update Id numbers!
         var count = 0;
-        $(':checkbox').each(function(){
+        $(':checkbox').each(function () {
             let chkbIdName = "chkb" + count;
             let cnumberIdName = "Cnumber" + count;
             let chkbName = "chkbox" + count;
@@ -48,7 +48,7 @@ $(document).ready(function () {
             //update Cnumber ID
             $(this).parent().parent().parent().removeAttr('id');
             $(this).parent().parent().parent().attr('id', cnumberIdName);
-            
+
             count++;
         })
 
@@ -88,7 +88,7 @@ var eleCounter = 0;
 var chkbCounter = 0;
 var a = sessionStorage.getItem("userEmail");
 var ingList = [];
-var userList = [];
+window.userList = [];
 var user = db.collection("email").doc(sessionStorage.getItem("userEmail"));
 
 db.collection("ingredient").get()
@@ -107,7 +107,7 @@ user.collection("list").orderBy("expiaryDate", "asc").get()
             querySnapshot.forEach(function (doc) {
                 // doc.data() is never undefined for query doc snapshots
 
-                userList.push({
+                window.userList.push({
                     name: doc.data().name,
                     expiaryDate: doc.data().expiaryDate,
                     id: doc.id
@@ -122,12 +122,12 @@ user.collection("list").orderBy("expiaryDate", "asc").get()
 
 function showList() {
 
-    if (userList.length !== 0) {
-        console.log(userList);
+    if (window.userList.length !== 0) {
+        console.log(window.userList);
 
-        for (let i = 0; i < userList.length; i++) {
+        for (let i = 0; i < window.userList.length; i++) {
 
-            var dat = new Date(userList[i].expiaryDate);
+            var dat = new Date(window.userList[i].expiaryDate);
 
 
             console.log(dat);
@@ -171,7 +171,7 @@ function showList() {
             cardAn.setAttribute("class", "card-link");
             cardAn.setAttribute("data-toggle", "collapse");
             cardAn.setAttribute("href", "#collapse" + window.eleCounter);
-            cardAn.innerHTML = window.userList[i].name;
+            cardAn.innerHTML = window.window.userList[i].name;
             cardAn.style.fontSize = "21px";
             cardAn.name = "foodValue";
             icon.setAttribute("class", "fas fa-exclamation-triangle");
@@ -186,15 +186,17 @@ function showList() {
 
             dayCounterButton.type = "button";
             dayCounterButton.style.float = "right";
+            let val = parseInt(dayLeft);
 
-            if (dayLeft < 0) {
+            if (0 > val) {
 
                 card.style.background = "linear-gradient(to right, #49959c , rgba(74, 79, 86, 0.7))";
                 dayCounterButton.setAttribute("class", "btn btn-danger specialButton");
+                console.log("eneter");
                 dayCounter.innerHTML = dayLeft + "<br/>Days";
                 cardAn.prepend(icon);
             }
-            if (dayLeft === "0") {
+            else if (dayLeft === "0") {
                 dayCounterButton.setAttribute("class", "btn btn-danger specialButton");
                 dayCounterButton.innerHTML = "Last<br/>today";
                 dayCounterButton.style.fontSize = "16px";
@@ -250,7 +252,7 @@ function showList() {
             let detId = "#Cnumber" + window.eleCounter;
             let delCon = container;
             remBut.addEventListener('click', function () {
-                rmEle(userList[i].id, delCon);
+                rmEle(window.userList[i].id, delCon);
             });
 
             label.appendChild(chkBox);
@@ -392,14 +394,14 @@ function addList() {
             .then(function (docRef) {
                 console.log(docRef);
                 id = docRef.id;
-                userList[window.chkbCounter-1] = (
+                window.userList[window.chkbCounter - 1] = (
                     {
                         name: window.name,
                         expiaryDate: dateDB.getTime(),
                         id: id,
                     }
                 );
-                console.log(userList);
+                console.log(window.userList);
             });
         id = '' + id;
         console.log(id);
@@ -715,14 +717,14 @@ function calculateDayCount(date1, date2) {
 
 var count = 0;
 var count2 = 0;
-window.onload = function() {
+window.onload = function () {
     count = 0;
 }
 
 function selectshow() {
     var selectAll = document.getElementById("selectAll");
     if (count % 2 == 0) {
-    selectAll.style.display = "block";
+        selectAll.style.display = "block";
     } else {
         selectAll.style.display = "none";
     }
@@ -733,37 +735,37 @@ function selectshow() {
 function allChk() {
     var checkb = document.getElementsByClassName("chk");
     for (var i = 0; i < checkb.length; i++) {
-    if (count2 % 2 ==0) {
-        checkb[i].checked = true;
-    } else {
-        checkb[i].checked = false;
-      }
-    }
-    
-    count2++;
-    
-        var search = document.getElementById("searchbut");
-        var trash = document.getElementById("trashButton");
-        var checkb = document.getElementsByClassName("chk");
-
-        search.style.display = 'none';
-        trash.style.display = 'none';
-
-
-        for (var i = 0; i < window.chkbCounter; i++) {
-
-            if (checkb[i].checked) {
-                search.style.display = 'inline';
-                trash.style.display = 'inline';
-
-                // if (checkedArray.indexOf(i) < 0) {
-                //     checkedArray.push(i);
-                // } else {
-                //     var itemtoRemove = i;
-                //     checkedArray.splice($.inArray(itemtoRemove, checkedArray), 1);
-                // }
-            }
-
+        if (count2 % 2 == 0) {
+            checkb[i].checked = true;
+        } else {
+            checkb[i].checked = false;
         }
-    
+    }
+
+    count2++;
+
+    var search = document.getElementById("searchbut");
+    var trash = document.getElementById("trashButton");
+    var checkb = document.getElementsByClassName("chk");
+
+    search.style.display = 'none';
+    trash.style.display = 'none';
+
+
+    for (var i = 0; i < window.chkbCounter; i++) {
+
+        if (checkb[i].checked) {
+            search.style.display = 'inline';
+            trash.style.display = 'inline';
+
+            // if (checkedArray.indexOf(i) < 0) {
+            //     checkedArray.push(i);
+            // } else {
+            //     var itemtoRemove = i;
+            //     checkedArray.splice($.inArray(itemtoRemove, checkedArray), 1);
+            // }
+        }
+
+    }
+
 }

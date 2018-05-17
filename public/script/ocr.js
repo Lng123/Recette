@@ -122,20 +122,12 @@ Date.prototype.addDays = function (days) {
   return dat;
 }
 
-Date.prototype.subtractDays = function (days) {
-  var dat = new Date(this.valueOf());
-  dat.setDate(dat.getDate() - days);
-  return dat;
-}
-
 function addLists(input) {
+  console.log(input);
   var dat = new Date();
   let dateDB = new Date(dat.addDays(input.time));
   let curDate = dat.addDays(input.time).toString().split(" ");
   curDate = curDate.slice(1, 4).join(" ");
-
-  let dayLeft = dat.subtractDays(input.time).toString().split(" ");
-  dayLeft = dayLeft[2];
   console.log(curDate);
   console.log(dayLeft);
 
@@ -144,26 +136,31 @@ function addLists(input) {
   var cardH = document.createElement("div");
   var cardB = document.createElement("div");
   var dayCounter = document.createElement("p");
+  var dayCounterLabel = document.createElement("p");
+  var dayCounterButton = document.createElement("button");
   var cardAn = document.createElement("a");
   var cardBody = document.createElement("div");
-  var searchBut = document.createElement("button");
   var item = document.getElementById("foodName");
   var date = document.getElementById("date");
   var chkBox = document.createElement("input");
   var chkBoxDiv = document.createElement("div");
+  var label = document.createElement("label");
   var box = document.createElement("i");
   var boxChecked = document.createElement("i");
-  var label = document.createElement("label");
   var remBut = document.createElement("button");
   var container = document.createElement("div");
+  var dayCounter = document.createElement("p");
+  var dayCounterButton = document.createElement("button");
+  var dayCounterLabel = document.createElement("p");
   var id = "";
 
   container.setAttribute("id", "Cnumber" + window.eleCounter);
   container.setAttribute("class", "CClass");
+
   card.setAttribute("class", "card");
   card.setAttribute("id", "number" + window.eleCounter);
-
-
+  card.setAttribute("data-toggle", "collapse");
+  card.setAttribute("href", "#collapse" + window.eleCounter);
   cardH.setAttribute("class", "card-header");
 
   cardAn.setAttribute("class", "card-link");
@@ -172,14 +169,40 @@ function addLists(input) {
   cardAn.innerHTML = input.name;
   cardAn.setAttribute("name", "foodValue");
   cardAn.style.fontSize = "21px";
+  console.log(input.time);
+  var dayLeft = input.time;
 
-  dayCounter.innerHTML = dayLeft + " days left";
-  if (dayLeft <= 7) {
-    dayCounter.style.color = "red";
+  dayCounterButton.type = "button";
+  dayCounterButton.style.float = "right";
+  let val = parseInt(dayLeft);
+  console.log(val);
+
+  if (0 > val) {
+    card.style.background = "linear-gradient(to right, #49959c , rgba(74, 79, 86, 0.7))";
+    dayCounterButton.setAttribute("class", "btn btn-danger specialButton");
+    console.log("eneter");
+    dayCounter.innerHTML = dayLeft + "<br/>Days";
+    cardAn.prepend(icon);
+  }
+  else if (dayLeft === "0") {
+    dayCounterButton.setAttribute("class", "btn btn-danger specialButton");
+    dayCounterButton.innerHTML = "Last<br/>today";
+    dayCounterButton.style.fontSize = "16px";
+    cardAn.prepend(icon);
+  } else if (dayLeft < 7) {
+    //food will expire soon
+    dayCounterButton.setAttribute("class", "btn btn-warning specialButton");
+    dayCounter.innerHTML = dayLeft + "<br/>Days";
+  } else {
+    // food is expired
+    dayCounterButton.setAttribute("class", "btn btn-primary specialButton");
+    dayCounter.innerHTML = dayLeft + "<br/>Days";
   }
 
-  dayCounter.style.fontSize = "18px";
-  dayCounter.setAttribute("class", "float-right");
+  dayCounter.style.margin = "0px";
+
+  dayCounterLabel.style.fontSize = "12px";
+  dayCounterLabel.style.margin = "0px";
 
   cardB.setAttribute("id", "collapse" + window.eleCounter);
   cardB.setAttribute("class", "collapse");
@@ -189,15 +212,15 @@ function addLists(input) {
   cardBody.innerHTML = "This ingredient will expire on " + "<b>" + curDate + "</b>";
 
   chkBox.setAttribute("type", "checkbox");
-  label.setAttribute("id", "chkb" + window.eleCounter);
-  label.setAttribute("onclick", "if_chk_checked()");
-  label.setAttribute("name", "chkbox" + window.eleCounter);
+  label.setAttribute("id", "chkb" + window.chkbCounter);
+  label.setAttribute("name", "chkbox" + window.chkbCounter);
   chkBox.setAttribute("class", "chk");
   chkBoxDiv.setAttribute("class", "chkDiv");
   chkBoxDiv.classList.add("hidden");
   chkBoxDiv.setAttribute("style", "float: left;");
 
   label.classList.add("btn");
+  label.classList.add("chkbLabel");
 
   box.classList.add("far");
   box.classList.add("fa-square");
@@ -209,13 +232,14 @@ function addLists(input) {
 
   remBut.setAttribute("class", "btn btn-outline-dark");
   remBut.setAttribute("type", "button");
-  remBut.setAttribute("class", "btn btn-outline-dark");
   remBut.setAttribute("style", "margin: 2px;");
   remBut.innerHTML = "Remove";
 
-  console.log(window.eleCounter);
+
+  var dat = new Date();
 
   let ref = db.collection("email").doc(sessionStorage.getItem("userEmail"));
+
   ref.collection("list").add(
     {
       name: input.name,
@@ -225,11 +249,21 @@ function addLists(input) {
     .then(function (docRef) {
       console.log(docRef);
       id = docRef.id;
+      window.userList[window.chkbCounter - 1] = (
+        {
+          name: window.name,
+          expiaryDate: dateDB.getTime(),
+          id: id,
+        }
+      );
+      console.log(userList);
     });
   id = '' + id;
+  console.log(id);
 
+  let delCon = container;
   remBut.addEventListener('click', function () {
-    rmEle(id, container);
+    rmEle(id, delCon);
   });
 
   label.appendChild(chkBox);
@@ -237,9 +271,10 @@ function addLists(input) {
   label.appendChild(boxChecked);
   chkBoxDiv.appendChild(label);
   cardH.appendChild(cardAn);
-  cardH.appendChild(dayCounter);
+  dayCounterButton.appendChild(dayCounter);
+  dayCounterButton.appendChild(dayCounterLabel);
+  cardH.appendChild(dayCounterButton);
   cardB.appendChild(cardBody);
-  cardB.appendChild(remBut);
   card.appendChild(cardH);
   card.appendChild(cardB);
   container.appendChild(chkBoxDiv);
@@ -248,6 +283,11 @@ function addLists(input) {
 
   list.appendChild(container);
   window.eleCounter++;
+  window.chkbCounter++;
+  item.value = "";
+  date.value = "";
+
+  if_chk_checked();
 
   window.loadingDiv.style.visibility = 'hidden';
 }
