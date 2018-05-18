@@ -23,7 +23,7 @@ $(document).ready(function () {
 
             rmEle(itemID, ele);
 
-            chkbCounter--;
+            eleCounter--;
         }
 
         for (var i = 0; i < checkedArray.length; i++) {
@@ -38,6 +38,7 @@ $(document).ready(function () {
             let cnumberIdName = "Cnumber" + count;
             let chkbName = "chkbox" + count;
             let cardID = "number" + count;
+            let collapseNum = "collapse" + count;
 
             //update checkbox ID
             $(this).parent().removeAttr('id');
@@ -54,6 +55,11 @@ $(document).ready(function () {
             //update card ID
             $(this).parent().parent().siblings().removeAttr('id');
             $(this).parent().parent().siblings().attr('id', cardID);
+            $(this).parent().parent().siblings().removeAttr('href');
+            $(this).parent().parent().siblings().attr('href', collapseNum);
+
+            $(this).parent().parent().siblings().children("div.collapse").removeAttr('id');
+            $(this).parent().parent().siblings().children("div.collapse").attr('id', collapseNum);
 
             count++;
         })
@@ -91,8 +97,8 @@ var functions = firebase.functions();
 
 
 var camBut = document.getElementById("camera");
+
 var eleCounter = 0;
-var chkbCounter = 0;
 var a = sessionStorage.getItem("userEmail");
 var ingList = [];
 window.userList = [];
@@ -233,8 +239,8 @@ function showList() {
             cardBody.innerHTML = "The ingredients will expire on " + "<b>" + expDate + "</b>";
 
             chkBox.setAttribute("type", "checkbox");
-            label.setAttribute("id", "chkb" + window.chkbCounter);
-            label.setAttribute("name", "chkbox" + window.chkbCounter);
+            label.setAttribute("id", "chkb" + window.eleCounter);
+            label.setAttribute("name", "chkbox" + window.eleCounter);
             chkBox.setAttribute("class", "chk");
             chkBoxDiv.setAttribute("class", "chkDiv");
             chkBoxDiv.classList.add("hidden");
@@ -279,8 +285,8 @@ function showList() {
             list.appendChild(container);
 
 
+            
             window.eleCounter++;
-            window.chkbCounter++;
         }
         if_chk_checked();
         allChk();
@@ -367,8 +373,8 @@ function addList() {
         cardBody.innerHTML = "This ingredient will expire on " + "<b>" + formatDate(date.value) + "</b>";
 
         chkBox.setAttribute("type", "checkbox");
-        label.setAttribute("id", "chkb" + window.chkbCounter);
-        label.setAttribute("name", "chkbox" + window.chkbCounter);
+        label.setAttribute("id", "chkb" + window.eleCounter);
+        label.setAttribute("name", "chkbox" + window.eleCounter);
         chkBox.setAttribute("class", "chk");
         chkBoxDiv.setAttribute("class", "chkDiv");
         chkBoxDiv.classList.add("hidden");
@@ -402,7 +408,7 @@ function addList() {
             .then(function (docRef) {
                 console.log(docRef);
                 id = docRef.id;
-                window.userList[window.chkbCounter - 1] = (
+                window.userList[window.eleCounter - 1] = (
                     {
                         name: window.name,
                         expiaryDate: dateDB.getTime(),
@@ -435,8 +441,8 @@ function addList() {
 
 
         list.appendChild(container);
+        
         window.eleCounter++;
-        window.chkbCounter++;
         item.value = "";
         date.value = "";
 

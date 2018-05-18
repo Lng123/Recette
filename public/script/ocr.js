@@ -212,8 +212,8 @@ function addLists(input) {
   cardBody.innerHTML = "This ingredient will expire on " + "<b>" + curDate + "</b>";
 
   chkBox.setAttribute("type", "checkbox");
-  label.setAttribute("id", "chkb" + window.chkbCounter);
-  label.setAttribute("name", "chkbox" + window.chkbCounter);
+  label.setAttribute("id", "chkb" + window.eleCounter);
+  label.setAttribute("name", "chkbox" + window.eleCounter);
   chkBox.setAttribute("class", "chk");
   chkBoxDiv.setAttribute("class", "chkDiv");
   chkBoxDiv.classList.add("hidden");
@@ -249,7 +249,7 @@ function addLists(input) {
     .then(function (docRef) {
       console.log(docRef);
       id = docRef.id;
-      window.userList[window.chkbCounter - 1] = (
+      window.userList[window.eleCounter - 1] = (
         {
           name: window.name,
           expiaryDate: dateDB.getTime(),
@@ -283,7 +283,7 @@ function addLists(input) {
 
   list.appendChild(container);
   window.eleCounter++;
-  window.chkbCounter++;
+  window.eleCounter++;
   item.value = "";
   date.value = "";
 
