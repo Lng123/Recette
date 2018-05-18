@@ -5,7 +5,7 @@ function uploadImage() {
 
   document.getElementById("fileInput").click();
   console.log("eneted uploadImage");
-
+console.log(window.eleCounter);
 
   fileInput.addEventListener('change', function (e) {
     var file = e.target.files[0];
@@ -69,6 +69,7 @@ function searchList(content) {
     let temp = searchElement(resIndex[i]);
 
     if (temp !== null) {
+      console.log(ingArr[temp]);
       addLists(ingArr[temp]);
       swt = false;
     }
@@ -235,11 +236,12 @@ function addLists(input) {
   remBut.setAttribute("style", "margin: 2px;");
   remBut.innerHTML = "Remove";
 
-
+  console.log(input);
   var dat = new Date();
 
   let ref = db.collection("email").doc(sessionStorage.getItem("userEmail"));
-
+  window.name = input.name;
+  window.eleCounter++;
   ref.collection("list").add(
     {
       name: input.name,
@@ -249,6 +251,7 @@ function addLists(input) {
     .then(function (docRef) {
       console.log(docRef);
       id = docRef.id;
+      console.log(window.eleCounter);
       window.userList[window.eleCounter - 1] = (
         {
           name: window.name,
@@ -256,11 +259,13 @@ function addLists(input) {
           id: id,
         }
       );
-      console.log(userList);
+      
+    }).catch(function (err) {
+      console.log(err);
     });
   id = '' + id;
   console.log(id);
-
+console.log(window.userList);
   let delCon = container;
   remBut.addEventListener('click', function () {
     rmEle(id, delCon);
@@ -282,8 +287,7 @@ function addLists(input) {
 
 
   list.appendChild(container);
-  window.eleCounter++;
-  window.eleCounter++;
+  
   item.value = "";
   date.value = "";
 
