@@ -22,16 +22,14 @@
 
 }
 
-#cam,{
-    width: 20px;
-    height: auto;
-    filter: invert(100%);
-}
-
 #check{
     width: 25px;
     height: auto;
     filter: invert(100%);
+}
+
+#selectAll{
+    margin-right: 4px;
 }
 
 #ocrButton, #keyboardButton, #foodBankButton{
