@@ -30,19 +30,32 @@ var settings = {
 $.ajax(settings).done(function (response) {
   console.log(response);
     console.log(JSON.stringify(response));
-    var listData = "testing";
-        for(var key in response){
-    var a = document.createElement("a");
+    
+    var car = document.getElementById("car");
+    var first = true;
+    for(var key in response){
+    var item = document.createElement("div");
     var img = document.createElement("img");
-    a.setAttribute("href","#");
-    a.setAttribute("onclick", "sendId(this.id)");
-    a.setAttribute("id", "" + response[key].id);
-    a.innerHTML = response[key].title + "<br/>";
+    var title = document.createElement("h1");
+    if (first) {
+            item.setAttribute("class","carousel-item active");
+            first = false;
+    }else{
+    item.setAttribute("class","carousel-item");
+        }
+    item.setAttribute("href","#");
+    item.setAttribute("onclick", "sendId(this.id)");
+    item.setAttribute("id", "" + response[key].id);
+    title.innerHTML = response[key].title   ;
     img.setAttribute("src", "" + response[key].image );
-    $("#recipe").append(a);
-    $("#recipe").append(img);
-    }
+    img.style.width ="100%";
+    img.style.height="auto";
+    item.appendChild(img);
+    item.appendChild(title);
+    car.appendChild(item);
 
+    }
+        
     
 });
 

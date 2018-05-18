@@ -9,14 +9,14 @@
 
 }
 
-#back{
+#back, #options{
     width: 20px;
     height: auto;
     filter: invert(100%);
 }
 
 
-button:active #back {
+button:active #back, button:active #options {
         filter: brightness(0%);
 }
 button {
@@ -60,3 +60,11 @@ footer{
     height: 300px;
 }
 
+#dropdown {
+    padding-bottom: 10px;
+}
+
+#dropdown ul {
+    right: 0;
+    left: auto;
+}

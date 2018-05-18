@@ -515,7 +515,7 @@ function searchapi() {
     var foodArray = [];
     var checkb = document.getElementsByClassName("chk");
     var fname = document.getElementsByName("foodValue");
-    for (var i = 0; i < window.eleCounter; i++) {
+    for (var i = 0; i < checkb.length; i++) {
         if (checkb[i].checked) {
             console.log("number" + i);
             console.log(fname[i].innerText);
@@ -524,7 +524,8 @@ function searchapi() {
         console.log(foodArray);
         sessionStorage.setItem('farray', JSON.stringify(foodArray));
         location.href = "page3.html";
-    }
+       
+    } 
 }
 
 function autocomplete(inp, arr) {
