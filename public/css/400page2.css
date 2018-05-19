@@ -250,11 +250,11 @@ body {
     width: 100%;
 }
 
+
 #wrapper.toggled #page-content-wrapper {
     position: absolute;
     margin-right: -220px;
 }
-
 /*-------------------------------*/
 /*           Wrappers            */
 /*-------------------------------*/
@@ -273,7 +273,7 @@ body {
 
 #sidebar-wrapper {
     z-index: 1050;
-    position:absolute;
+    position:fixed;
     width: 10px;
     height: 100%;
     
