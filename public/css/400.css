@@ -3,7 +3,7 @@
 }
 
 #logo{
-    margin-top: -80px;
+    margin-top: -140px;
 }
 
 #error-msg {
@@ -144,7 +144,7 @@ hr.star-light {
 }
 
 #wrapper.toggled #sidebar-wrapper {
-    width: 220px;
+    width: 200px;
 }
 
 #page-content-wrapper {
@@ -153,7 +153,7 @@ hr.star-light {
 }
 
 #wrapper.toggled #page-content-wrapper {
-    position: absolute;
+    position: fixed;
     margin-right: -220px;
 }
 

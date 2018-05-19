@@ -256,7 +256,7 @@ function addLists(input) {
           id: id,
         }
       );
-      console.log(userList);
+      console.log(window.userList);
     });
   id = '' + id;
   console.log(id);
@@ -282,7 +282,6 @@ function addLists(input) {
 
 
   list.appendChild(container);
-  window.eleCounter++;
   window.eleCounter++;
   item.value = "";
   date.value = "";
