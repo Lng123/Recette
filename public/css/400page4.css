@@ -67,7 +67,14 @@ footer{
 
 div h1 {
     font-size: 10vw;
+    font-family: 'Roboto Slab', serif;
 }
 div h2 {
     font-size: 8vw;
+    font-family: 'Roboto Slab', serif;
 }
+
+.container {
+    font-family: 'Arimo', sans-serif;
+}
+
