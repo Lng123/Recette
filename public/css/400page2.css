@@ -595,3 +595,24 @@ input[type="checkbox"]:checked ~ i.fas.fa-check-square{
     height:48px;
 }
 
+#recette {
+    font-family: 'Allura', cursive; 
+    font-size: 24pt;
+}
+
+.card-link {
+font-family: 'Roboto Slab', serif;
+}
+
+.card-body {
+    font-family: 'Arimo', sans-serif;
+
+}
+
+.specialButton {
+    font-family: 'Arimo', sans-serif;
+}
+
+.sidebar-nav {
+        font-family: 'Arimo', sans-serif;
+}
