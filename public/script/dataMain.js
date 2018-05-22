@@ -367,13 +367,13 @@ function addList() {
             dayCounter.innerHTML = dayLeft + "<br/>Days";
         }
 
-        dayCounter.innerHTML = daysLeft;
-        // dayCounter.style.fontSize = "21px";
+     
         dayCounter.style.margin = "0px";
 
-        dayCounterLabel.innerHTML = "Days";
+
         dayCounterLabel.style.fontSize = "12px";
         dayCounterLabel.style.margin = "0px";
+
 
 
         // dayCounter.innerHTML = daysLeft + " days left";
