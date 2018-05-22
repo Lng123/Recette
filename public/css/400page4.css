@@ -45,7 +45,7 @@ footer{
 
 #recipe{
     margin-bottom: 55.667px;
-        text-align: center;
+    text-align: center;
     font-size: 4vw;
 }
 
@@ -78,3 +78,9 @@ div h2 {
     font-family: 'Arimo', sans-serif;
 }
 
+body {
+    background-image: url(https://firebasestorage.googleapis.com/v0/b/recette-f3ef5.appspot.com/o/src%2Fwood.jpg?alt=media&token=f59c2780-b273-48d0-8093-d26cb00bf978);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
