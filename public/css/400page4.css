@@ -61,6 +61,7 @@ footer{
 #recipe img {
     width: 100%;
     max-width: 400px;
+    height: auto;
     border-style: solid;
     border-color: #000;
 }

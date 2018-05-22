@@ -21,8 +21,6 @@ window.onload = function() {
     item.setAttribute("id", "" + data[key].id);
     title.innerHTML = data[key].title   ;
     img.setAttribute("src", "" +data[key].image );
-    img.style.width ="100%";
-    img.style.height="auto";
     item.appendChild(img);
     item.appendChild(title);
     car.appendChild(item);

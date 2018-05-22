@@ -56,6 +56,7 @@ footer{
     border-color: #000;
     max-width: 400px;
     width: 100%;
+    height: auto;
 }
 .carousel-item {
     margin-bottom: 55.667px;
