@@ -562,8 +562,25 @@ new autoComplete({
             };
         }
         suggest(similarIngredients);
-    }
+    },
 
+    renderItem: function (item, search){
+        search = search.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+        var re = new RegExp("(" + search.split(' ').join('|') + ")", "gi");
+        return '<div class="autocomplete-suggestion" data-val="' + item + '">' + item.replace(re, "<b>$1</b>") + '</div>';
+    },
+
+    onSelect: function(e, txtInput, item){
+        var currentInput = $("#foodName").val();
+        for (var i = 0; i < ingListW.length; i++) {
+            if (ingListW[i].name === txtInput) {
+                var currentDate = new Date();
+                var newDate = currentDate.addDays(ingListW[i].time);
+                document.getElementById("date").value = newDate.toISOString();
+
+            }
+        }
+    }
 });
 
 //ingList accessor
