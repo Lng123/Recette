@@ -142,7 +142,6 @@ function showList() {
 
             var dat = new Date(window.userList[i].expiaryDate);
 
-
             console.log(dat);
             var today = new Date();
 
@@ -164,12 +163,10 @@ function showList() {
             var box = document.createElement("i");
             var boxChecked = document.createElement("i");
             var label = document.createElement("label");
-            var remBut = document.createElement("button");
             var dayCounter = document.createElement("p");
             var dayCounterButton = document.createElement("button");
             var dayCounterLabel = document.createElement("p");
             var container = document.createElement("div");
-            var remImg = document.createElement("img");
             var icon = document.createElement("i");
 
 
@@ -189,13 +186,6 @@ function showList() {
             cardAn.name = "foodValue";
             icon.setAttribute("class", "fas fa-exclamation-triangle");
             icon.style.marginRight = "5px";
-            // dayCounter.innerHTML = dayLeft + " days left";
-            // dayCounter.style.float = "right";
-            // dayCounter.style.fontSize = "18px";
-
-            // if (dayLeft <= 7) {
-            //     dayCounter.style.color = "red"
-            // }
 
             dayCounterButton.type = "button";
             dayCounterButton.style.float = "right";
@@ -260,16 +250,8 @@ function showList() {
             boxChecked.classList.add("fa-check-square");
             boxChecked.classList.add("boxChecked");
 
-            remBut.setAttribute("class", "btn btn-outline-light");
-            remBut.setAttribute("type", "button");
-            remImg.setAttribute("src", "https://firebasestorage.googleapis.com/v0/b/recette-f3ef5.appspot.com/o/src%2Fbaseline_delete_white_18dp.png?alt=media&token=32867197-c5a3-4950-b922-fe4f26c787cf");
-            remImg.setAttribute("id", "rmImg");
-
             let detId = "#Cnumber" + window.eleCounter;
             let delCon = container;
-            remBut.addEventListener('click', function () {
-                rmEle(window.userList[i].id, delCon);
-            });
 
             label.appendChild(chkBox);
             label.appendChild(box);
@@ -317,11 +299,7 @@ function addList() {
     var label = document.createElement("label");
     var box = document.createElement("i");
     var boxChecked = document.createElement("i");
-    var remBut = document.createElement("button");
     var container = document.createElement("div");
-    var dayCounter = document.createElement("p");
-    var dayCounterButton = document.createElement("button");
-    var dayCounterLabel = document.createElement("p");
     var id = "";
 
     if (recogEx(ingList, item)) {
@@ -370,20 +348,13 @@ function addList() {
             dayCounter.innerHTML = dayLeft + "<br/>Days";
         }
 
-     
         dayCounter.style.margin = "0px";
-
+        dayCounterButton.addEventListener("click", function (e) {
+            $("#dateMePls").modal("show");
+        });
 
         dayCounterLabel.style.fontSize = "12px";
         dayCounterLabel.style.margin = "0px";
-
-
-
-        // dayCounter.innerHTML = daysLeft + " days left";
-
-        // if (daysLeft <= 7) {
-        //     dayCounter.style.color = "red";
-        // }
 
         cardB.setAttribute("id", "collapse" + window.eleCounter);
         cardB.setAttribute("class", "collapse");
@@ -411,11 +382,6 @@ function addList() {
         boxChecked.classList.add("fa-check-square");
         boxChecked.classList.add("boxChecked");
 
-        remBut.setAttribute("class", "btn btn-outline-dark");
-        remBut.setAttribute("type", "button");
-        remBut.setAttribute("style", "margin: 2px;");
-        remBut.innerHTML = "Remove";
-
         var dat = new Date();
         let dateDB = new Date(date.value);
         let ref = db.collection("email").doc(sessionStorage.getItem("userEmail"));
@@ -441,9 +407,6 @@ function addList() {
         console.log(id);
 
         let delCon = container;
-        remBut.addEventListener('click', function () {
-            rmEle(id, delCon);
-        });
 
         label.appendChild(chkBox);
         label.appendChild(box);
@@ -459,7 +422,6 @@ function addList() {
         container.appendChild(chkBoxDiv);
         container.appendChild(card);
 
-
         list.appendChild(container);
 
         window.eleCounter++;
@@ -472,8 +434,6 @@ function addList() {
     } else {
         alert("Sorry, we are still adding more ingredients!");
     }
-
-
 }
 
 function search(item) {
