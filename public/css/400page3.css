@@ -55,7 +55,7 @@ footer{
     border-style: solid;
     border-color: #000;
     max-width: 400px;
-    width: 100%;
+    width: 90%;
     height: auto;
 }
 .carousel-item {
@@ -81,7 +81,7 @@ footer{
 
 .carousel-item h1 {
     font-family: 'Roboto Slab', serif;
-    font-size: 10vw;
+    font-size: 9vw;
 }
 
 body {
