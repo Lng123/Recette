@@ -141,16 +141,16 @@ function showList() {
         for (let i = 0; i < window.userList.length; i++) {
 
             var dat = new Date(window.userList[i].expiaryDate);
-
+            let editDat = dat.toISOString();
             console.log(dat);
             var today = new Date();
 
             let expDate = dat.toString().split(" ");
             expDate = expDate.slice(1, 4).join(" ");
 
-            let dayLeft = dat.subtractDays(today).toString().split(" ");
+            let dayLeft = calculateDayCount(today, dat);
             console.log(dayLeft);
-            dayLeft = dayLeft[2];
+            
 
             var list = document.getElementById("accordion");
             var card = document.createElement("div");
@@ -218,6 +218,32 @@ function showList() {
             dayCounter.style.margin = "0px";
             dayCounterButton.addEventListener("click", function (e) {
                 $("#dateMePls").modal("show");
+                $("#changeDate").val(editDat);
+                let newDat = new Date($("#changeDate").val(editDat));;
+                $("#changeDate").change(function(newDate) {
+                    console.log(newDate);
+                    console.log($("#changeDate").val());
+                    
+                    newDat = new Date($("#changeDate").val());
+                    
+                });
+                $("#editButSub").click(function(item) {
+                    console.log("clciked!");
+                    let ref = db.collection("email").doc(sessionStorage.getItem("userEmail"));
+                    ref.collection("list").doc(userList[i].id).set(
+                        {
+                            name: userList[i].name,
+                            expiaryDate: newDat.getTime(),
+                            id: userList[i].id
+                        }
+                    ).then(function(suc) {
+                        console.log(suc);
+                        location.reload();
+                    }).catch(function(err) {
+                        console.log(err);
+                    });
+                });
+                
             });
 
 
@@ -300,6 +326,7 @@ function addList() {
     var box = document.createElement("i");
     var boxChecked = document.createElement("i");
     var container = document.createElement("div");
+    var icon = document.createElement("i");
     var id = "";
 
     if (recogEx(ingList, item)) {
@@ -558,12 +585,16 @@ Date.prototype.addDays = function (days) {
 Date.prototype.subtractDays = function (days) {
     var dat = new Date(this.valueOf());
     if (dat.getDate() === days.getDate()
-        && dat.getMonth() === dat.getMonth()) {
+        && dat.getMonth() === days.getMonth()
+        && dat.getFullYear() === days.getFullYear()) {
         return "/ / 0";
     } else if (dat.getTime() < days.getTime()) {
         console.log("dat: " + dat.getDate());
         console.log("daYS: " + days.getDate());
         console.log("past");
+        if(dat.getMonth() !== days.getMont()) {
+            return "/ / " + (dat.getDay() - days.getDay() + 3)
+        }
         return "/ / " + (dat.getDay() - days.getDay());
     }
     dat.setDate(dat.getDate() - days.getDate());
@@ -585,7 +616,7 @@ NodeList.prototype.remove = HTMLCollection.prototype.remove = function () {
 Date.prototype.toISOString = function () {
     return this.getUTCFullYear() +
         '-' + pad(this.getUTCMonth() + 1) +
-        '-' + pad(this.getUTCDate());
+        '-' + pad(this.getUTCDate()-1);
 
 };
 
@@ -612,7 +643,9 @@ function calculateDayCount(date1, date2) {
     var date2 = date2.getTime();
 
     // Calculate the difference in milliseconds
-    var difference = Math.abs(date2 - date1);
+    var difference = (date2 - date1);
+    console.log(difference);
+
 
     // Convert back to days and return
     return Math.round(difference / one_day);
