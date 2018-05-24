@@ -5,7 +5,7 @@ function uploadImage() {
 
   document.getElementById("fileInput").click();
   console.log("eneted uploadImage");
-console.log(window.eleCounter);
+  console.log(window.eleCounter);
 
   fileInput.addEventListener('change', function (e) {
     var file = e.target.files[0];
@@ -71,8 +71,14 @@ function searchList(content) {
     if (temp !== null) {
       console.log(ingArr[temp]);
       addLists(ingArr[temp]);
+      
       swt = false;
     }
+    if (i === resIndex.length - 1) {
+        console.log("Entered!");
+        location.reload();
+      }
+    
   }
   if (swt) {
     window.loadingDiv.style.visibility = 'hidden';
@@ -259,13 +265,13 @@ function addLists(input) {
           id: id,
         }
       );
-      
+
     }).catch(function (err) {
       console.log(err);
     });
   id = '' + id;
   console.log(id);
-console.log(window.userList);
+  console.log(window.userList);
   let delCon = container;
   remBut.addEventListener('click', function () {
     rmEle(id, delCon);
