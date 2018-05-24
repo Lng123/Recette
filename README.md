@@ -1,11 +1,11 @@
 # Recette
 
 ##Authors
-> Brandon Lee
-> Aaron Lee
-> Louis Ng
-> Lewis Fang
-> Aidan De Leon
+> Brandon Lee, 
+> Aaron Lee, 
+> Louis Ng,
+> Lewis Fang,
+> Aidan De Leon, 
 
 ## Thanks
 > thanks
@@ -16,11 +16,11 @@
 ## News
 > news
 
-##Install 
+## Install 
 > install
 
-##Copying and License
+## Copying and License
 > license
 
-##Bugs
+## Bugs
 > bugs
