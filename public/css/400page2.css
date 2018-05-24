@@ -57,10 +57,8 @@ button {
     border-radius: 4px;
     padding-bottom: 5px;
     padding-right: 0;
-    padding-left: 0;
-    
+    padding-left: 0;   
 }
-
 
 button:active {
         background-color: #FFF;
