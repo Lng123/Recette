@@ -1,4 +1,4 @@
-/*
+
 var idparam = sessionStorage.getItem('foodId');
 window.onload = function() {
     console.log(idparam);
@@ -32,4 +32,3 @@ $.ajax(settings2).done(function (response2) {
     $("#recipe").append(listData);
     
 });
-*/

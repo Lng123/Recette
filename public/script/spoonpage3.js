@@ -1,4 +1,4 @@
-/*
+
 var data = JSON.parse(sessionStorage.getItem('farray'));
 console.log(data);
 
@@ -66,4 +66,3 @@ function sendId(clicked_id) {
     location.href = "page4.html";
     
 };
-*/
