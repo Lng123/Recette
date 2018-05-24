@@ -148,9 +148,9 @@ function showList() {
             let expDate = dat.toString().split(" ");
             expDate = expDate.slice(1, 4).join(" ");
 
-            let dayLeft = dat.subtractDays(today).toString().split(" ");
+            let dayLeft = calculateDayCount(today, dat);
             console.log(dayLeft);
-            dayLeft = dayLeft[2];
+            
 
             var list = document.getElementById("accordion");
             var card = document.createElement("div");
@@ -300,6 +300,7 @@ function addList() {
     var box = document.createElement("i");
     var boxChecked = document.createElement("i");
     var container = document.createElement("div");
+    var icon = document.createElement("i");
     var id = "";
 
     if (recogEx(ingList, item)) {
@@ -558,12 +559,16 @@ Date.prototype.addDays = function (days) {
 Date.prototype.subtractDays = function (days) {
     var dat = new Date(this.valueOf());
     if (dat.getDate() === days.getDate()
-        && dat.getMonth() === dat.getMonth()) {
+        && dat.getMonth() === days.getMonth()
+        && dat.getFullYear() === days.getFullYear()) {
         return "/ / 0";
     } else if (dat.getTime() < days.getTime()) {
         console.log("dat: " + dat.getDate());
         console.log("daYS: " + days.getDate());
         console.log("past");
+        if(dat.getMonth() !== days.getMont()) {
+            return "/ / " + (dat.getDay() - days.getDay() + 3)
+        }
         return "/ / " + (dat.getDay() - days.getDay());
     }
     dat.setDate(dat.getDate() - days.getDate());
@@ -612,7 +617,9 @@ function calculateDayCount(date1, date2) {
     var date2 = date2.getTime();
 
     // Calculate the difference in milliseconds
-    var difference = Math.abs(date2 - date1);
+    var difference = (date2 - date1);
+    console.log(difference);
+
 
     // Convert back to days and return
     return Math.round(difference / one_day);
