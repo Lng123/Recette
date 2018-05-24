@@ -3,7 +3,7 @@
 ## Authors
 > Brandon Lee, 
 > Aaron Lee, 
-> Louis Ng,
+> Louis Ng, A01047428
 > Lewis Fang,
 > Aidan De Leon, 
 
