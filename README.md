@@ -1,6 +1,6 @@
 # Recette
 
-##Authors
+## Authors
 > Brandon Lee, 
 > Aaron Lee, 
 > Louis Ng,
