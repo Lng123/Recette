@@ -4,23 +4,26 @@
 <head>
     <title>Recette</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width" , initial-scale=1>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/400.css">
+
+    <!-- Jquery & Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" href="./css/400.css">
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Dhurjati%7cOpen+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Alex+Brush" rel="stylesheet">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <!-- <meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id" content="242135902717-cvhpmq3i5jqsk48sde4mq426kjqh2kga.apps.googleusercontent.com"> -->
 
 </head>
 
 <body class="gradient">
 
+    <!-- Hamburger (Nav Icon) -->
     <div>
         <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
             <span class="hamb-top"></span>
@@ -33,11 +36,12 @@
         <div class="overlay"></div>
 
         <!-- Sidebar -->
-
         <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
             <ul class="nav sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="./index.html">Recette</a>
+                    <a href="#">
+                        Recette
+                    </a>
                 </li>
                 <li>
                     <a href="./index.html">Home</a>
@@ -53,20 +57,21 @@
                 </li>
             </ul>
         </nav>
-
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
 
             <div id="content">
+                <!-- Logo -->
                 <div class="img1" id="logo"></div>
 
+                <!-- Welcome -->
                 <h2 id="welcome">Welcome</h2>
                 <hr class="star-light">
 
+                <!-- Email login -->
                 <form class="form-inline">
-
                     <div class="row">
                         <div id="input">
                             <div class="input-group">
@@ -76,16 +81,17 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div> -->
-
                     </div>
                 </form>
+
+                <!-- Error msg if user enter was not email -->
                 <div id="error-msg"></div>
             </div>
         </div>
 
     </div>
 
+    <!-- JS Scripts -->
     <script src="./script/background.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase-app.js"></script>

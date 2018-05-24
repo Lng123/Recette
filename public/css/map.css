@@ -10,9 +10,20 @@
     display: none;
 }
 
-#botModel .modal.fade:not(.in) .modal-dialog {
-    -webkit-transform: translate3d(0, 25%, 0);
-    transform: translate3d(0, 25%, 0);
+#backButton {
+    color: #fff;
+    font-size: 30pt;
+    float: right;
+}
+
+.nav{
+    width: 100%;
+}
+
+a#backButton:active, a#backButton:hover, a#backButton:focus{
+    color: #fff;
+    text-decoration: none;
+    background-color: transparent;
 }
 
 #brand{
@@ -20,43 +31,6 @@
     font-family: 'Allura', cursive;
     font-size: 24pt;
 
-}
-
-#cam, #addBut, #search{
-    width: 20px;
-    height: auto;
-    filter: invert(100%);
-}
-
-#ocrButton, #keyboardButton, #foodBankButton{
-    margin-right: 10px;
-}
-
-#camera, #keyboard, #foodBank{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    background-color: #499c79;
-}
-
- button:active #cam, button:active #addBut, button:active #search {
-        filter: brightness(0%);
-}
-
-button {
-    background-color: #499c79;
-    border: 1px solid #FFF;
-    height: 40px;
-    width: 45px;
-    border-radius: 4px;
-    padding-bottom: 5px;
-    
-}
-
-
-button:active {
-        background-color: #FFF;
 }
 
 footer{  
@@ -342,7 +316,7 @@ footer{
 .hamburger.is-closed .hamb-top,
 .hamburger.is-closed .hamb-middle,
 .hamburger.is-closed .hamb-bottom {
-    background-color: #1a1a1a;
+    background-color: white;
 }
 .hamburger.is-closed .hamb-top {
     top: 5px;
@@ -359,7 +333,7 @@ footer{
 .hamburger.is-open .hamb-top,
 .hamburger.is-open .hamb-middle,
 .hamburger.is-open .hamb-bottom {
-    background-color: #1a1a1a;
+    background-color: white;
 }
 .hamburger.is-open .hamb-top,
 .hamburger.is-open .hamb-bottom {
