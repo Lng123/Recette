@@ -614,3 +614,10 @@ font-family: 'Roboto Slab', serif;
 .sidebar-nav {
         font-family: 'Arimo', sans-serif;
 }
+
+.modal-header {
+    font-family: 'Roboto Slab', serif;
+}
+.modal-body, .modal-footer {
+     font-family: 'Arimo', sans-serif;   
+}
