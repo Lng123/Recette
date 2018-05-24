@@ -378,6 +378,32 @@ function addList() {
         dayCounter.style.margin = "0px";
         dayCounterButton.addEventListener("click", function (e) {
             $("#dateMePls").modal("show");
+            $("#changeDate").val(editDat);
+            let newDat = new Date($("#changeDate").val(editDat));;
+            $("#changeDate").change(function(newDate) {
+                console.log(newDate);
+                console.log($("#changeDate").val());
+                
+                newDat = new Date($("#changeDate").val());
+                
+            });
+            $("#editButSub").click(function(item) {
+                console.log("clicked!");
+                let ref = db.collection("email").doc(sessionStorage.getItem("userEmail"));
+                ref.collection("list").doc(userList[i].id).set(
+                    {
+                        name: userList[i].name,
+                        expiaryDate: newDat.getTime(),
+                        id: userList[i].id
+                    }
+                ).then(function(suc) {
+                    console.log(suc);
+                    location.reload();
+                }).catch(function(err) {
+                    console.log(err);
+                });
+            });
+            
         });
 
         dayCounterLabel.style.fontSize = "12px";
