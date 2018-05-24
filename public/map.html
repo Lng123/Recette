@@ -2,36 +2,38 @@
 <html>
 
 <head>
-    <title>Recette</title>
+    <title>Search for up to 200 places with Radar Search</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- CSS file -->
+    <link rel="stylesheet" href="./css/map.css">
+    <link rel="stylesheet" href="./css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/loading.css">
+
+    <!-- CDN -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" href="./css/map.css">
-
+    <!-- Font -->
     <link href="https://fonts.googleapis.com/css?family=Dhurjati%7cOpen+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Allura" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
         crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/font-awesome.min.css">
-    <link rel="stylesheet" href="./css/bootstrap.css">
-    <link rel="stylesheet" href="./css/loading.css">
 
-    <title>Search for up to 200 places with Radar Search</title>
     <style>
         /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
 
         #map {
-            height:86%;
+            height: 79%;
             margin-top: 45px;
-            margin-bottom: 13%;
+            margin-bottom: 60px;
             display: relative;
             position: absolute;
             width: 100%;
@@ -42,6 +44,7 @@
             padding-bottom: 30px;
             display: flex;
         }
+
         /* Optional: Makes the sample page fill the window. */
 
         html,
@@ -147,10 +150,10 @@
             });
         }
         function showDetails() {
-            window.location.href= url;
+            window.location.href = url;
         }
 
-        
+
     </script>
 </head>
 
@@ -159,15 +162,20 @@
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_3oCfP42Nr681yA1BKdrXRLB-u3UG_Ag&callback=initMap&libraries=places,visualization"
         async defer></script>
+
     <div id="navCon">
-        <!-- Sidebar -->
+
+        <!-- Hamburger -->
         <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
             <span class="hamb-top"></span>
             <span class="hamb-middle"></span>
             <span class="hamb-bottom"></span>
         </button>
+
         <div id="wrapper">
             <div class="overlay"></div>
+
+            <!-- Sidebar -->
             <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
                 <ul class="nav sidebar-nav">
                     <li class="sidebar-brand">
@@ -177,86 +185,48 @@
                         <a href="./index.html">Home</a>
                     </li>
                     <li>
-                        <a href="./AboutUs.html">About</a>
+                        <a href="./main.html">Items</a>
                     </li>
                     <li>
-                        <a href="#">Tutorial</a>
+                        <a href="./AboutUs.html">About</a>
                     </li>
                     <li>
                         <a href="./contact.html">Contact</a>
                     </li>
                 </ul>
             </nav>
-
             <!-- /#sidebar-wrapper -->
+
         </div>
     </div>
     <div>
-        <nav id="gradient" class="navbar navbar-expand-smbg-dar navbar-dark fixed-top">
 
+        <!-- Top nav bar -->
+        <nav id="gradient" class="navbar navbar-expand-smbg-dar navbar-dark fixed-top">
             <a class="navbar-brand" href="./index.html" id="brand">Recette</a>
             <ul class="nav">
-
         </nav>
+
+        <!-- Map -->
         <div id="mapCon">
             <div id="map"></div>
         </div>
-        <div class="modal fade" id="manualEnter">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
 
-                    <div class="modal-header">
-                       
-                    </div>
-
-
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="foodName">Enter Food:</label>
-                            <input type="text" class="form-control" id="foodName">
-                        </div>
-                        <div class="form-group">
-                            <label for="date">Enter Expiry Date:</label>
-                            <input type="date" class="form-control" id="date">
-
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" id="submitButton" onclick="addList()" class="btn btn-secondary" data-dismiss="modal">Submit</button>
-                    </div>
-
-
-
-                </div>
-            </div>
-        </div>
         <footer class="fixed-bottom">
-
-
             <nav class="navbar navbar-expand-smbg-dar navbar-dark" id="footspace">
 
+                <!-- Return to item page button -->
                 <ul class="nav navbar-nav navbar-right">
                     <li class="nav-item" style="float:right;">
-
-                        <button type="button" id="searchbut">
-                        <img src="https://firebasestorage.googleapis.com/v0/b/recette-f3ef5.appspot.com/o/magnifying-glass.svg?alt=media&token=14a21a32-29a9-46ac-9c50-04b8d2462f2d"
-                            alt="search" id="search">
-                    </button>
-
+                        <a href="main.html" id="backButton">
+                            <i class="far fa-arrow-alt-circle-left" id="back"></i>
+                        </a>
                     </li>
-                    <li>
-                        <button type="button" id="deleteBut">
-                        <img src="https://firebasestorage.googleapis.com/v0/b/recette-f3ef5.appspot.com/o/magnifying-glass.svg?alt=media&token=14a21a32-29a9-46ac-9c50-04b8d2462f2d"
-                            alt="search" id="search">
-                    </button>
-                    </li>
-
                 </ul>
-                <ul class="nav">
-
-                </ul>
+        
             </nav>
         </footer>
+
     </div>
     <script src="./script/NavBar.js"></script>
     <script src="./script/backgroundmain.js"></script>

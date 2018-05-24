@@ -4,13 +4,17 @@
 <head>
     <title>Recette</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- CSS file -->
+    <link rel="stylesheet" href="./css/400.css">
+
+    <!-- CDN -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" href="./css/400.css">
+    <!-- Font -->
     <link href="https://fonts.googleapis.com/css?family=Dhurjati%7cOpen+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Alex+Brush" rel="stylesheet">
 
@@ -18,6 +22,7 @@
 
 <body class="gradient">
 
+    <!-- Hamburger -->
     <div>
         <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
             <span class="hamb-top"></span>
@@ -30,7 +35,6 @@
         <div class="overlay"></div>
 
         <!-- Sidebar -->
-
         <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
             <ul class="nav sidebar-nav">
                 <li class="sidebar-brand">
@@ -50,27 +54,22 @@
                 </li>
             </ul>
         </nav>
-
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
-
             <div id="content">
-                <div class="img1" id="logo"></div>
 
+                <!-- Logo and title -->
+                <div class="img1" id="logo"></div>
                 <h2 id="welcome">Welcome</h2>
                 <hr class="star-light">
 
+                <!-- User log in status -->
                 <form class="form-inline">
-
                     <div class="row">
                         <div id="input">
                             <div class="input-group" id="userStatus">
-                                <!-- <input type="email" id="email" value="" class="form-control" size="50" placeholder="Email Address" required>
-                                <div class="input-group-btn">
-                                    <button type="button" onclick="clicked()" id="submit" class="btn btn-danger">Submit</button>
-                                </div> -->
                                 <div id="inputDetail">
                                 <p> You are logged in </p>
                                 <div>
@@ -82,12 +81,11 @@
                         </div>
                     </div>
                 </form>
-                <div id="error-msg"></div>
             </div>
         </div>
-
     </div>
-
+    
+    <!-- JS file -->
     <script src="./script/background.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase-app.js"></script>
