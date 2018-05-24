@@ -6,12 +6,12 @@
     margin-top: -140px;
 }
 
-#error-msg {
+#errorMsg {
     text-align: center;
-    padding-top: 20px;
+    padding-top: 0px;
 }
 
-#error-msg p{
+#errorMsg p{
     color: white;
 }
 
@@ -27,7 +27,7 @@ img {
 }
 
 .row {
-    margin-top:5rem;
+    margin-top:0;
     margin-left: auto;
     margin-right: auto;
 }
@@ -83,10 +83,23 @@ hr.star-light {
     position:block;
     text-align: center;
     font-family: 'Alex Brush', cursive;
-    margin-top:7rem;
+    margin-top:4rem;
     margin-bottom: 0;
     font-size: 2.775em;
     color:white;
+}
+
+#intro{
+    color:white;
+    position:block;
+    text-align: center;
+    font-family: 'Alex Brush', cursive;
+    margin-top: 10px;
+    font-size: 19pt;
+}
+
+#errorBlock{
+    height: 20px;
 }
 
 #userStatus{

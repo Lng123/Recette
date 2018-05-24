@@ -203,13 +203,15 @@ $('#email').on('input', function() {
 
     if(is_email){
         input.removeClass("alert alert-danger").addClass("alert alert-success");
-        $("#error-msg").css({"display":"none"});
+        $("#errorMsg").css({"display":"none"});
+        $("#errorBlock").css({"display":"block"});
         invalid = false;
     }
     else{
         input.removeClass("alert alert-success").addClass("alert alert-danger");
-        $("#error-msg").html("please enter a valid email address");
-        $("#error-msg").css({"display":"block"});
+        $("#errorMsg").html("please enter a valid email address");
+        $("#errorMsg").css({"display":"block"});
+        $("#errorBlock").css({"display":"none"});
         invalid = true;
     }
 });
