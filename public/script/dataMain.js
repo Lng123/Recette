@@ -141,7 +141,7 @@ function showList() {
         for (let i = 0; i < window.userList.length; i++) {
 
             var dat = new Date(window.userList[i].expiaryDate);
-
+            let editDat = dat.toISOString();
             console.log(dat);
             var today = new Date();
 
@@ -218,6 +218,32 @@ function showList() {
             dayCounter.style.margin = "0px";
             dayCounterButton.addEventListener("click", function (e) {
                 $("#dateMePls").modal("show");
+                $("#changeDate").val(editDat);
+                let newDat = new Date($("#changeDate").val(editDat));;
+                $("#changeDate").change(function(newDate) {
+                    console.log(newDate);
+                    console.log($("#changeDate").val());
+                    
+                    newDat = new Date($("#changeDate").val());
+                    
+                });
+                $("#editButSub").click(function(item) {
+                    console.log("clciked!");
+                    let ref = db.collection("email").doc(sessionStorage.getItem("userEmail"));
+                    ref.collection("list").doc(userList[i].id).set(
+                        {
+                            name: userList[i].name,
+                            expiaryDate: newDat.getTime(),
+                            id: userList[i].id
+                        }
+                    ).then(function(suc) {
+                        console.log(suc);
+                        location.reload();
+                    }).catch(function(err) {
+                        console.log(err);
+                    });
+                });
+                
             });
 
 
@@ -590,7 +616,7 @@ NodeList.prototype.remove = HTMLCollection.prototype.remove = function () {
 Date.prototype.toISOString = function () {
     return this.getUTCFullYear() +
         '-' + pad(this.getUTCMonth() + 1) +
-        '-' + pad(this.getUTCDate());
+        '-' + pad(this.getUTCDate()-1);
 
 };
 

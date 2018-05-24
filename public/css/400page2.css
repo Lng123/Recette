@@ -96,6 +96,11 @@ body {
     width: auto;
 }
 
+#editButSub {
+    background-color: #499c79;
+    width: auto;
+}
+
 #closeButton{
     width: auto;
     background-color: green;
