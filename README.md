@@ -1,5 +1,5 @@
 # Recette
-> Recette is a web-based application that keeps track of the expiry dates of foods for the user. It allows the user to take a picture of a receipt, and generates a list of food items (raw produce), with the recommended expiry dates. 
+> Recette is a web-based application that keeps track of the expiry dates of foods for the user. It allows the user to take a picture of a receipt, and generates a list of food items (raw produce), with the recommended expiry dates. The user will also have the option to manually add and remove food items onto the list. As the food items near the expiry date, Recette will send an email notification to the user. The user will also be able to search for recipes that uses the ingredients that the user selects. Recette also shows the available food banks nearby for the user to donate unwanted.  
 
 ## Website
 > https://recette.life
