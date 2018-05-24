@@ -393,3 +393,7 @@ hr.star-light {
 #inputDetail, .btn {
      font-family: 'Arimo', sans-serif;   
 }
+
+#inputDetail {
+    margin-top:30px;
+}

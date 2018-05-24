@@ -16,7 +16,7 @@ var settings = {
   "url": "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=false&ingredients=" 
   + 
    param
-   // apples%2Cflour%2Csugar 
+   // format : apples%2Cflour%2Csugar 
   + "&limitLicense=false&number=4&ranking=1", 
   "method": "GET",
   "headers": {
