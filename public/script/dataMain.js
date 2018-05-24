@@ -99,6 +99,7 @@ var functions = firebase.functions();
 var camBut = document.getElementById("camera");
 
 var eleCounter = 0;
+var clicked = -1; //indicates which date counter is clicked
 var a = sessionStorage.getItem("userEmail");
 var ingList = [];
 window.userList = [];
@@ -329,7 +330,7 @@ function addList() {
     var icon = document.createElement("i");
     var id = "";
 
-    if (recogEx(ingList, item)) {
+    if (recogEx(ingList, item)) {   
         container.setAttribute("id", "Cnumber" + window.eleCounter);
         container.setAttribute("class", "CClass");
 
@@ -378,7 +379,7 @@ function addList() {
         dayCounter.style.margin = "0px";
         dayCounterButton.addEventListener("click", function (e) {
             $("#dateMePls").modal("show");
-            $("#changeDate").val(editDat);
+            var editDat= $("#changeDate").val();
             let newDat = new Date($("#changeDate").val(editDat));;
             $("#changeDate").change(function(newDate) {
                 console.log(newDate);
@@ -389,12 +390,13 @@ function addList() {
             });
             $("#editButSub").click(function(item) {
                 console.log("clicked!");
+                window.clicked = window.eleCounter;
                 let ref = db.collection("email").doc(sessionStorage.getItem("userEmail"));
-                ref.collection("list").doc(userList[i].id).set(
+                ref.collection("list").doc(userList[clicked-1].id).set(
                     {
-                        name: userList[i].name,
+                        name: userList[clicked].name,
                         expiaryDate: newDat.getTime(),
-                        id: userList[i].id
+                        id: userList[clicked].id
                     }
                 ).then(function(suc) {
                     console.log(suc);
@@ -447,7 +449,7 @@ function addList() {
             .then(function (docRef) {
                 console.log(docRef);
                 id = docRef.id;
-                window.userList[window.eleCounter - 1] = (
+                window.userList[clicked] = (
                     {
                         name: window.name,
                         expiaryDate: dateDB.getTime(),
