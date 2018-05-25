@@ -10,18 +10,11 @@
 ## Thanks
 > Amir Amintabar, Arron Ferguson, Carly Wong-Orr, D'Arcy Smith, Christopher Thompson, Jason Harrison,  
 
-
-## Change log
-> change log
-
 ## News
-> news
-
-## Install 
-> install
+> Our project term is finished!
 
 ## Copying and License
-> license
+> Recette Inc.
 
 ## Percentage completion
 > 100%
