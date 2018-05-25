@@ -1,12 +1,12 @@
-.navbar{
-  background-color: #499c79;
+.navbar {
+    background-color: #499c79;
 }
 
-.hidden{
+.hidden {
     display: none;
 }
 
-.hidden::before{
+.hidden::before {
     display: none;
 }
 
@@ -15,28 +15,32 @@
     transform: translate3d(0, 18%, 0);
 }
 
-#brand{
-    color:#FFF;
+#brand {
+    color: #FFF;
     font-family: 'Allura', cursive;
     font-size: 24pt;
 
 }
 
-#check{
+#check {
     width: 25px;
     height: auto;
     filter: invert(100%);
 }
 
-#selectAll{
+#selectAll {
     margin-right: 4px;
 }
 
-#ocrButton, #keyboardButton, #foodBankButton{
+#ocrButton,
+#keyboardButton,
+#foodBankButton {
     margin-right: 10px;
 }
 
-#camera, #keyboard, #foodBank{
+#camera,
+#keyboard,
+#foodBank {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -44,9 +48,13 @@
     background-color: #499c79;
 }
 
- button:active #cam, button:active #addBut, button:active #search, button:active #check, button:active #selectButton
-, button:active #trash{
-        filter: brightness(0%);
+button:active #cam,
+button:active #addBut,
+button:active #search,
+button:active #check,
+button:active #selectButton,
+button:active #trash {
+    filter: brightness(0%);
 }
 
 button {
@@ -57,20 +65,20 @@ button {
     border-radius: 4px;
     padding-bottom: 5px;
     padding-right: 0;
-    padding-left: 0;   
+    padding-left: 0;
 }
 
 button:active {
-        background-color: #FFF;
+    background-color: #FFF;
 }
 
-footer{  
+footer {
     bottom: 0%;
     position: fixed;
 }
 
 
-#footspace{
+#footspace {
     height: 55.667px;
 }
 
@@ -80,7 +88,7 @@ footer{
     clear: both;
 }
 
-#recipe{
+#recipe {
     margin-bottom: 55.667px;
 }
 
@@ -91,7 +99,7 @@ body {
     background-attachment: fixed;
 }
 
-#submitButton{
+#submitButton {
     background-color: #499c79;
     width: auto;
 }
@@ -101,7 +109,7 @@ body {
     width: auto;
 }
 
-#closeButton{
+#closeButton {
     width: auto;
     background-color: green;
 }
@@ -110,14 +118,16 @@ body {
     margin-top: 80px;
 }
 
-#remImg{
+#remImg {
 
     width: 100px;
     height: 100px;
 }
+
 #remImg:hover {
     color: black;
 }
+
 .btn:hover {
     color: springgreen;
 }
@@ -128,15 +138,17 @@ body {
 }
 
 .card-header {
-    display:flex;
+    display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    
+
 }
 
 /*-------------------------------*/
+
 /*          Autocomplete         */
+
 /*-------------------------------*/
 
 .autocomplete {
@@ -173,7 +185,9 @@ body {
 }
 
 /*-------------------------------*/
+
 /*           Autocomplete        */
+
 /*-------------------------------*/
 
 .autocomplete {
@@ -214,7 +228,9 @@ body {
 
 
 /*-------------------------------*/
+
 /*           Wrappers            */
+
 /*-------------------------------*/
 
 #wrapper {
@@ -260,8 +276,11 @@ body {
     position: absolute;
     margin-right: -220px;
 }
+
 /*-------------------------------*/
+
 /*           Wrappers            */
+
 /*-------------------------------*/
 
 #wrapper {
@@ -278,10 +297,10 @@ body {
 
 #sidebar-wrapper {
     z-index: 1050;
-    position:fixed;
+    position: fixed;
     width: 10px;
     height: 100%;
-    
+
     margin-left: -250px;
     /* overflow-y: auto;
     overflow-x: hidden; */
@@ -310,7 +329,9 @@ body {
 }
 
 /*-------------------------------*/
+
 /*     Sidebar nav styles        */
+
 /*-------------------------------*/
 
 .sidebar-nav {
@@ -337,36 +358,43 @@ body {
     z-index: -1;
     height: 100%;
     width: 2px;
-    background-color: rgba(15, 122, 183, 1.0);;
+    background-color: rgba(15, 122, 183, 1.0);
+    ;
     -webkit-transition: width .2s ease-in;
-    -moz-transition:  width .2s ease-in;
-    -ms-transition:  width .2s ease-in;
+    -moz-transition: width .2s ease-in;
+    -ms-transition: width .2s ease-in;
     transition: width .2s ease-in;
     margin-left: 15px;
 
 }
+
 .sidebar-nav li:first-child a {
     color: #fff;
-    z-index:1060;
+    z-index: 1060;
     background-color: #1a1a1a;
-    
+
 }
+
 .sidebar-nav li:nth-child(2):before {
     background-color: rgba(85, 183, 145, 1.0);
-    z-index:-1;
+    z-index: -1;
 }
+
 .sidebar-nav li:nth-child(3):before {
     background-color: rgba(85, 172, 183, 1.0);
-    z-index:-1;
+    z-index: -1;
 }
+
 .sidebar-nav li:nth-child(4):before {
     background-color: rgba(85, 183, 96, 1.0);
-    z-index:-1;
+    z-index: -1;
 }
+
 .sidebar-nav li:nth-child(5):before {
     background-color: rgba(73, 149, 156, 1.0);
-    z-index:-1;
+    z-index: -1;
 }
+
 .sidebar-nav li:nth-child(6):before {
     background-color: rgba(73, 156, 80, 1.0);
 }
@@ -375,8 +403,8 @@ body {
 .sidebar-nav li.open:hover:before {
     width: 100%;
     -webkit-transition: width .2s ease-in;
-    -moz-transition:  width .2s ease-in;
-    -ms-transition:  width .2s ease-in;
+    -moz-transition: width .2s ease-in;
+    -ms-transition: width .2s ease-in;
     transition: width .2s ease-in;
 
 }
@@ -393,7 +421,7 @@ body {
 .sidebar-nav li a:focus,
 .sidebar-nav li.open a:hover,
 .sidebar-nav li.open a:active,
-.sidebar-nav li.open a:focus{
+.sidebar-nav li.open a:focus {
     color: #fff;
     text-decoration: none;
     background-color: transparent;
@@ -404,6 +432,7 @@ body {
     font-size: 20px;
     line-height: 44px;
 }
+
 .sidebar-nav .dropdown-menu {
     position: relative;
     width: 100%;
@@ -416,13 +445,15 @@ body {
 }
 
 /*--------------------*/
+
 /*      Hamburger     */
+
 /*--------------------*/
 
 .hamburger {
     position: fixed;
     top: 20px;
-    float:right;
+    float: right;
     z-index: 1050;
     display: block;
     width: 32px;
@@ -431,11 +462,13 @@ body {
     background: transparent !important;
     border: none;
 }
+
 .hamburger:hover,
 .hamburger:focus,
 .hamburger:active {
     outline: none;
 }
+
 .hamburger.is-closed:before {
     content: '';
     display: block;
@@ -446,6 +479,7 @@ body {
     text-align: center;
     opacity: 0;
 }
+
 .hamburger.is-closed:hover:before {
     opacity: 1;
     display: block;
@@ -454,6 +488,7 @@ body {
 #navCon {
     z-index: 1050;
 }
+
 .hamburger.is-closed .hamb-top,
 .hamburger.is-closed .hamb-middle,
 .hamburger.is-closed .hamb-bottom,
@@ -465,18 +500,22 @@ body {
     height: 4px;
     width: 100%;
 }
+
 .hamburger.is-closed .hamb-top,
 .hamburger.is-closed .hamb-middle,
 .hamburger.is-closed .hamb-bottom {
     background-color: white;
 }
+
 .hamburger.is-closed .hamb-top {
     top: 5px;
 }
+
 .hamburger.is-closed .hamb-middle {
     top: 50%;
     margin-top: -2px;
 }
+
 .hamburger.is-closed .hamb-bottom {
     bottom: 5px;
 }
@@ -487,23 +526,29 @@ body {
 .hamburger.is-open .hamb-bottom {
     background-color: white;
 }
+
 .hamburger.is-open .hamb-top,
 .hamburger.is-open .hamb-bottom {
     top: 50%;
     margin-top: -2px;
 }
+
 .hamburger.is-open .hamb-top {
     transform: rotate(45deg);
-    transition: .2s cubic-bezier(.73,1,.28,.08);
+    transition: .2s cubic-bezier(.73, 1, .28, .08);
     -webkit-transform: rotate(45deg);
-    -webkit-transition: -webkit-transform .2s cubic-bezier(.73,1,.28,.08);
+    -webkit-transition: -webkit-transform .2s cubic-bezier(.73, 1, .28, .08);
 }
-.hamburger.is-open .hamb-middle { display: none; }
+
+.hamburger.is-open .hamb-middle {
+    display: none;
+}
+
 .hamburger.is-open .hamb-bottom {
     transform: rotate(-45deg);
-    transition: .2s cubic-bezier(.73,1,.28,.08);
+    transition: .2s cubic-bezier(.73, 1, .28, .08);
     -webkit-transform: rotate(-45deg);
-    -webkit-transition: -webkit-transform .2s cubic-bezier(.73,1,.28,.08);
+    -webkit-transition: -webkit-transform .2s cubic-bezier(.73, 1, .28, .08);
 }
 
 .hamburger.is-open:before {
@@ -516,13 +561,16 @@ body {
     text-align: center;
     opacity: 0;
 }
+
 .hamburger.is-open:hover:before {
     opacity: 1;
     display: block;
 }
 
 /*-------------------------------*/
+
 /*            Overlay            */
+
 /*-------------------------------*/
 
 .overlay {
@@ -534,16 +582,19 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(85, 183, 145,.8);
+    background-color: rgba(85, 183, 145, .8);
     z-index: 1;
 }
 
 
 /*-------------------------------*/
+
 /*            Checkbox           */
+
 /*-------------------------------*/
 
-.box, .boxChecked{
+.box,
+.boxChecked {
     font-size: 21pt;
     color: white;
 }
@@ -552,38 +603,43 @@ body {
     margin-top: 10px;
 }
 
-input[type="checkbox"] ~ i.far.fa-square{
-    color: white;    display: inline;
+input[type="checkbox"] ~ i.far.fa-square {
+    color: white;
+    display: inline;
 }
-input[type="checkbox"] ~ i.fas.fa-check-square{
+
+input[type="checkbox"] ~ i.fas.fa-check-square {
     display: none;
 }
 
-input[type="checkbox"]:checked ~ i.far.fa-square{
+input[type="checkbox"]:checked ~ i.far.fa-square {
     display: none;
 }
 
-input[type="checkbox"]:checked ~ i.fas.fa-check-square{
-    color: white;    display: inline;
+input[type="checkbox"]:checked ~ i.fas.fa-check-square {
+    color: white;
+    display: inline;
 }
 
 .chk {
-    display:none;
+    display: none;
 }
 
-#trash, #selectButton, #search{
+#trash,
+#selectButton,
+#search {
     color: white;
     font-size: 17pt;
     margin-top: 7px;
 }
 
-#plus{
+#plus {
     color: white;
     font-size: 23pt;
     margin-top: 7px;
 }
 
-#plusButton{
+#plusButton {
     position: fixed;
     z-index: 1;
     right: 15px;
@@ -594,17 +650,17 @@ input[type="checkbox"]:checked ~ i.fas.fa-check-square{
     border: solid 1px #499c79;
     background-color: #499c79;
     border-radius: 30px;
-    width:48px;
-    height:48px;
+    width: 48px;
+    height: 48px;
 }
 
 #recette {
-    font-family: 'Allura', cursive; 
+    font-family: 'Allura', cursive;
     font-size: 24pt;
 }
 
 .card-link {
-font-family: 'Roboto Slab', serif;
+    font-family: 'Roboto Slab', serif;
 }
 
 .card-body {
@@ -617,12 +673,15 @@ font-family: 'Roboto Slab', serif;
 }
 
 .sidebar-nav {
-        font-family: 'Arimo', sans-serif;
+    font-family: 'Arimo', sans-serif;
 }
 
 .modal-header {
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Roboto Slab',
+    serif;
 }
-.modal-body, .modal-footer {
-     font-family: 'Arimo', sans-serif;   
+
+.modal-body,
+.modal-footer {
+    font-family: 'Arimo', sans-serif;
 }

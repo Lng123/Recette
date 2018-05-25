@@ -1,25 +1,25 @@
 let login = sessionStorage.getItem("userEmail");
-let str =location.pathname;
+let str = location.pathname;
 let place = str.substring(str.length - 10, str.length);
 
-if(login !== null && place !== "login.html") {
+if (login !== null && place !== "login.html") {
 
-    location.href="./login.html";
+    location.href = "./login.html";
 
-}else if(place === "index.html" && place !== "login.html") {
+} else if (place === "index.html" && place !== "login.html") {
 
     console.log("true");
 
-}else if(place == "login.html" && login !== null) {
+} else if (place == "login.html" && login !== null) {
 
     console.log("false");
 
-}else {
+} else {
 
     location.href = "./index.html";
 }
 
-    
+
 var config = {
     apiKey: "AIzaSyDsDdSSCShjFlNOt1hTdcMbxisH1BSPgDE",
     authDomain: "recette-f3ef5.firebaseapp.com",
@@ -52,7 +52,7 @@ let getEmail = db.collection("email").get().then(function (querySnapshot) {
 
 function logout() {
     sessionStorage.clear();
-    location.href="./index.html";
+    location.href = "./index.html";
 }
 // var ingredient = [
 //     { name: "apple", time: 28 },
@@ -148,7 +148,7 @@ function logout() {
 //     {name:"Tabasco pepper", time:14},
 //     {name:"Cayenne pepper", time:14},
 //     {name:"radicchio", time:3},
-   
+
 //     {name:"root vegetables", time:5},
 //     {name:"beet", time:21},
 //     {name:"carrot", time:5},
@@ -196,29 +196,36 @@ var invalid = true;
 
 // Email log in verification
 
-$('#email').on('input', function() {
-    var input=$(this);
+$('#email').on('input', function () {
+    var input = $(this);
     var re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    var is_email=re.test(input.val());
+    var is_email = re.test(input.val());
 
-    if(is_email){
+    if (is_email) {
         input.removeClass("alert alert-danger").addClass("alert alert-success");
-        $("#errorMsg").css({"display":"none"});
-        $("#errorBlock").css({"display":"block"});
+        $("#errorMsg").css({
+            "display": "none"
+        });
+        $("#errorBlock").css({
+            "display": "block"
+        });
         invalid = false;
-    }
-    else{
+    } else {
         input.removeClass("alert alert-success").addClass("alert alert-danger");
         $("#errorMsg").html("please enter a valid email address");
-        $("#errorMsg").css({"display":"block"});
-        $("#errorBlock").css({"display":"none"});
+        $("#errorMsg").css({
+            "display": "block"
+        });
+        $("#errorBlock").css({
+            "display": "none"
+        });
         invalid = true;
     }
 });
 
 $('#email').keypress(function (e) {
     var key = e.which;
-    if(key == 13)  // the enter key code
+    if (key == 13) // the enter key code
     {
         $("#submit").click();
         return false;
@@ -228,7 +235,7 @@ $('#email').keypress(function (e) {
 function clicked() {
     console.log(email.value);
 
-    if(invalid) {
+    if (invalid) {
         return false;
     }
 
@@ -250,9 +257,9 @@ function clicked() {
     }
 
     if (result === "yes") {
-        db.collection("email").add(
-            { email: email.value }
-        )
+        db.collection("email").add({
+                email: email.value
+            })
             .then(function (docRef) {
                 console.log("added!!" + docRef.id);
                 sessionStorage.setItem("userEmail", docRef.id);
@@ -267,5 +274,3 @@ function clicked() {
 
 }
 var userId2 = userId;
-
-

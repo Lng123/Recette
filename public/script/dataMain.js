@@ -1,5 +1,3 @@
-
-
 $(document).ready(function () {
 
     /* remove item by checkbox function! */
@@ -151,7 +149,7 @@ function showList() {
 
             let dayLeft = calculateDayCount(today, dat);
             console.log(dayLeft);
-            
+
 
             var list = document.getElementById("accordion");
             var card = document.createElement("div");
@@ -199,8 +197,7 @@ function showList() {
                 console.log("eneter");
                 dayCounter.innerHTML = dayLeft + "<br/>Days";
                 cardAn.prepend(icon);
-            }
-            else if (dayLeft === "0") {
+            } else if (dayLeft === "0") {
                 dayCounterButton.setAttribute("class", "btn btn-danger specialButton");
                 dayCounterButton.innerHTML = "Last<br/>day";
                 dayCounterButton.style.fontSize = "16px";
@@ -221,30 +218,28 @@ function showList() {
                 $("#dateMePls").modal("show");
                 $("#changeDate").val(editDat);
                 let newDat = new Date($("#changeDate").val(editDat));;
-                $("#changeDate").change(function(newDate) {
+                $("#changeDate").change(function (newDate) {
                     console.log(newDate);
                     console.log($("#changeDate").val());
-                    
+
                     newDat = new Date($("#changeDate").val());
-                    
+
                 });
-                $("#editButSub").click(function(item) {
+                $("#editButSub").click(function (item) {
                     console.log("clciked!");
                     let ref = db.collection("email").doc(sessionStorage.getItem("userEmail"));
-                    ref.collection("list").doc(userList[i].id).set(
-                        {
-                            name: userList[i].name,
-                            expiaryDate: newDat.getTime(),
-                            id: userList[i].id
-                        }
-                    ).then(function(suc) {
+                    ref.collection("list").doc(userList[i].id).set({
+                        name: userList[i].name,
+                        expiaryDate: newDat.getTime(),
+                        id: userList[i].id
+                    }).then(function (suc) {
                         console.log(suc);
                         location.reload();
-                    }).catch(function(err) {
+                    }).catch(function (err) {
                         console.log(err);
                     });
                 });
-                
+
             });
 
 
@@ -330,7 +325,7 @@ function addList() {
     var icon = document.createElement("i");
     var id = "";
 
-    if (recogEx(ingList, item)) {   
+    if (recogEx(ingList, item)) {
         container.setAttribute("id", "Cnumber" + window.eleCounter);
         container.setAttribute("class", "CClass");
 
@@ -353,15 +348,14 @@ function addList() {
         dayCounterButton.style.float = "right";
         let val = parseInt(dayLeft);
         console.log(val);
-        
+
         if (0 > val) {
             card.style.background = "linear-gradient(to right, #49959c , rgba(74, 79, 86, 0.7))";
             dayCounterButton.setAttribute("class", "btn btn-danger specialButton");
             console.log("eneter");
             dayCounter.innerHTML = dayLeft + "<br/>Days";
             cardAn.prepend(icon);
-        }
-        else if (dayLeft === "0") {
+        } else if (dayLeft === "0") {
             dayCounterButton.setAttribute("class", "btn btn-danger specialButton");
             dayCounterButton.innerHTML = "Last<br/>today";
             dayCounterButton.style.fontSize = "16px";
@@ -379,33 +373,31 @@ function addList() {
         dayCounter.style.margin = "0px";
         dayCounterButton.addEventListener("click", function (e) {
             $("#dateMePls").modal("show");
-            var editDat= $("#changeDate").val();
+            var editDat = $("#changeDate").val();
             let newDat = new Date($("#changeDate").val(editDat));;
-            $("#changeDate").change(function(newDate) {
+            $("#changeDate").change(function (newDate) {
                 console.log(newDate);
                 console.log($("#changeDate").val());
-                
+
                 newDat = new Date($("#changeDate").val());
-                
+
             });
-            $("#editButSub").click(function(item) {
+            $("#editButSub").click(function (item) {
                 console.log("clicked!");
                 window.clicked = window.eleCounter;
                 let ref = db.collection("email").doc(sessionStorage.getItem("userEmail"));
-                ref.collection("list").doc(userList[clicked-1].id).set(
-                    {
-                        name: userList[clicked].name,
-                        expiaryDate: newDat.getTime(),
-                        id: userList[clicked].id
-                    }
-                ).then(function(suc) {
+                ref.collection("list").doc(userList[clicked - 1].id).set({
+                    name: userList[clicked].name,
+                    expiaryDate: newDat.getTime(),
+                    id: userList[clicked].id
+                }).then(function (suc) {
                     console.log(suc);
                     location.reload();
-                }).catch(function(err) {
+                }).catch(function (err) {
                     console.log(err);
                 });
             });
-            
+
         });
 
         dayCounterLabel.style.fontSize = "12px";
@@ -440,22 +432,18 @@ function addList() {
         var dat = new Date();
         let dateDB = new Date(date.value);
         let ref = db.collection("email").doc(sessionStorage.getItem("userEmail"));
-        ref.collection("list").add(
-            {
+        ref.collection("list").add({
                 name: item.value,
                 expiaryDate: dateDB.getTime()
-            }
-        )
+            })
             .then(function (docRef) {
                 console.log(docRef);
                 id = docRef.id;
-                window.userList[clicked] = (
-                    {
-                        name: window.name,
-                        expiaryDate: dateDB.getTime(),
-                        id: id,
-                    }
-                );
+                window.userList[clicked] = ({
+                    name: window.name,
+                    expiaryDate: dateDB.getTime(),
+                    id: id,
+                });
                 console.log(window.userList);
             });
         id = '' + id;
@@ -554,7 +542,9 @@ function searchapi() {
         if (checkb[i].checked) {
             console.log("number" + i);
             console.log(fname[i].innerText);
-            foodArray.push({ name: fname[i].innerText });
+            foodArray.push({
+                name: fname[i].innerText
+            });
         }
         console.log(foodArray);
         sessionStorage.setItem('farray', JSON.stringify(foodArray));
@@ -568,24 +558,24 @@ new autoComplete({
 
     selector: "#foodName",
     minChars: 1,
-    source: function(txtInput, suggest){
+    source: function (txtInput, suggest) {
         txtInput = txtInput.toLowerCase();
         var similarIngredients = [];
         for (var i = 0; i < window.ingList.length; i++) {
-            if ( ~window.ingList[i].name.toLowerCase().indexOf(txtInput) ) {
+            if (~window.ingList[i].name.toLowerCase().indexOf(txtInput)) {
                 similarIngredients.push(window.ingList[i].name);
             };
         }
         suggest(similarIngredients);
     },
 
-    renderItem: function (item, search){
+    renderItem: function (item, search) {
         search = search.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
         var re = new RegExp("(" + search.split(' ').join('|') + ")", "gi");
         return '<div class="autocomplete-suggestion" data-val="' + item + '">' + item.replace(re, "<b>$1</b>") + '</div>';
     },
 
-    onSelect: function(e, txtInput, item){
+    onSelect: function (e, txtInput, item) {
         var currentInput = $("#foodName").val();
         for (var i = 0; i < ingListW.length; i++) {
             if (ingListW[i].name === txtInput) {
@@ -612,15 +602,15 @@ Date.prototype.addDays = function (days) {
 
 Date.prototype.subtractDays = function (days) {
     var dat = new Date(this.valueOf());
-    if (dat.getDate() === days.getDate()
-        && dat.getMonth() === days.getMonth()
-        && dat.getFullYear() === days.getFullYear()) {
+    if (dat.getDate() === days.getDate() &&
+        dat.getMonth() === days.getMonth() &&
+        dat.getFullYear() === days.getFullYear()) {
         return "/ / 0";
     } else if (dat.getTime() < days.getTime()) {
         console.log("dat: " + dat.getDate());
         console.log("daYS: " + days.getDate());
         console.log("past");
-        if(dat.getMonth() !== days.getMont()) {
+        if (dat.getMonth() !== days.getMont()) {
             return "/ / " + (dat.getDay() - days.getDay() + 3)
         }
         return "/ / " + (dat.getDay() - days.getDay());
@@ -644,7 +634,7 @@ NodeList.prototype.remove = HTMLCollection.prototype.remove = function () {
 Date.prototype.toISOString = function () {
     return this.getUTCFullYear() +
         '-' + pad(this.getUTCMonth() + 1) +
-        '-' + pad(this.getUTCDate()-1);
+        '-' + pad(this.getUTCDate() - 1);
 
 };
 

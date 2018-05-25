@@ -1,8 +1,8 @@
-#content{
+#content {
     height: 450px;
 }
 
-#logo{
+#logo {
     margin-top: -140px;
 }
 
@@ -11,7 +11,7 @@
     padding-top: 0px;
 }
 
-#errorMsg p{
+#errorMsg p {
     color: white;
 }
 
@@ -27,7 +27,7 @@ img {
 }
 
 .row {
-    margin-top:0;
+    margin-top: 0;
     margin-left: auto;
     margin-right: auto;
 }
@@ -39,7 +39,7 @@ img {
 }
 
 @media (min-width: 768px) {
-    .input-group{
+    .input-group {
         display: flex !important;
         max-width: 330px;
         justify-content: center;
@@ -47,11 +47,11 @@ img {
         flex-direction: row;
     }
 
-    .input-group-btn{
+    .input-group-btn {
         display: block !important;
     }
 
-    #input{
+    #input {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -79,50 +79,53 @@ hr.star-light {
     border-color: #fff;
 }
 
-#welcome{
-    position:block;
+#welcome {
+    position: block;
     text-align: center;
     font-family: 'Alex Brush', cursive;
-    margin-top:4rem;
+    margin-top: 4rem;
     margin-bottom: 0;
     font-size: 2.775em;
-    color:white;
+    color: white;
 }
 
-#intro{
-    color:white;
-    position:block;
+#intro {
+    color: white;
+    position: block;
     text-align: center;
     font-family: 'Alex Brush', cursive;
     margin-top: 10px;
     font-size: 19pt;
 }
 
-#errorBlock{
+#errorBlock {
     height: 20px;
 }
 
-#userStatus{
+#userStatus {
     margin-top: -35px;
     text-align: center;
 }
 
-#userStatus p{
+#userStatus p {
     margin-bottom: 20px;
     color: white;
     font-size: 15pt;
 }
 
-#userStatus .btn-info{
+#userStatus .btn-info {
     margin-right: 15px;
 }
-#userStatus .btn-danger{
+
+#userStatus .btn-danger {
     margin-left: 15px;
 }
 
 
 /*-------------------------------*/
+
 /*           Wrappers            */
+
 /*-------------------------------*/
 
 #wrapper {
@@ -171,7 +174,9 @@ hr.star-light {
 }
 
 /*-------------------------------*/
+
 /*     Sidebar nav styles        */
+
 /*-------------------------------*/
 
 .sidebar-nav {
@@ -200,27 +205,33 @@ hr.star-light {
     width: 3px;
     background-color: #1c1c1c;
     -webkit-transition: width .2s ease-in;
-    -moz-transition:  width .2s ease-in;
-    -ms-transition:  width .2s ease-in;
+    -moz-transition: width .2s ease-in;
+    -ms-transition: width .2s ease-in;
     transition: width .2s ease-in;
 
 }
+
 .sidebar-nav li:first-child a {
     color: #fff;
     background-color: #1a1a1a;
 }
+
 .sidebar-nav li:nth-child(2):before {
     background-color: rgba(85, 183, 145, 1.0);
 }
+
 .sidebar-nav li:nth-child(3):before {
     background-color: rgba(85, 172, 183, 1.0);
 }
+
 .sidebar-nav li:nth-child(4):before {
     background-color: rgba(85, 183, 96, 1.0);
 }
+
 .sidebar-nav li:nth-child(5):before {
     background-color: rgba(73, 149, 156, 1.0);
 }
+
 .sidebar-nav li:nth-child(6):before {
     background-color: rgba(73, 156, 80, 1.0);
 }
@@ -229,8 +240,8 @@ hr.star-light {
 .sidebar-nav li.open:hover:before {
     width: 100%;
     -webkit-transition: width .2s ease-in;
-    -moz-transition:  width .2s ease-in;
-    -ms-transition:  width .2s ease-in;
+    -moz-transition: width .2s ease-in;
+    -ms-transition: width .2s ease-in;
     transition: width .2s ease-in;
 
 }
@@ -247,7 +258,7 @@ hr.star-light {
 .sidebar-nav li a:focus,
 .sidebar-nav li.open a:hover,
 .sidebar-nav li.open a:active,
-.sidebar-nav li.open a:focus{
+.sidebar-nav li.open a:focus {
     color: #fff;
     text-decoration: none;
     background-color: transparent;
@@ -258,6 +269,7 @@ hr.star-light {
     font-size: 20px;
     line-height: 44px;
 }
+
 .sidebar-nav .dropdown-menu {
     position: relative;
     width: 100%;
@@ -269,8 +281,24 @@ hr.star-light {
     box-shadow: none;
 }
 
+#inputDetail,
+.btn {
+    font-family: 'Arimo', sans-serif;
+}
+
+#inputDetail {
+    margin-top: 30px;
+}
+
+#recette {
+    font-family: 'Allura', cursive;
+    font-size: 24pt;
+}
+
 /*-------------------------------*/
+
 /*       Hamburger-Cross         */
+
 /*-------------------------------*/
 
 .hamburger {
@@ -284,11 +312,13 @@ hr.star-light {
     background: transparent;
     border: none;
 }
+
 .hamburger:hover,
 .hamburger:focus,
 .hamburger:active {
     outline: none;
 }
+
 .hamburger.is-closed:before {
     content: '';
     display: block;
@@ -299,6 +329,7 @@ hr.star-light {
     text-align: center;
     opacity: 0;
 }
+
 .hamburger.is-closed:hover:before {
     opacity: 1;
     display: block;
@@ -315,18 +346,22 @@ hr.star-light {
     height: 4px;
     width: 100%;
 }
+
 .hamburger.is-closed .hamb-top,
 .hamburger.is-closed .hamb-middle,
 .hamburger.is-closed .hamb-bottom {
     background-color: white;
 }
+
 .hamburger.is-closed .hamb-top {
     top: 5px;
 }
+
 .hamburger.is-closed .hamb-middle {
     top: 50%;
     margin-top: -2px;
 }
+
 .hamburger.is-closed .hamb-bottom {
     bottom: 5px;
 }
@@ -337,23 +372,29 @@ hr.star-light {
 .hamburger.is-open .hamb-bottom {
     background-color: white;
 }
+
 .hamburger.is-open .hamb-top,
 .hamburger.is-open .hamb-bottom {
     top: 50%;
     margin-top: -2px;
 }
+
 .hamburger.is-open .hamb-top {
     transform: rotate(45deg);
-    transition: .2s cubic-bezier(.73,1,.28,.08);
+    transition: .2s cubic-bezier(.73, 1, .28, .08);
     -webkit-transform: rotate(45deg);
-    -webkit-transition: -webkit-transform .2s cubic-bezier(.73,1,.28,.08);
+    -webkit-transition: -webkit-transform .2s cubic-bezier(.73, 1, .28, .08);
 }
-.hamburger.is-open .hamb-middle { display: none; }
+
+.hamburger.is-open .hamb-middle {
+    display: none;
+}
+
 .hamburger.is-open .hamb-bottom {
     transform: rotate(-45deg);
-    transition: .2s cubic-bezier(.73,1,.28,.08);
+    transition: .2s cubic-bezier(.73, 1, .28, .08);
     -webkit-transform: rotate(-45deg);
-    -webkit-transition: -webkit-transform .2s cubic-bezier(.73,1,.28,.08);
+    -webkit-transition: -webkit-transform .2s cubic-bezier(.73, 1, .28, .08);
 }
 
 .hamburger.is-open:before {
@@ -366,13 +407,16 @@ hr.star-light {
     text-align: center;
     opacity: 0;
 }
+
 .hamburger.is-open:hover:before {
     opacity: 1;
     display: block;
 }
 
 /*-------------------------------*/
+
 /*            Overlay            */
+
 /*-------------------------------*/
 
 .overlay {
@@ -384,16 +428,6 @@ hr.star-light {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(85, 183, 145,.8);
+    background-color: rgba(85, 183, 145, .8);
     z-index: 1;
-}
-
-
-
-#inputDetail, .btn {
-     font-family: 'Arimo', sans-serif;   
-}
-
-#inputDetail {
-    margin-top:30px;
 }

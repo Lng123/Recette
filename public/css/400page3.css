@@ -1,24 +1,27 @@
-.navbar{
-  background-color: #499c79;
+.navbar {
+    background-color: #499c79;
 }
 
-#brand{
-    color:#FFF;
+#brand {
+    color: #FFF;
     font-family: 'Allura', cursive;
     font-size: 24pt;
 
 }
 
-#back, #options{
+#back,
+#options {
     width: 20px;
     height: auto;
     filter: invert(100%);
 }
 
 
-button:active #back, button:active #options {
-        filter: brightness(0%);
+button:active #back,
+button:active #options {
+    filter: brightness(0%);
 }
+
 button {
     background-color: #499c79;
     border: 1px solid #FFF;
@@ -26,23 +29,24 @@ button {
     width: 45px;
     border-radius: 4px;
     padding-bottom: 5px;
-    
+
 }
 
 
 button:active {
-        background-color: #FFF;
+    background-color: #FFF;
 }
-footer{
+
+footer {
     bottom: 0%;
     position: fixed;
 }
 
-#footspace{
+#footspace {
     height: 55.667px;
 }
 
-#recipe{
+#recipe {
     margin-bottom: 55.667px;
 
 }
@@ -59,15 +63,18 @@ footer{
     height: auto;
     margin-top: 5%;
 }
+
 .carousel-item {
     margin-bottom: 55.667px;
 }
+
 .carousel-indicators {
-    position:absolute;
-    top:270px;
+    position: absolute;
+    top: 270px;
 }
 
-.carousel-control-prev , .carousel-control-next {
+.carousel-control-prev,
+.carousel-control-next {
     height: 300px;
 }
 

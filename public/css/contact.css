@@ -1,50 +1,54 @@
-
 /*Contact sectiom*/
-.content-header{
+
+.content-header {
     font-family: 'Oleo Script', cursive;
-    color:#fcc500;
+    color: #fcc500;
     font-size: 40px;
 }
 
-.section-content{
+.section-content {
     text-align: center;
 }
-#contact{
+
+#contact {
     font-family: 'Teko', sans-serif;
     margin-top: 0;
     width: 100%;
     width: 100vw;
     height: 550px;
-    color : #fff;
+    color: #fff;
 }
 
-.contact-section .col-md-6{
+.contact-section .col-md-6 {
     width: 50%;
 }
 
-.form-line{
+.form-line {
     border-right: 1px solid #B29999;
 }
 
-.form-group{
+.form-group {
     margin-top: 10px;
     max-width: 500px;
 }
-label{
+
+label {
     font-size: 1.3em;
     line-height: 1em;
     font-weight: normal;
 }
-.form-control{
+
+.form-control {
     font-size: 1.3em;
     color: #080808;
 }
+
 textarea.form-control {
     height: 135px;
     /* margin-top: px;*/
 }
 
-.submit{
+.submit {
     font-size: 1.1em;
     float: right;
     width: 150px;
@@ -53,7 +57,7 @@ textarea.form-control {
 
 }
 
-#submit-form{
+#submit-form {
     margin: 0 auto;
     max-width: 500px;
     padding: 10px;
@@ -62,7 +66,9 @@ textarea.form-control {
 
 
 /*-------------------------------*/
+
 /*           Wrappers            */
+
 /*-------------------------------*/
 
 #wrapper {
@@ -111,7 +117,9 @@ textarea.form-control {
 }
 
 /*-------------------------------*/
+
 /*     Sidebar nav styles        */
+
 /*-------------------------------*/
 
 .sidebar-nav {
@@ -140,27 +148,33 @@ textarea.form-control {
     width: 3px;
     background-color: #1c1c1c;
     -webkit-transition: width .2s ease-in;
-    -moz-transition:  width .2s ease-in;
-    -ms-transition:  width .2s ease-in;
+    -moz-transition: width .2s ease-in;
+    -ms-transition: width .2s ease-in;
     transition: width .2s ease-in;
 
 }
+
 .sidebar-nav li:first-child a {
     color: #fff;
     background-color: #1a1a1a;
 }
+
 .sidebar-nav li:nth-child(2):before {
     background-color: rgba(85, 183, 145, 1.0);
 }
+
 .sidebar-nav li:nth-child(3):before {
     background-color: rgba(85, 172, 183, 1.0);
 }
+
 .sidebar-nav li:nth-child(4):before {
     background-color: rgba(85, 183, 96, 1.0);
 }
+
 .sidebar-nav li:nth-child(5):before {
     background-color: rgba(73, 149, 156, 1.0);
 }
+
 .sidebar-nav li:nth-child(6):before {
     background-color: rgba(73, 156, 80, 1.0);
 }
@@ -169,8 +183,8 @@ textarea.form-control {
 .sidebar-nav li.open:hover:before {
     width: 100%;
     -webkit-transition: width .2s ease-in;
-    -moz-transition:  width .2s ease-in;
-    -ms-transition:  width .2s ease-in;
+    -moz-transition: width .2s ease-in;
+    -ms-transition: width .2s ease-in;
     transition: width .2s ease-in;
 
 }
@@ -187,7 +201,7 @@ textarea.form-control {
 .sidebar-nav li a:focus,
 .sidebar-nav li.open a:hover,
 .sidebar-nav li.open a:active,
-.sidebar-nav li.open a:focus{
+.sidebar-nav li.open a:focus {
     color: #fff;
     text-decoration: none;
     background-color: transparent;
@@ -198,6 +212,7 @@ textarea.form-control {
     font-size: 20px;
     line-height: 44px;
 }
+
 .sidebar-nav .dropdown-menu {
     position: relative;
     width: 100%;
@@ -210,7 +225,9 @@ textarea.form-control {
 }
 
 /*-------------------------------*/
+
 /*       Hamburger-Cross         */
+
 /*-------------------------------*/
 
 .hamburger {
@@ -224,11 +241,13 @@ textarea.form-control {
     background: transparent;
     border: none;
 }
+
 .hamburger:hover,
 .hamburger:focus,
 .hamburger:active {
     outline: none;
 }
+
 .hamburger.is-closed:before {
     content: '';
     display: block;
@@ -239,6 +258,7 @@ textarea.form-control {
     text-align: center;
     opacity: 0;
 }
+
 .hamburger.is-closed:hover:before {
     opacity: 1;
     display: block;
@@ -255,18 +275,22 @@ textarea.form-control {
     height: 4px;
     width: 100%;
 }
+
 .hamburger.is-closed .hamb-top,
 .hamburger.is-closed .hamb-middle,
 .hamburger.is-closed .hamb-bottom {
     background-color: #1a1a1a;
 }
+
 .hamburger.is-closed .hamb-top {
     top: 5px;
 }
+
 .hamburger.is-closed .hamb-middle {
     top: 50%;
     margin-top: -2px;
 }
+
 .hamburger.is-closed .hamb-bottom {
     bottom: 5px;
 }
@@ -277,24 +301,31 @@ textarea.form-control {
 .hamburger.is-open .hamb-bottom {
     background-color: #1a1a1a;
 }
+
 .hamburger.is-open .hamb-top,
 .hamburger.is-open .hamb-bottom {
     top: 50%;
     margin-top: -2px;
 }
+
 .hamburger.is-open .hamb-top {
     transform: rotate(45deg);
-    transition: .2s cubic-bezier(.73,1,.28,.08);
+    transition: .2s cubic-bezier(.73, 1, .28, .08);
     -webkit-transform: rotate(45deg);
-    -webkit-transition: -webkit-transform .2s cubic-bezier(.73,1,.28,.08);
+    -webkit-transition: -webkit-transform .2s cubic-bezier(.73, 1, .28, .08);
 }
-.hamburger.is-open .hamb-middle { display: none; }
+
+.hamburger.is-open .hamb-middle {
+    display: none;
+}
+
 .hamburger.is-open .hamb-bottom {
     transform: rotate(-45deg);
-    transition: .2s cubic-bezier(.73,1,.28,.08);
+    transition: .2s cubic-bezier(.73, 1, .28, .08);
     -webkit-transform: rotate(-45deg);
-    -webkit-transition: -webkit-transform .2s cubic-bezier(.73,1,.28,.08);
+    -webkit-transition: -webkit-transform .2s cubic-bezier(.73, 1, .28, .08);
 }
+
 .hamburger.is-open:before {
     content: '';
     display: block;
@@ -305,13 +336,16 @@ textarea.form-control {
     text-align: center;
     opacity: 0;
 }
+
 .hamburger.is-open:hover:before {
     opacity: 1;
     display: block;
 }
 
 /*-------------------------------*/
+
 /*            Overlay            */
+
 /*-------------------------------*/
 
 .overlay {
@@ -323,6 +357,6 @@ textarea.form-control {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(85, 183, 145,.8);
+    background-color: rgba(85, 183, 145, .8);
     z-index: 1;
 }

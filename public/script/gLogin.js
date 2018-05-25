@@ -1,3 +1,4 @@
+/*
 function onSignIn(googleUser) {
     // Useful data for your client-side scripts:
     var profile = googleUser.getBasicProfile();
@@ -12,3 +13,4 @@ function onSignIn(googleUser) {
     var id_token = googleUser.getAuthResponse().id_token;
     console.log("ID Token: " + id_token);
 };
+*/
