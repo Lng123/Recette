@@ -224,6 +224,14 @@ textarea.form-control {
     box-shadow: none;
 }
 
+#recette {
+    font-family: 'Allura', cursive;
+    font-size: 24pt;
+}
+
+.sidebar-nav {
+    font-family: 'Arimo', sans-serif;
+}
 /*-------------------------------*/
 
 /*       Hamburger-Cross         */
