@@ -116,7 +116,7 @@
             return to;
         };
 
-}, {}],
+    }, {}],
     2: [function (require, module, exports) {
         module.exports = {
             "_from": "tesseract.js",
@@ -136,9 +136,9 @@
                 "fetchSpec": "latest"
             },
             "_requiredBy": [
-    "#USER",
-    "/"
-  ],
+                "#USER",
+                "/"
+            ],
             "_resolved": "https://registry.npmjs.org/tesseract.js/-/tesseract.js-1.0.10.tgz",
             "_shasum": "e11a96ae76147939d9218f88e287fb69414b1e5d",
             "_spec": "tesseract.js",
@@ -189,7 +189,7 @@
             "version": "1.0.10"
         }
 
-}, {}],
+    }, {}],
     3: [function (require, module, exports) {
         (function (process) {
             var defaultOptions = {
@@ -292,7 +292,7 @@
             }
 
         }).call(this, require('_process'))
-}, {
+    }, {
         "../../package.json": 2,
         "_process": 8
     }],
@@ -360,7 +360,7 @@
             })
             return page
         }
-}, {}],
+    }, {}],
     5: [function (require, module, exports) {
         const adapter = require('../node/index.js')
 
@@ -387,7 +387,7 @@
                 if (reject) this.catch(reject);
                 return this;
             }
-            catch (reject) {
+            catch(reject) {
                 if (this._reject.push) {
                     this._reject.push(reject)
                 } else {
@@ -444,7 +444,7 @@
             }
         }
 
-}, {
+    }, {
         "../node/index.js": 3
     }],
     6: [function (require, module, exports) {
@@ -541,7 +541,7 @@
         var DefaultTesseract = create()
 
         module.exports = DefaultTesseract
-}, {
+    }, {
         "../package.json": 2,
         "./common/circularize.js": 4,
         "./common/job": 5,
@@ -556,7 +556,7 @@
             .then(function (result) {
                 console.log(result)
             })
-}, {
+    }, {
         "tesseract.js": 6
     }],
     8: [function (require, module, exports) {
@@ -724,7 +724,7 @@
         process.version = ''; // empty string to avoid regexp issues
         process.versions = {};
 
-        function noop() {}
+        function noop() { }
 
         process.on = noop;
         process.addListener = noop;
@@ -754,5 +754,5 @@
             return 0;
         };
 
-}, {}]
+    }, {}]
 }, {}, [7]);

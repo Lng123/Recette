@@ -432,14 +432,16 @@ function addList() {
         var dat = new Date();
         let dateDB = new Date(date.value);
         let ref = db.collection("email").doc(sessionStorage.getItem("userEmail"));
+        window.name = item.value;
         ref.collection("list").add({
-                name: item.value,
-                expiaryDate: dateDB.getTime()
-            })
+            name: item.value,
+            expiaryDate: dateDB.getTime()
+        })
             .then(function (docRef) {
                 console.log(docRef);
                 id = docRef.id;
-                window.userList[clicked] = ({
+                window.clicked = window.eleCounter;
+                window.userList[window.clicked - 1] = ({
                     name: window.name,
                     expiaryDate: dateDB.getTime(),
                     id: id,

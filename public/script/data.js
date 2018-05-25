@@ -258,8 +258,8 @@ function clicked() {
 
     if (result === "yes") {
         db.collection("email").add({
-                email: email.value
-            })
+            email: email.value
+        })
             .then(function (docRef) {
                 console.log("added!!" + docRef.id);
                 sessionStorage.setItem("userEmail", docRef.id);
